@@ -1,40 +1,59 @@
 ---
-source-git-commit: 144abd7937766c28aba3a90c187bf8a21df1ca76
+source-git-commit: 36c4ad10a9140d368fdbf3f0939e6756cc2bfbbf
 translation-type: tm+mt
 
 ---
-# Bijdragen
+# Bijdragen aan documentatie van Adobe Experience Manager
 
-Bedankt dat u hebt gekozen om bij te dragen!
+Bedankt dat u hebt gekozen om een bijdrage te leveren aan de documentatie van Adobe Experience Manager. Wij zijn verheugd over de bijdragen van de gehele lezergemeenschap en van collega&#39;s van Adobe aan de inhoud.
 
-Hieronder volgt een reeks richtlijnen die moeten worden gevolgd wanneer u een bijdrage levert aan dit project.
+In dit bestand wordt beschreven hoe u een bijdrage kunt leveren en worden de richtlijnen beschreven die u moet volgen bij het maken van uw bijdragen.
 
-## Gedragscode
+## Adobe Open Source Code of Conduct
 
-Dit project voldoet aan de Adobe-[gedragscode](code-of-conduct.md). Als u deelneemt, wordt van u verwacht dat u zich aan deze code houdt. Please report unacceptable behavior to
-[Grp-opensourceoffice@adobe.com](mailto:Grp-opensourceoffice@adobe.com).
+Dit project heeft de [Adobe Open Source Code of Conduct](code-of-conduct.md)goedgekeurd. Door bij te dragen aan AEM-documentatie gaat u akkoord met het naleven van deze gedragscode. Please report unacceptable behavior to [Grp-opensourceoffice@adobe.com](mailto:Grp-opensourceoffice@adobe.com).
 
-## Heb je een vraag?
+## Richtsnoeren voor de bijdrage
 
-Begin met het indienen van een probleem. De bestaande comités voor dit project werken aan consensus over de richting van het project en leveren oplossingen binnen de verschillende thema&#39;s (indien van toepassing).
+Hoewel we blij zijn met bijdragen om de AEM-documentatie te verbeteren, vragen we wel dat bijdragen waar mogelijk aan bepaalde richtsnoeren en normen voldoen. Zie de [Richtlijnen voor Bijdragen aan de documentatie](guidelines.md) van AEM voor meer informatie.
 
-## Licentieovereenkomst voor contribuant
+## Contribute
 
-Alle bijdragen van derden aan dit project moeten vergezeld gaan van een ondertekende bijdrageovereenkomst. Dit geeft Adobe de toestemming om uw bijdragen als deel van het project opnieuw te verdelen. [Onderteken onze CLA](http://opensource.adobe.com/cla.html). U hoeft slechts één keer een Adobe CLA te verzenden, dus als u al een eerder hebt verzonden, kunt u het beste gaan!
+Wij willen het zo gemakkelijk mogelijk maken uw bijdragen in te dienen. U kunt op twee manieren bijdragen:
 
-## Codebeoordelingen
+* [Een uitgave maken](#create-an-issue)
+* [Een pull-verzoek maken](#create-a-pull-request)
 
-Alle inzendingen moeten in de vorm van pull-aanvragen gebeuren en moeten door projectcommitters worden gecontroleerd. Lees de documentatie [over pull-aanvragen van GitHub](https://help.github.com/articles/about-pull-requests/) voor meer informatie over het indienen van pull-aanvragen.
+Welke methode u kiest hangt van af hoe comfortabel u de documentatie in GitHub zelf uitgeeft.
 
-<!--
-Lastly, please follow the [pull request template](PULL_REQUEST_TEMPLATE.md) when
-submitting a pull request!
--->
+>[!NOTE]
+>
+>De [gebruiksvoorwaarden van Adobe zijn van toepassing op bijdragen die u verzendt.](https://www.adobe.com/legal/terms.html)
 
-## Van contribuant aan vastleggingen
+### Een probleem maken {#create-an-issue}
 
-We houden van bijdragen van onze gemeenschap! Als u een stap verder wilt gaan dan contribuant en een commissie met volledige schrijftoegang en een inspraak in het project wilt worden, moet u aan het project worden uitgenodigd. De bestaande commissies maken gebruik van een intern nominatieproces dat een luie consensus moet bereiken (stilte is goedkeuring) voordat uitnodigingen worden gedaan. Als u vindt dat u gekwalificeerd bent en dieper betrokken wilt worden, voelt u vrij om bestaande toezeggingen te bereiken om daarover een gesprek te hebben.
+Heeft u een suggestie, een observatie over de huidige documenten of vraagt u zich af hoe iets wordt beschreven? Maak vervolgens een probleem. De kwesties zijn ook uitstekend als u iets hebt om bij te dragen, maar voel niet comfortabel het uitgeven van de docs of het maken van een trekpleidooi zelf.
 
-## Beveiligingsproblemen
+Met problemen kunt u uw idee eenvoudig beschrijven voor verbetering in de documenten en een lid van het AEM Docs-team kan het beoordelen. Klik op de koppeling **Log een uitgave** boven aan het rechternavigatievenster op een willekeurige pagina om een probleem te maken.
 
-Beveiligingsproblemen moeten niet worden gerapporteerd in deze Issue Tracker. In plaats daarvan [dient u een probleem in bij onze beveiligingsexperts](https://helpx.adobe.com/security/alertus.html)
+### Een volledige aanvraag maken {#create-a-pull-request}
+
+Als u een probleem ziet en precies weet hoe u dit kunt verhelpen, kunt u een pull-verzoek maken. De verzoeken van de Trek staan u toe om uw eigen uit te geven aan de documentatie, die dan voor opneming door een lid van het Team van AEM Docs wordt herzien. Klik op de koppeling Deze pagina **** bewerken boven aan het navigatievenster rechts op een pagina om de voorgestelde wijzigingen aan te brengen en de pull-aanvraag te maken.
+
+Alle pull-aanvragen moeten vergezeld gaan van een ondertekende [contributieovereenkomst of CLA.](https://opensource.adobe.com/cla.html)  Dit geeft Adobe de toestemming om uw bijdragen als deel van het project opnieuw te verdelen. U hoeft slechts één keer een Adobe CLA te verzenden, dus als u al een eerder hebt verzonden, kunt u het beste gaan!
+
+### Snelle video-introductie
+
+Bekijk de volgende video voor een snel overzicht van hoe u problemen kunt maken en aanvragen kunt intrekken.
+
+>[!VIDEO](https://video.tv.adobe.com/v/27069)
+
+### Bijdragen van Adobe-werknemers
+
+Als u een Adobe-medewerker bent en een pull-verzoek wilt indienen, kunt u de privéopslagruimte op `https://git.corp.adobe.com/AdobeDocs`gebruiken.
+
+Voor problemen kunt u altijd gebruikmaken van de openbare opslagplaatsen.
+
+## Aanvullende informatie
+
+Zie de [Adobe Docs Contributor Guide](https://docs.adobe.com/help/en/contributor/contributor-guide/introduction.html) voor meer informatie over het gebruik van het GitHub-ontwerpplatform.
