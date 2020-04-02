@@ -9,7 +9,7 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: 1d449ee2-4cdd-4b7a-8b4e-7e6fc0a1d7ee
 translation-type: tm+mt
-source-git-commit: de6a513baf3e6b1a1463a442fa840e59f2196e8e
+source-git-commit: 3bf255c54b46f571fab64f0754b71e050c3bda3f
 
 ---
 
@@ -275,7 +275,7 @@ In een standaard AEM opstelling, biedt de configuratie door uitbreiding en/of we
 
 Als deze benadering wordt gebruikt om beheerde inhoud in het voorgeheugen onder te brengen, impliceert het dat de inhoudsveranderingen slechts aan eind zichtbaar zijn - gebruikers zodra de gevormde caching periode is verlopen en het document opnieuw van Dispatcher wordt opgehaald.
 
-Voor fijnere controle, staat API gebaseerde ongeldigverklaring u toe om het geheime voorgeheugen van een CDN ongeldig te maken aangezien het geheime voorgeheugen van de Verzender ongeldig wordt gemaakt. Gebaseerd op CDNs API, kunt u uw eigen [ContentBuilder](https://docs.adobe.com/docs/en/cq/current/javadoc/com/day/cq/replication/ContentBuilder.html) en [TransportHandler](https://docs.adobe.com/docs/en/cq/current/javadoc/com/day/cq/replication/TransportHandler.html) (als API niet op REST-Gebaseerd is) uitvoeren en opstelling een Agent van de Replicatie die deze zal gebruiken om het geheime voorgeheugen van CDN ongeldig te maken.
+Voor fijnere controle, staat API gebaseerde ongeldigverklaring u toe om het geheime voorgeheugen van een CDN ongeldig te maken aangezien het geheime voorgeheugen van de Verzender ongeldig wordt gemaakt. Gebaseerd op CDNs API, kunt u uw eigen [ContentBuilder](https://helpx.adobe.com/experience-manager/6-5/sites/developing/using/reference-materials/javadoc/com/day/cq/replication/ContentBuilder.html) en [TransportHandler](https://helpx.adobe.com/experience-manager/6-5/sites/developing/using/reference-materials/javadoc/com/day/cq/replication/TransportHandler.html) (als API niet op REST-Gebaseerd is) uitvoeren en opstelling een Agent van de Replicatie die deze zal gebruiken om het geheime voorgeheugen van CDN ongeldig te maken.
 
 >[!NOTE]
 >
