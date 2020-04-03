@@ -13,7 +13,7 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: 79cd94be-a6bc-4d34-bfe9-393b4107925c
 translation-type: tm+mt
-source-git-commit: 76cffbfb616cd5601aed36b7076f67a2faf3ed3b
+source-git-commit: 85497651ce29c8564da4b52c60819a48b776af7b
 
 ---
 
@@ -24,7 +24,7 @@ Wanneer u Dispatcher gebruikt met AEM, moet de interactie zodanig zijn geconfigu
 
 ## AEM-gebruikersaccounts instellen {#setting-up-aem-user-accounts}
 
-De standaardgebruikersrekening wordt gebruikt om de replicatieagenten voor authentiek te verklaren die door gebrek worden geïnstalleerd. `admin` U zou een specifieke gebruikersrekening voor gebruik met replicatieagenten moeten tot stand brengen. [](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps)
+De standaardgebruikersrekening wordt gebruikt om de replicatieagenten voor authentiek te verklaren die door gebrek worden geïnstalleerd. `admin` U zou een specifieke gebruikersrekening voor gebruik met replicatieagenten moeten tot stand brengen.
 
 Voor meer informatie zie de [Configure sectie van de Gebruikers](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps) van de Replicatie en van het Vervoer van AEM Controle van de Veiligheid.
 
