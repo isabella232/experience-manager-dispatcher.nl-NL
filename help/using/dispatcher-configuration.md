@@ -10,7 +10,10 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: aeffee8e-bb34-42a7-9a5e-b7d0e848391a
 translation-type: tm+mt
-source-git-commit: 183131dec51b67e152a8660c325ed980ae9ef458
+source-git-commit: 5734e601379fda9a62eda46bded493b8dbd49a4c
+workflow-type: tm+mt
+source-wordcount: '8802'
+ht-degree: 0%
 
 ---
 
@@ -166,7 +169,7 @@ Het `/farms` bezit is een top-level bezit in de configuratiestructuur. Om een la
 De `/farmname` eigenschap is multi-getaxeerd en bevat andere eigenschappen die het gedrag Verzender definiëren:
 
 * De URL&#39;s van de pagina&#39;s waarop het landbouwbedrijf van toepassing is.
-* Een of meer service-URL&#39;s (doorgaans van AEM-publicatie-instanties) die moeten worden gebruikt voor het weergeven van documenten.
+* Een of meer service-URL&#39;s (doorgaans van AEM publicatieinstanties) die moeten worden gebruikt voor het weergeven van documenten.
 * De statistische gegevens die moeten worden gebruikt voor meerdere renderers van documenten die een taakverdeling hebben.
 * Verschillende andere gedragingen, zoals welke bestanden in cache moeten worden opgeslagen en waar.
 
@@ -202,7 +205,7 @@ Elk landbouwbedrijfbezit kan de volgende kindeigenschappen bevatten:
 | [/clientheaders](#specifying-the-http-headers-to-pass-through-clientheaders) | De headers van de HTTP-client-aanvraag die moeten worden doorgegeven. |
 | [/virtuele hosts](#identifying-virtual-hosts-virtualhosts) | De virtuele gastheren voor dit landbouwbedrijf. |
 | [/sessionmanagement](#enabling-secure-sessions-sessionmanagement) | Ondersteuning voor sessiebeheer en verificatie. |
-| [/renders](#defining-page-renderers-renders) | De servers die gerenderde pagina&#39;s leveren (doorgaans publiceert AEM-exemplaren). |
+| [/renders](#defining-page-renderers-renders) | De servers die gerenderde pagina&#39;s leveren (AEM gewoonlijk exemplaren publiceren). |
 | [/filter](#configuring-access-to-content-filter) | Bepaalt URLs waaraan de Verzender toegang toelaat. |
 | [/vanity_urls](#enabling-access-to-vanity-urls-vanity-urls) | Vormt toegang tot vanity URLs. |
 | [/propagateSyndPost](#forwarding-syndication-requests-propagatesyndpost) | Steun voor de doorzending van verzoeken om syndicatie. |
@@ -221,7 +224,7 @@ Elk landbouwbedrijfbezit kan de volgende kindeigenschappen bevatten:
 >
 >De `/homepage`parameter (alleen IIS) werkt niet meer. In plaats daarvan, zou u [IIS moeten gebruiken herschrijft Module](https://docs.microsoft.com/en-us/iis/extensions/url-rewrite-module/using-the-url-rewrite-module).
 >
->Als u Apache gebruikt, moet u de `mod_rewrite` module gebruiken. Raadpleeg de documentatie bij de Apache-website voor informatie over `mod_rewrite` (bijvoorbeeld [Apache 2.4](https://httpd.apache.org/docs/current/mod/mod_rewrite.html)). Bij gebruik `mod_rewrite`is het raadzaam de markering **[&#39;passthrough|PT&#39; (doorgeven naar volgende handler)](https://helpx.adobe.com/dispatcher/kb/DispatcherModReWrite.html)**te gebruiken om de engine voor herschrijven te forceren het`uri`veld van de interne`request_rec`structuur in te stellen op de waarde van het`filename`veld.
+>Als u Apache gebruikt, moet u de `mod_rewrite` module gebruiken. Raadpleeg de documentatie bij de Apache-website voor informatie over `mod_rewrite` (bijvoorbeeld [Apache 2.4](https://httpd.apache.org/docs/current/mod/mod_rewrite.html)). Bij gebruik `mod_rewrite`is het raadzaam de markering **[&#39;passthrough|PT&#39; (doorgeven naar volgende handler)](https://helpx.adobe.com/dispatcher/kb/DispatcherModReWrite.html)** te gebruiken om de engine voor herschrijven te forceren het `uri` veld van de interne `request_rec` structuur in te stellen op de waarde van het `filename` veld.
 
 <!-- 
 
@@ -267,7 +270,7 @@ De `/clientheaders` eigenschap definieert een lijst met HTTP-headers die door Di
 
 Standaard verzendt Dispatcher de standaard HTTP-headers naar de AEM-instantie. In sommige gevallen wilt u mogelijk extra kopteksten doorsturen of specifieke kopteksten verwijderen:
 
-* Voeg kopballen, zoals douanekopballen, toe die uw instantie AEM in de HTTP- aanvraag verwacht.
+* Voeg kopballen, zoals douanekopballen, toe die uw AEM instantie in de HTTP- aanvraag verwacht.
 * Verwijder kopballen, zoals authentificatiekopballen, die slechts voor de Webserver relevant zijn.
 
 Als u de reeks kopballen aanpast om over te gaan, moet u een uitvoerige lijst van kopballen specificeren, met inbegrip van die die normaal inbegrepen door gebrek zijn.
@@ -412,7 +415,7 @@ Gebruikend dit voorbeeld, toont de volgende lijst de virtuele gastheren die voor
 
 >[!CAUTION]
 >
->`/allowAuthorized` U **moet** deze functie alleen inschakelen `"0"` in de `/cache` sectie.
+>`/allowAuthorized` **moet** worden ingesteld op `"0"` de `/cache` sectie om deze functie in te schakelen.
 
 Creeer een veilige zitting voor toegang tot teruggeven landbouwbedrijf zodat de gebruikers login moeten om het even welke pagina in het landbouwbedrijf toegang hebben. Na het programma openen, kunnen de gebruikers tot pagina&#39;s in het landbouwbedrijf toegang hebben. Zie Een gesloten gebruikersgroep [](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/cug.html#CreatingTheUserGroupToBeUsed) maken voor informatie over het gebruik van deze functie met CUG&#39;s. Zie ook de [lijst](/help/using/security-checklist.md) Beveiliging van de afzender voordat u live gaat.
 
@@ -465,7 +468,7 @@ Een voorbeeldconfiguratie ziet er als volgt uit:
 
 ## Paginarenderers definiëren {#defining-page-renderers-renders}
 
-De eigenschap /renders definieert de URL waarnaar de afzender een verzoek verzendt om een document te renderen. In de volgende voorbeeldsectie `/renders` wordt één AEM-instantie voor rendering geïdentificeerd:
+De eigenschap /renders definieert de URL waarnaar de afzender een verzoek verzendt om een document te renderen. In de volgende voorbeeldsectie `/renders` wordt één AEM voor rendering geïdentificeerd:
 
 ```xml
 /renders
@@ -482,7 +485,7 @@ De eigenschap /renders definieert de URL waarnaar de afzender een verzoek verzen
   }
 ```
 
-De volgende voorbeeldsectie /renders identificeert een instantie AEM die op de zelfde computer zoals verzender loopt:
+De volgende voorbeeldsectie /renders identificeert een AEM instantie die op de zelfde computer zoals verzender loopt:
 
 ```xml
 /renders
@@ -495,7 +498,7 @@ De volgende voorbeeldsectie /renders identificeert een instantie AEM die op de z
   }
 ```
 
-In het volgende voorbeeld /renders-gedeelte worden renderverzoeken gelijkelijk verdeeld over twee AEM-instanties:
+In het volgende voorbeeld /renders-gedeelte worden renderverzoeken gelijkelijk verdeeld over twee AEM:
 
 ```xml
 /renders
@@ -517,7 +520,7 @@ In het volgende voorbeeld /renders-gedeelte worden renderverzoeken gelijkelijk v
 
 **/timeout**
 
-Geeft de time-out van de verbinding op die de AEM-instantie benadert, in milliseconden. De standaardwaarde is &quot;0&quot;, waardoor de Dispatcher oneindig wacht.
+Geeft de time-out van de verbinding op die de AEM instantie benadert, in milliseconden. De standaardwaarde is &quot;0&quot;, waardoor de Dispatcher oneindig wacht.
 
 **/receiveTimeout**
 
@@ -530,11 +533,11 @@ Geeft aan of Dispatcher de `getaddrinfo` functie (voor IPv6) of de `gethostbynam
 
 De functie getaddrinfo retourneert een lijst met IP-adressen. Dispatcher herhaalt de lijst van adressen tot het een verbinding TCP/IP vestigt. Daarom is ipv4 bezit belangrijk wanneer teruggeven hostname met veelvoudige IP adressen wordt geassocieerd en de gastheer, in antwoord op de functie getaddrinfo, een lijst van IP adressen terugkeert die altijd in de zelfde orde zijn. In deze situatie, zou u de functie moeten gebruiken gethostbyname zodat het IP adres dat de Ontvanger met verbindt willekeurig wordt verdeeld.
 
-De ELB (Amazon Elastic Load Balancing) is een service die reageert op getaddrinfo met een lijst met IP-adressen die mogelijk dezelfde volgorde heeft.
+Amazon Elastic Load Balancing (ELB) is een service die reageert op getaddrinfo met een lijst met IP-adressen die mogelijk dezelfde volgorde heeft.
 
 **/secure**
 
-Als de `/secure` eigenschap de waarde 1 heeft, gebruikt Dispatcher HTTPS om te communiceren met de AEM-instantie. Voor extra details, zie ook het [Vormen Verzender om SSL](dispatcher-ssl.md#configuring-dispatcher-to-use-ssl)te gebruiken.
+Als de `/secure` eigenschap de waarde 1 heeft, gebruikt Dispatcher HTTPS om te communiceren met de AEM instantie. Voor extra details, zie ook het [Vormen Verzender om SSL](dispatcher-ssl.md#configuring-dispatcher-to-use-ssl)te gebruiken.
 
 **/always-resolve**
 
@@ -564,7 +567,7 @@ Gebruik de `/filter` sectie om de HTTP-aanvragen op te geven die Dispatcher acce
 
 >[!CAUTION]
 >
->Zie de Controlelijst [van de Veiligheid van de](security-checklist.md) Verzender voor verdere overwegingen wanneer het beperken van toegang gebruikend Verzender. Lees ook de [AEM Security Cheklist](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html) voor meer beveiligingsdetails over uw AEM-installatie.
+>Zie de Controlelijst [van de Veiligheid van de](security-checklist.md) Verzender voor verdere overwegingen wanneer het beperken van toegang gebruikend Verzender. Lees ook de [AEM Beveiligingslijst](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html) voor aanvullende beveiligingsdetails met betrekking tot uw AEM-installatie.
 
 De /filter sectie bestaat uit een reeks regels die of toegang tot inhoud volgens patronen in het verzoek-lijn deel van het HTTP- verzoek ontkennen of toestaan. U zou een whiltelist strategie voor uw /filter sectie moeten gebruiken:
 
@@ -603,9 +606,9 @@ HTTP/1.1 definieert de [request-line](https://www.w3.org/Protocols/rfc2616/rfc26
 
 *Methode Request-URI HTTP-Version*&lt;CRLF>
 
-De &lt;CRLF>-tekens vertegenwoordigen een regelterugloop gevolgd door een regelinvoer. Het volgende voorbeeld is de verzoek-lijn die wordt ontvangen wanneer een cliënt om de en pagina van Geometrixx-Outoors plaats verzoekt:
+De &lt;CRLF>-tekens vertegenwoordigen een regelterugloop gevolgd door een regelinvoer. Het volgende voorbeeld is de verzoek-lijn die wordt ontvangen wanneer een cliënt om de en pagina van de Geometrixx-Outoors plaats verzoekt:
 
-/content/geometrixx-outdoors/en.html HTTP.1.1&lt;CRLF>
+GET /content/geometrixx-outdoors/en.html HTTP.1.1&lt;CRLF>
 
 In uw patronen moet rekening worden gehouden met de spatietekens in de request-line en de &lt;CRLF>-tekens.
 
@@ -639,9 +642,9 @@ Met filters kunt u ook toegang tot verschillende elementen weigeren, zoals ASP-p
 /0002  { /type "deny" /url "*.asp"  }
 ```
 
-#### Voorbeeldfilter: POST-verzoeken inschakelen {#example-filter-enable-post-requests}
+#### Voorbeeldfilter: Aanvragen van POSTEN inschakelen {#example-filter-enable-post-requests}
 
-Met het volgende voorbeeldfilter kunt u formuliergegevens verzenden via de POST-methode:
+Met het volgende voorbeeldfilter kunt u formuliergegevens verzenden met de methode POST:
 
 ```xml
 /filter {
@@ -708,7 +711,7 @@ Wanneer het vormen van Dispatcher zou u externe toegang zoveel mogelijk moeten b
    * `/etc/designs/default*`
    * `/etc/designs/mydesign*`
 
-Nadat u filters hebt gemaakt, [test u de toegang tot](dispatcher-configuration.md#main-pars-title-19) de pagina om te controleren of uw AEM-instantie veilig is.
+Nadat u filters hebt gemaakt, [test u de toegang tot](dispatcher-configuration.md#main-pars-title-19) de pagina om te controleren of uw AEM veilig is.
 
 De volgende /filter sectie van het dispatcher.any- dossier kan als basis in uw de configuratiedossier [van de](dispatcher-configuration.md) Verzender worden gebruikt.
 
@@ -842,7 +845,7 @@ Sinds Dispatcher versie 4.1.5 gebruikt u de `/filter` sectie om querytekenreekse
 
 ### Beveiliging van Dispatcher testen {#testing-dispatcher-security}
 
-Dispatcher-filters blokkeren de toegang tot de volgende pagina&#39;s en scripts in AEM-publicatieinstanties. Gebruik een webbrowser om te proberen de volgende pagina&#39;s te openen zoals een bezoeker van de site zou doen en om te controleren of code 404 wordt geretourneerd. Pas de filters aan als er andere resultaten worden verkregen.
+Dispatcher-filters blokkeren de toegang tot de volgende pagina&#39;s en scripts bij AEM publicatie-instanties. Gebruik een webbrowser om te proberen de volgende pagina&#39;s te openen zoals een bezoeker van de site zou doen en om te controleren of code 404 wordt geretourneerd. Pas de filters aan als er andere resultaten worden verkregen.
 
 Merk op dat u normale paginerendering voor /content/add_valid_page.html zou moeten zien?debug=layout.
 
@@ -955,7 +958,7 @@ Gebruik de volgende procedure om toegang tot vanity URLs toe te laten.
 
 Syndicatieverzoeken zijn gewoonlijk alleen bedoeld voor Dispatcher, zodat ze standaard niet naar de renderer worden verzonden (bijvoorbeeld een AEM-instantie).
 
-Indien nodig, plaats het /propagateSyndPost bezit aan &quot;1&quot;om syndicatieverzoeken aan Dispatcher door:sturen. Indien ingesteld, moet u ervoor zorgen dat POST-aanvragen niet worden afgewezen in de filtersectie.
+Indien nodig, plaats het /propagateSyndPost bezit aan &quot;1&quot;om syndicatieverzoeken aan Dispatcher door:sturen. Indien ingesteld, moet u ervoor zorgen dat de aanvragen voor POSTEN niet worden afgewezen in de filtersectie.
 
 ## De Dispatcher Cache - /cache configureren {#configuring-the-dispatcher-cache-cache}
 
@@ -1058,7 +1061,7 @@ De `/rules` eigenschap bepaalt welke documenten in het cachegeheugen worden opge
 * De bestandsextensie ontbreekt.\
    De webserver heeft de extensie nodig om het documenttype (het MIME-type) te bepalen.
 * De authentificatiekopbal wordt geplaatst (dit kan worden gevormd)
-* Als de instantie AEM met de volgende kopballen antwoordt:
+* Als de AEM instantie met de volgende kopballen antwoordt:
 
    * `no-cache`
    * `no-store`
@@ -1216,7 +1219,7 @@ Als u automatisch gegenereerde PDF- en ZIP-bestanden aanbiedt om te downloaden, 
   }
 ```
 
-De integratie van AEM met de Analytics van Adobe levert configuratiegegevens in een analytics.sitecatalyst.js- dossier in uw website. Het voorbeeld dispatcher.any-bestand dat bij Dispatcher wordt geleverd, bevat de volgende regel voor het ongeldig maken van dit bestand:
+De AEM integratie met Adobe Analytics levert configuratiegegevens in het bestand analytics.sitecatalyst.js op uw website. Het voorbeeld dispatcher.any-bestand dat bij Dispatcher wordt geleverd, bevat de volgende regel voor het ongeldig maken van dit bestand:
 
 ```xml
 {
@@ -1237,7 +1240,7 @@ De methode wordt aangeroepen met de volgende argumenten:
 * Toepassingsgebied van actie\
    Het bereik van de replicatieactie (leeg, tenzij een koptekst van `CQ-Action-Scope: ResourceOnly` wordt verzonden, zie [Het ongeldig maken van Cached Pagina&#39;s van AEM](page-invalidate.md) voor details)
 
-Dit kan worden gebruikt om een aantal verschillende gebruiksgevallen te behandelen, zoals het ongeldig maken van andere toepassings specifieke geheime voorgeheugens, of om gevallen te behandelen waar extern URL van een pagina en zijn plaats in de documentwortel niet de inhoudspad aanpast.
+Dit kan worden gebruikt om een aantal verschillende gebruiksgevallen te behandelen, zoals het ongeldig maken van andere toepassings specifieke geheime voorgeheugens, of om gevallen te behandelen waar extern URL van een pagina en zijn plaats in de documentwortel niet de inhoudspad aanpassen.
 
 In het onderstaande voorbeeld wordt elk verzoek om validatie aan een bestand genoteerd.
 
@@ -1347,10 +1350,11 @@ Hieronder ziet u een voorbeeld van de standaardconfiguratie:
 
 >[!NOTE]
 >
->Als u Dispatcher nodig hebt om de eBay-antwoordheaders van AEM op te slaan en te leveren, gaat u als volgt te werk:
+>Als u Dispatcher nodig hebt om de eBay-antwoordheaders van AEM op te slaan en te leveren, doet u het volgende:
 >
 >* Voeg de koptekstnaam toe aan de `/cache/headers`sectie.
 >* Voeg de volgende [Apache-instructie](https://httpd.apache.org/docs/2.4/mod/core.html#fileetag) toe aan het gedeelte Dispatcher dat betrekking heeft op:
+
 >
 
 
@@ -1575,11 +1579,13 @@ Gebruik de /ignoreEINTR parameter als uw instantie zulk een configuratie heeft e
 
 `Error while reading response: Interrupted system call`
 
-Intern leest Dispatcher de reactie van de externe server (d.w.z. AEM) met behulp van een lus die kan worden weergegeven als:
+Intern leest Dispatcher de reactie van de externe server (d.w.z. AEM) met een lus die kan worden weergegeven als:
 
-`while (response not finished) {  
+```
+while (response not finished) {  
 read more data  
-}`
+}
+```
 
 Dergelijke berichten kunnen worden geproduceerd wanneer het in &quot; `EINTR` `read more data`&quot;sectie voorkomt en door de ontvangst van een signaal veroorzaakt alvorens om het even welke gegevens werd ontvangen.
 
@@ -1597,9 +1603,9 @@ De glob-waarden kunnen jokertekens en alfanumerieke tekens bevatten om het patro
 
 | Jokerteken | Beschrijving | Voorbeelden |
 |--- |--- |--- |
-| `*` | Komt overeen met nul of meer aaneengesloten instanties van een willekeurig teken in de tekenreeks. Het uiteindelijke teken van de overeenkomst wordt bepaald door een van de volgende situaties: Een <br/>teken in de tekenreeks komt overeen met het volgende teken in het patroon en het patroonteken heeft de volgende kenmerken:<br/><ul><li>Geen *</li><li>Niet een?</li><li>Een letterlijk teken (inclusief een spatie) of een tekenklasse.</li><li>Het einde van het patroon is bereikt.</li></ul>Binnen een tekenklasse wordt het teken letterlijk geïnterpreteerd. | `*/geo*` Komt overeen met elke pagina onder het `/content/geometrixx` knooppunt en het `/content/geometrixx-outdoors` knooppunt. De volgende HTTP-aanvragen komen overeen met het globale patroon: <br/><ul><li>`"GET /content/geometrixx/en.html"`</li><li>`"GET /content/geometrixx-outdoors/en.html"` </li></ul><br/> `*outdoors/*` Komt <br/>overeen met elke pagina onder het `/content/geometrixx-outdoors` knooppunt. De volgende HTTP-aanvraag komt bijvoorbeeld overeen met het glob-patroon: <br/><ul><li>`"GET /content/geometrixx-outdoors/en.html"`</li></ul> |
+| `*` | Komt overeen met nul of meer aaneengesloten instanties van een willekeurig teken in de tekenreeks. Het uiteindelijke teken van de overeenkomst wordt bepaald door een van de volgende situaties: <br/>Een teken in de tekenreeks komt overeen met het volgende teken in het patroon en het patroonteken heeft de volgende kenmerken:<br/><ul><li>Geen *</li><li>Niet een?</li><li>Een letterlijk teken (inclusief een spatie) of een tekenklasse.</li><li>Het einde van het patroon is bereikt.</li></ul>Binnen een tekenklasse wordt het teken letterlijk geïnterpreteerd. | `*/geo*` Komt overeen met elke pagina onder het `/content/geometrixx` knooppunt en het `/content/geometrixx-outdoors` knooppunt. De volgende HTTP-aanvragen komen overeen met het globale patroon: <br/><ul><li>`"GET /content/geometrixx/en.html"`</li><li>`"GET /content/geometrixx-outdoors/en.html"` </li></ul><br/> `*outdoors/*` <br/>Komt overeen met elke pagina onder het `/content/geometrixx-outdoors` knooppunt. De volgende HTTP-aanvraag komt bijvoorbeeld overeen met het glob-patroon: <br/><ul><li>`"GET /content/geometrixx-outdoors/en.html"`</li></ul> |
 | `?` | Komt overeen met elk willekeurig enkel teken. Gebruik externe tekenklassen. Binnen een tekenklasse wordt dit teken letterlijk geïnterpreteerd. | `*outdoors/??/*`<br/> Komt overeen met de pagina&#39;s voor elke taal in de geometrixx-outdoorsite. De volgende HTTP-aanvraag komt bijvoorbeeld overeen met het glob-patroon: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>Het volgende verzoek komt niet overeen met het glob-patroon: <br/><ul><li>&quot;GET /content/geometrixx-outdoors/en.html&quot;</li></ul> |
-| `[ and ]` | Hiermee wordt het begin en einde van een tekenklasse gedemonstreerd. Tekenklassen kunnen een of meer tekenbereiken en enkele tekens bevatten.<br/>Een overeenkomst treedt op als het doelteken overeenkomt met een van de tekens in de tekenklasse of binnen een gedefinieerd bereik.<br/>Als de accolade sluiten niet is opgenomen, resulteert het patroon niet in overeenkomende waarden. | `*[o]men.html*`<br/> Komt overeen met de volgende HTTP-aanvraag:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>Komt niet overeen met de volgende HTTP-aanvraag:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/> `*[o/]men.html*` Komt <br/>overeen met de volgende HTTP-aanvragen: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
+| `[ and ]` | Hiermee wordt het begin en einde van een tekenklasse gedemonstreerd. Tekenklassen kunnen een of meer tekenbereiken en enkele tekens bevatten.<br/>Een overeenkomst treedt op als het doelteken overeenkomt met een van de tekens in de tekenklasse of binnen een gedefinieerd bereik.<br/>Als de accolade sluiten niet is opgenomen, resulteert het patroon niet in overeenkomende waarden. | `*[o]men.html*`<br/> Komt overeen met de volgende HTTP-aanvraag:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>Komt niet overeen met de volgende HTTP-aanvraag:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/> `*[o/]men.html*` <br/>Komt overeen met de volgende HTTP-aanvragen: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
 | `-` | Geeft een tekenbereik aan. Voor gebruik in tekenklassen.  Buiten een tekenklasse wordt dit teken letterlijk geïnterpreteerd. | `*[m-p]men.html*` Komt overeen met de volgende HTTP-aanvraag: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul>Komt niet overeen met de volgende HTTP-aanvraag:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
 | `!` | Hiermee wordt het volgende teken of de volgende tekenklasse genegeerd. Alleen gebruiken voor negerende tekens en tekenbereiken binnen tekenklassen. Gelijk aan de `^ wildcard`. <br/>Buiten een tekenklasse wordt dit teken letterlijk geïnterpreteerd. | `*[!o]men.html*`<br/> Komt overeen met de volgende HTTP-aanvraag: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>Komt niet overeen met de volgende HTTP-aanvraag: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>`*[!o!/]men.html*`<br/> Komt niet overeen met de volgende HTTP-aanvraag:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"` or `"GET /content/geometrixx-outdoors/en/men. html"`</li></ul> |
 | `^` | Hiermee wordt het volgende teken- of tekenbereik genegeerd. Wordt gebruikt voor het negeren van alleen tekens en tekenbereiken binnen tekenklassen. Gelijk aan het jokerteken. `!` <br/>Buiten een tekenklasse wordt dit teken letterlijk geïnterpreteerd. | De voorbeelden van het `!` jokerteken zijn van toepassing, waarbij de `!` tekens in de voorbeeldpatronen worden vervangen door `^` tekens. |
@@ -1760,12 +1766,12 @@ En een gebeurtenis die wordt geregistreerd wanneer een dossier dat een het blokk
 
 ## Basisbewerking bevestigen {#confirming-basic-operation}
 
-U kunt de volgende stappen uitvoeren om de basisbewerking en interactie van de webserver, de Dispatcher- en de AEM-instantie te bevestigen:
+U kunt de volgende stappen gebruiken om de basisbewerking en interactie van de webserver, de AEM Dispatcher en de instantie te bevestigen:
 
 1. Stel de `loglevel` optie in op `3`.
 
 1. Start de webserver; hiermee begint ook de Dispatcher.
-1. Start de AEM-instantie.
+1. Start de AEM.
 1. Controleer het logboek en de foutendossiers voor uw Webserver en de Verzender.\
    Afhankelijk van uw webserver kunt u berichten weergeven zoals:\
    `[Thu May 30 05:16:36 2002] [notice] Apache/2.0.50 (Unix) configured`\
@@ -1789,7 +1795,7 @@ In complexe instellingen kunt u meerdere verzenders gebruiken. U kunt bijvoorbee
 * één verzender om een website op het Intranet te publiceren
 * een tweede verzender, onder een ander adres en met verschillende beveiligingsinstellingen, om dezelfde inhoud op internet te publiceren.
 
-In een dergelijk geval, zorg ervoor dat elk verzoek door slechts één Dispatcher gaat. Een Dispatcher behandelt geen verzoeken die afkomstig zijn van een andere Dispatcher. Zorg er daarom voor dat beide verzenders de AEM-website rechtstreeks openen.
+In een dergelijk geval, zorg ervoor dat elk verzoek door slechts één Dispatcher gaat. Een Dispatcher behandelt geen verzoeken die afkomstig zijn van een andere Dispatcher. Zorg er daarom voor dat beide verzenders de AEM website rechtstreeks openen.
 
 ## Foutopsporing {#debugging}
 
@@ -1801,7 +1807,7 @@ Deze functionaliteit wordt niet toegelaten door gebrek, zodat moet het landbouwb
 /info "1"
 ```
 
-Bijvoorbeeld:
+Bijvoorbeeld,
 
 ```xml
 /farm
@@ -1827,7 +1833,8 @@ Hieronder ziet u een lijst met de antwoordheaders die `X-Dispatcher-Info` worden
 * **caching**\
    Het doelbestand bevindt zich niet in de cache en de verzender heeft vastgesteld dat het geldig is om de uitvoer in cache te plaatsen en te leveren.
 * **caching: Het statusbestand is recenter**. Het doelbestand bevindt zich in de cache, maar het wordt ongeldig gemaakt door een recentere statusbestand. De verzender verwijdert het doelbestand, maakt het opnieuw uit de uitvoer en levert het.
-* **niet in cache geplaatst: geen documentwortel** De configuratie van het landbouwbedrijf bevat geen documentwortel (configuratieelement `cache.docroot`).
+* **niet in cache geplaatst: geen documentwortel** De configuratie van het landbouwbedrijf bevat geen documentwortel (configuratieelement) 
+`cache.docroot`).
 * **niet in cache geplaatst: pad naar cachebestand te lang**\
    Het doelbestand - de samenvoeging van het hoofdbestand van het document en het URL-bestand - overschrijdt de langst mogelijke bestandsnaam op het systeem.
 * **niet in cache geplaatst: tijdelijk bestandspad te lang**\
@@ -1850,5 +1857,6 @@ Hieronder ziet u een lijst met de antwoordheaders die `X-Dispatcher-Info` worden
 * **niet in cache geplaatst: controle van autorisatie toegang geweigerd**\
    De de vergunningscontrole van het landbouwbedrijf ontkende toegang tot het caching dossier.
 * **niet in cache geplaatst: sessie is ongeldig**. Het cachegeheugen van de farm wordt beheerd door een sessiemanager (configuratie bevat een `sessionmanagement` knooppunt) en de sessie van de gebruiker is niet of niet langer geldig.
-* **niet in cache geplaatst: reactie bevat`no_cache `**De externe server heeft een`Dispatcher: no_cache`header geretourneerd, waardoor de verzender de uitvoer niet in de cache kan plaatsen.
+* **niet in cache geplaatst: reactie bevat`no_cache `** de externe server die een 
+`Dispatcher: no_cache` header, waarbij de verzender de uitvoer niet in cache mag plaatsen.
 * **niet in cache geplaatst: lengte van responsinhoud is nul**. De lengte van de inhoud van de reactie is nul; de verzender maakt geen bestand met een lengte van nul.
