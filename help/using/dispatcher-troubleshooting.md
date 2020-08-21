@@ -13,7 +13,10 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: a612e745-f1e6-43de-b25a-9adcaadab5cf
 translation-type: tm+mt
-source-git-commit: 76cffbfb616cd5601aed36b7076f67a2faf3ed3b
+source-git-commit: 5734e601379fda9a62eda46bded493b8dbd49a4c
+workflow-type: tm+mt
+source-wordcount: '553'
+ht-degree: 0%
 
 ---
 
@@ -22,7 +25,7 @@ source-git-commit: 76cffbfb616cd5601aed36b7076f67a2faf3ed3b
 
 >[!NOTE]
 >
->Dispatcher-versies zijn onafhankelijk van AEM, maar de Dispatcher-documentatie is ingesloten in de AEM-documentatie. Gebruik altijd de Dispatcher-documentatie die is ingesloten in de documentatie voor de nieuwste versie van AEM.
+>De versies van de Verzender zijn onafhankelijk van AEM, nochtans wordt de documentatie van de Verzender ingebed in de AEM documentatie. Gebruik altijd de Dispatcher-documentatie die is ingesloten in de documentatie voor de meest recente versie van AEM.
 >
 >U bent mogelijk omgeleid naar deze pagina als u een koppeling naar de Dispatcher-documentatie hebt gevolgd die is ingesloten in de documentatie voor een vorige versie van AEM.
 
@@ -60,7 +63,7 @@ Deze kunnen u helpen activiteit controleren.
 
 Wanneer het gebruiken van IIS zou u kunnen ervaren `404 Not Found` die in diverse scenario&#39;s zijn teruggekeerd. Zo ja, zie de volgende artikelen in de Knowledge Base.
 
-* [IIS 6/7: POST-methode retourneert 404](https://helpx.adobe.com/dispatcher/kb/IIS6IsapiFilters.html)
+* [IIS 6/7: De methode van de POST keert 404 terug](https://helpx.adobe.com/dispatcher/kb/IIS6IsapiFilters.html)
 * [IIS 6: Aanvragen aan URL&#39;s die het basispad `/bin` retourneren `404 Not Found`](https://helpx.adobe.com/dispatcher/kb/RequestsToBinDirectoryFailInIIS6.html)
 
 U moet ook controleren of de cachroot van de verzender en de hoofdmap van het IIS-document op dezelfde map zijn ingesteld.
@@ -69,7 +72,7 @@ U moet ook controleren of de cachroot van de verzender en de hoofdmap van het II
 
 **Symptomen**
 
-Problemen bij het verwijderen van workflowmodellen wanneer een instantie van een AEM-auteur wordt benaderd via de Dispatcher.
+Problemen bij het verwijderen van workflowmodellen wanneer een AEM auteur-instantie wordt benaderd via de Dispatcher.
 
 **Stappen om te reproduceren:**
 
@@ -89,14 +92,16 @@ Voeg de volgende kopteksten aan de `/clientheaders` sectie van uw `dispatcher.an
 * `x-http-method-override`
 * `x-requested-with`
 
-`{  
+```
+{  
 {  
 /clientheaders  
 {  
 ...  
 "x-http-method-override"  
 "x-requested-with"  
-}`
+}
+```
 
 ## Interferentie met mod_dir (Apache) {#interference-with-mod-dir-apache}
 
@@ -117,7 +122,7 @@ Wanneer de verzender wordt toegelaten, verwerkt het dergelijke verzoeken door zi
 
 In Apache 2.x zijn de dingen anders. Een module kan verschillende stadia van het verzoek, zoals correctie URL behandelen. `mod_dir` handelt dit werkgebied af door een aanvraag (wanneer de URL naar een map wordt toegewezen) om te leiden naar de URL met een `/` toevoeging.
 
-Dispatcher onderschept de `mod_dir` correctie niet, maar verwerkt de aanvraag volledig naar de omgeleide URL (d.w.z. met `/` toevoeging). Dit kan een probleem opleveren als de externe server (bijvoorbeeld AEM) verzoeken aan `/a_path` verschillende verzoeken aan `/a_path/` (wanneer `/a_path` kaarten aan een bestaande map) behandelt.
+Dispatcher onderschept de `mod_dir` correctie niet, maar verwerkt de aanvraag volledig naar de omgeleide URL (d.w.z. met `/` toevoeging). Dit kan een probleem opleveren als de externe server (bijvoorbeeld AEM) verzoeken `/a_path` anders afhandelt naar verzoeken aan `/a_path/` (wanneer `/a_path` kaarten naar een bestaande map).
 
 Als dit gebeurt, moet u:
 
