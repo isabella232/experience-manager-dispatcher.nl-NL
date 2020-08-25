@@ -10,9 +10,9 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: aeffee8e-bb34-42a7-9a5e-b7d0e848391a
 translation-type: tm+mt
-source-git-commit: 5734e601379fda9a62eda46bded493b8dbd49a4c
+source-git-commit: 31dc02adc1d16ec61d5191b86d0d1276c2e1da46
 workflow-type: tm+mt
-source-wordcount: '8802'
+source-wordcount: '8582'
 ht-degree: 0%
 
 ---
@@ -365,7 +365,7 @@ Wanneer de Ontvanger een HTTP of HTTPS verzoek ontvangt, vindt het de virtuele g
 Dispatcher vindt de best-passende virtuele gastheerwaarde op de volgende manier:
 
 * De eerst-ontmoet virtuele gastheer die alle drie van `host`, de `scheme`, en `uri` van het verzoek aanpast wordt gebruikt.
-* Als er geen `virtualhosts` waarden zijn `scheme` en `uri` delen die overeenkomen met de aanvraag `scheme` en `uri` met de aanvraag, wordt de eerst aangetroffen virtuele host gebruikt die overeenkomt met `host` de aanvraag.
+* Als er geen `virtualhosts` waarden zijn `scheme` en `uri` delen die overeenkomen met de aanvraag `scheme` en `uri` met de aanvraag, wordt de eerst aangetroffen virtuele host gebruikt die overeenkomt met de aanvraag `host` .
 * Als geen `virtualhosts` waarden een gastheerdeel hebben dat de gastheer van het verzoek aanpast, wordt de hoogste virtuele gastheer van het hoogste landbouwbedrijf gebruikt.
 
 Daarom zou u uw standaard virtuele gastheer bij de bovenkant van het `virtualhosts` bezit in het hoogste landbouwbedrijf van uw dispatcher.any- dossier moeten plaatsen.
@@ -847,60 +847,60 @@ Sinds Dispatcher versie 4.1.5 gebruikt u de `/filter` sectie om querytekenreekse
 
 Dispatcher-filters blokkeren de toegang tot de volgende pagina&#39;s en scripts bij AEM publicatie-instanties. Gebruik een webbrowser om te proberen de volgende pagina&#39;s te openen zoals een bezoeker van de site zou doen en om te controleren of code 404 wordt geretourneerd. Pas de filters aan als er andere resultaten worden verkregen.
 
-Merk op dat u normale paginerendering voor /content/add_valid_page.html zou moeten zien?debug=layout.
+Let erop dat u normale rendering voor pagina&#39;s ziet `/content/add_valid_page.html?debug=layout`.
 
 
-* /admin
-* /system/console
-* /dav/crx.default
-* /crx
-* /bin/crxde/logs
-* /jcr:system/jcr:versionStorage.json
-* /_jcr_system/_jcr_versionStorage.json
-* /libs/wcm/core/content/siteadmin.html
-* /libs/collab/core/content/admin.html
-* /libs/cq/ui/content/dumplibs.html
-* /var/linkchecker.html
-* /etc/linkchecker.html
-* /home/users/a/admin/profile.json
-* /home/users/a/admin/profile.xml
-* /libs/cq/core/content/login.json
-* /content/../libs/foundation/components/text/text.jsp
-* /content/.{./libs/foundation/components/text/text.jsp
-* /apps/sling/config/org.apache.felix.webconsole.internal.servlet.OsgiManager.config/jcr%3acontent/jcr%3adata
-* /libs/foundation/components/primary/cq/workflow/components/participants/json.GET.servlet
-* /content.pages.json
-* /content.languages.json
-* /content.blueprint.json
-* /content.-1.json
-* /content.10.json
-* /content.infinity.json
-* /content.tidy.json
-* /content.tidy.-1.blubber.json
-* /content/dam.tidy.-100.json
-* /content/content/geometrixx.sitemap.txt
-* /content/add_valid_page.query.json?statement=/*
-* /content/add_valid_page.qu%65ry.js%6Fn?statement=/*
-* /content/add_valid_page.query.json?statement=//*[@transportPassword]/(@transportPassword%20|%20@transportUri%20|%20@transportUser)
-* /content/add_valid_path_to_a_page/_jcr_content.json
-* /content/add_valid_path_to_a_page/jcr:content.json
-* /content/add_valid_path_to_a_page/_jcr_content.feed
-* /content/add_valid_path_to_a_page/jcr:content.feed
-* /content/add_valid_path_to_a_page/pagename._jcr_content.feed
-* /content/add_valid_path_to_a_page/pagename.jcr:content.feed
-* /content/add_valid_path_to_a_page/pagename.docview.xml
-* /content/add_valid_path_to_a_page/pagename.docview.json
-* /content/add_valid_path_to_a_page/pagename.sysview.xml
-* /etc.xml
-* /content.feed.xml
-* /content.rss.xml
-* /content.feed.html
-* /content/add_valid_page.html?debug=layout
-* /projecten
-* /tagging
-* /etc/replication.html
-* /etc/cloudservices.html
-* /welcome
+* `/admin`
+* `/system/console`
+* `/dav/crx.default`
+* `/crx`
+* `/bin/crxde/logs`
+* `/jcr:system/jcr:versionStorage.json`
+* `/_jcr_system/_jcr_versionStorage.json`
+* `/libs/wcm/core/content/siteadmin.html`
+* `/libs/collab/core/content/admin.html`
+* `/libs/cq/ui/content/dumplibs.html`
+* `/var/linkchecker.html`
+* `/etc/linkchecker.html`
+* `/home/users/a/admin/profile.json`
+* `/home/users/a/admin/profile.xml`
+* `/libs/cq/core/content/login.json`
+* `/content/../libs/foundation/components/text/text.jsp`
+* `/content/.{.}/libs/foundation/components/text/text.jsp`
+* `/apps/sling/config/org.apache.felix.webconsole.internal.servlet.OsgiManager.config/jcr%3acontent/jcr%3adata`
+* `/libs/foundation/components/primary/cq/workflow/components/participants/json.GET.servlet`
+* `/content.pages.json`
+* `/content.languages.json`
+* `/content.blueprint.json`
+* `/content.-1.json`
+* `/content.10.json`
+* `/content.infinity.json`
+* `/content.tidy.json`
+* `/content.tidy.-1.blubber.json`
+* `/content/dam.tidy.-100.json`
+* `/content/content/geometrixx.sitemap.txt `
+* `/content/add_valid_page.query.json?statement=//*`
+* `/content/add_valid_page.qu%65ry.js%6Fn?statement=//*`
+* `/content/add_valid_page.query.json?statement=//*[@transportPassword]/(@transportPassword%20|%20@transportUri%20|%20@transportUser)`
+* `/content/add_valid_path_to_a_page/_jcr_content.json`
+* `/content/add_valid_path_to_a_page/jcr:content.json`
+* `/content/add_valid_path_to_a_page/_jcr_content.feed`
+* `/content/add_valid_path_to_a_page/jcr:content.feed`
+* `/content/add_valid_path_to_a_page/pagename._jcr_content.feed`
+* `/content/add_valid_path_to_a_page/pagename.jcr:content.feed`
+* `/content/add_valid_path_to_a_page/pagename.docview.xml`
+* `/content/add_valid_path_to_a_page/pagename.docview.json`
+* `/content/add_valid_path_to_a_page/pagename.sysview.xml`
+* `/etc.xml`
+* `/content.feed.xml`
+* `/content.rss.xml`
+* `/content.feed.html`
+* `/content/add_valid_page.html?debug=layout`
+* `/projects`
+* `/tagging`
+* `/etc/replication.html`
+* `/etc/cloudservices.html`
+* `/welcome`
 
 Geef het volgende bevel in een terminal of bevelherinnering uit om te bepalen of de anonieme schrijftoegang wordt toegelaten. U zou geen gegevens aan de knoop moeten kunnen schrijven.
 
@@ -1240,7 +1240,7 @@ De methode wordt aangeroepen met de volgende argumenten:
 * Toepassingsgebied van actie\
    Het bereik van de replicatieactie (leeg, tenzij een koptekst van `CQ-Action-Scope: ResourceOnly` wordt verzonden, zie [Het ongeldig maken van Cached Pagina&#39;s van AEM](page-invalidate.md) voor details)
 
-Dit kan worden gebruikt om een aantal verschillende gebruiksgevallen te behandelen, zoals het ongeldig maken van andere toepassings specifieke geheime voorgeheugens, of om gevallen te behandelen waar extern URL van een pagina en zijn plaats in de documentwortel niet de inhoudspad aanpassen.
+Dit kan worden gebruikt om een aantal verschillende gebruiksgevallen te behandelen, zoals het ongeldig maken van andere toepassings specifieke geheime voorgeheugens, of om gevallen te behandelen waar extern URL van een pagina en zijn plaats in de documentwortel niet de inhoudspad aanpast.
 
 In het onderstaande voorbeeld wordt elk verzoek om validatie aan een bestand genoteerd.
 
@@ -1383,7 +1383,7 @@ De standaardwaarde is 0755. Hiermee kan de eigenaar lezen, schrijven of zoeken e
 
 Met de standaardeigenschap maakt elke activering alle `/invalidate` bestanden ongeldig (wanneer het pad ervan overeenkomt met de `.html` `/invalidate` sectie). Op een website met aanzienlijk verkeer zullen meerdere, daaropvolgende activeringen de CPU-belasting op de achtergrond verhogen. In een dergelijk scenario is het wenselijk om het aanraken van bestanden te &quot;vertragen&quot; `.stat` om de website ontvankelijk te houden. U kunt dit doen door het `/gracePeriod` bezit te gebruiken.
 
-De `/gracePeriod` eigenschap definieert het aantal seconden dat een standaard, automatisch ongeldig gemaakte resource mogelijk nog steeds uit de cache wordt aangeboden na de laatste activering. De eigenschap kan worden gebruikt in een installatie waarbij een batch activeringen anders de gehele cache herhaaldelijk ongeldig zouden maken. De aanbevolen waarde is 2 seconden.
+De `/gracePeriod` eigenschap definieert het aantal seconden dat een niet-gevalideerde, niet-gevalideerde resource mogelijk nog steeds uit de cache wordt geladen na de laatste activering. De eigenschap kan worden gebruikt in een installatie waarbij een batch activeringen anders de gehele cache herhaaldelijk ongeldig zouden maken. De aanbevolen waarde is 2 seconden.
 
 Lees ook de bovenstaande `/invalidate` en `/statfileslevel`secties voor meer informatie.
 
@@ -1742,7 +1742,7 @@ Dit is een hoger niveau dan Debug registreren, die extra informatie in de logboe
 
 U kunt de Registratie van het Spoor toelaten door het logboekniveau aan `4` in uw Webserver te plaatsen.
 
-Hieronder ziet u een voorbeeld van logboeken waarin overtrekken is ingeschakeld:
+Hieronder ziet u een voorbeeld van logboeken waarbij overtrekken is ingeschakeld:
 
 ```xml
 [Thu Mar 03 16:05:38 2016] [T] [17183] request.headers[Host] = "localhost:8443"
