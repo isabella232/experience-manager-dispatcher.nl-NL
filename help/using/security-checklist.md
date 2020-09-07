@@ -1,6 +1,6 @@
 ---
-title: De Dispatcher-beveiligingscontrolelijst
-seo-title: De Dispatcher-beveiligingscontrolelijst
+title: De beveiligingscontrolelijst voor verzending
+seo-title: De beveiligingscontrolelijst voor verzending
 description: Een lijst met beveiligingscontroles die moet worden ingevuld voordat de productie wordt voortgezet.
 seo-description: Een lijst met beveiligingscontroles die moet worden ingevuld voordat de productie wordt voortgezet.
 uuid: 7bfa3202-03f6-48e9-8d2e-2a40e137ecbe
@@ -14,15 +14,15 @@ index: y
 internal: n
 snippet: y
 translation-type: tm+mt
-source-git-commit: 9ffdc1d85d1a0da45f95e0780227ee6569cd4b3d
+source-git-commit: 7889c025fb8fb29e6f11ea01c5248470556d3160
 workflow-type: tm+mt
-source-wordcount: '672'
+source-wordcount: '653'
 ht-degree: 0%
 
 ---
 
 
-# De Dispatcher-beveiligingscontrolelijst{#the-dispatcher-security-checklist}
+# De beveiligingscontrolelijst voor verzending{#the-dispatcher-security-checklist}
 
 <!-- 
 
@@ -35,15 +35,15 @@ Last Modified Date: 2015-06-05T05:14:35.365-0400
 
  -->
 
-De verzender als front-end systeem biedt een extra veiligheidslaag aan uw Adobe Experience Manager infrastructuur. Adobe raadt u ten zeerste aan de volgende checklist in te vullen voordat u verdergaat met de productie.
+Adobe raadt u ten zeerste aan de volgende checklist in te vullen voordat u verdergaat met de productie.
 
 >[!CAUTION]
 >
->U moet ook de lijst Beveiligingscontrole van uw versie van AEM voltooien voordat u live kunt gaan. Raadpleeg de desbetreffende documentatie bij de [Adobe Experience Manager](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html).
+>U moet ook de lijst Beveiligingscontrole van uw versie van AEM voltooien voordat u live kunt gaan. Raadpleeg de bijbehorende documentatie [van](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html)Adobe Experience Manager.
 
 ## De nieuwste versie van Dispatcher gebruiken {#use-the-latest-version-of-dispatcher}
 
-Installeer de nieuwste beschikbare versie die beschikbaar is voor uw platform. Voer een upgrade uit op uw Dispatcher-exemplaar om de nieuwste versie te gebruiken en zo te profiteren van product- en beveiligingsverbeteringen. Zie [Dispatcher](dispatcher-install.md)installeren.
+Installeer de nieuwste beschikbare versie die beschikbaar is voor uw platform. U zou uw instantie van Dispatcher moeten bevorderen om de recentste versie te gebruiken om uit product en veiligheidsverhogingen voordeel te halen. Zie [Dispatcher](dispatcher-install.md)installeren.
 
 >[!NOTE]
 >
@@ -80,21 +80,21 @@ Last Modified Date: 2015-06-26T04:41:28.841-0400
 
 ## Toegang beperken {#restrict-access}
 
-Wanneer u de Dispatcher configureert, moet u de externe toegang zoveel mogelijk beperken. Zie [Voorbeeld /filter Sectie](dispatcher-configuration.md#main-pars_184_1_title) in de documentatie van Dispatcher.
+Wanneer het vormen van de Dispatcher zou u externe toegang zoveel mogelijk moeten beperken. Zie [Voorbeeld /filter Sectie](dispatcher-configuration.md#main-pars_184_1_title) in de documentatie van de Verzender.
 
 ## Zorg ervoor dat toegang tot administratieve URL&#39;s wordt geweigerd {#make-sure-access-to-administrative-urls-is-denied}
 
 Zorg ervoor dat u filters gebruikt om externe toegang tot eventuele beheerURL&#39;s, zoals de webconsole, te blokkeren.
 
-Zie Dispatcher Security [](dispatcher-configuration.md#testing-dispatcher-security) testen voor een lijst met URL&#39;s die moeten worden geblokkeerd.
+Zie [Beveiliging](dispatcher-configuration.md#testing-dispatcher-security) van Dispatcher testen voor een lijst met URL&#39;s die moeten worden geblokkeerd.
 
-## Toegestane lijsten gebruiken in plaats van Blocklists {#use-allowlists-instead-of-blocklists}
+## Lijsten van gewenste personen gebruiken in plaats van Lijsten van afgewezen personen {#use-allowlists-instead-of-blocklists}
 
-Toegestane lijsten zijn een betere manier om toegangsbeheer te verlenen aangezien zij inherent, veronderstellen zij dat alle toegangsverzoeken zouden moeten worden ontkend tenzij zij uitdrukkelijk deel van de toegestane lijst uitmaken. Dit model verstrekt meer restrictieve controle over nieuwe verzoeken die niet zouden kunnen nog zijn herzien of in overweging genomen tijdens een bepaalde configuratiestadium.
+Lijsten van gewenste personen zijn een betere manier om toegangscontrole te verlenen aangezien zij inherent, veronderstellen zij dat alle toegangsverzoeken zouden moeten worden ontkend tenzij zij uitdrukkelijk deel van de lijst van gewenste personen uitmaken. Dit model verstrekt meer restrictieve controle over nieuwe verzoeken die niet zouden kunnen nog zijn herzien of in overweging genomen tijdens een bepaalde configuratiestadium.
 
 ## Dispatcher uitvoeren met een specifieke systeemgebruiker {#run-dispatcher-with-a-dedicated-system-user}
 
-Wanneer u de Dispatcher configureert, moet u ervoor zorgen dat de webserver wordt uitgevoerd door een toegewijde gebruiker met de minste toegangsrechten. Het wordt aanbevolen alleen schrijftoegang te verlenen tot de cachemap van de verzender.
+Wanneer het vormen van de Dispatcher zou u moeten ervoor zorgen dat de Webserver door een specifieke gebruiker met minste voorrechten wordt in werking gesteld. Het wordt aanbevolen alleen schrijftoegang te verlenen tot de cachemap van de verzender.
 
 Bovendien, moeten de gebruikers IIS hun website als volgt vormen:
 
@@ -120,6 +120,7 @@ Op het niveau van de dispatcher, zijn er twee methodes om aanvallen van Dos te v
    * `.doc`
    * `.pdf`
    * `.ppt`
+
    Een voorbeeldconfiguratiedossier kan voor het [beperken van externe toegang](#restrict-access)worden gezien, omvat dit beperkingen voor mime types.
 
 Om volledige functionaliteit op de publiceer instanties veilig toe te laten, vorm filters om toegang tot de volgende knopen te verhinderen:
@@ -152,10 +153,10 @@ Last Modified Date: 2015-06-26T04:38:17.016-0400
 
 ## Dispatcher configureren om CSRF-aanvallen te voorkomen {#configure-dispatcher-to-prevent-csrf-attacks}
 
-AEM biedt een [kader](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#verification-steps) dat is gericht op het voorkomen van aanvallen met smeden tussen verschillende sites. Als u dit framework op de juiste manier wilt gebruiken, moet u CSRF-tokenondersteuning toestaan in de verzender. U kunt dit doen door:
+AEM biedt een [kader](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#verification-steps) dat bedoeld is om aanvallen met smeden van verschillende sites te voorkomen. Als u dit framework op de juiste manier wilt gebruiken, moet u de ondersteuning voor CSRF-token in de verzender lijsten van gewenste personen. U kunt dit doen door:
 
 1. Een filter maken om het `/libs/granite/csrf/token.json` pad toe te staan;
-1. Voeg de `CSRF-Token` koptekst toe aan het `clientheaders` gedeelte van de Dispatcher-configuratie.
+1. Voeg de `CSRF-Token` kopbal aan de `clientheaders` sectie van de configuratie van de Verzender toe.
 
 ## Klikaanvallen voorkomen {#prevent-clickjacking}
 
@@ -165,5 +166,5 @@ Raadpleeg de OWASP-site voor meer [informatie over het aanklikken op een bestand
 
 ## Een beveiligingstest uitvoeren {#perform-a-penetration-test}
 
-Adobe raadt u ten zeerste aan een penetratietest van uw AEM-infrastructuur uit te voeren voordat u verdergaat met de productie.
+Adobe raadt u ten zeerste aan een penetratietest van uw AEM uit te voeren voordat u verdergaat met de productie.
 
