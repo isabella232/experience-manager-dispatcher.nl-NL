@@ -9,10 +9,10 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: 1d449ee2-4cdd-4b7a-8b4e-7e6fc0a1d7ee
 translation-type: tm+mt
-source-git-commit: 88ea38c9ad7fe67edbaf68c4882a01c3f9a475d9
+source-git-commit: 590a9a2b6005cd48676cf525b0e029e42d1b3ca6
 workflow-type: tm+mt
-source-wordcount: '3222'
-ht-degree: 2%
+source-wordcount: '3199'
+ht-degree: 0%
 
 ---
 
@@ -23,9 +23,9 @@ ht-degree: 2%
 >
 >Dispatcher-versies zijn onafhankelijk van AEM. U bent mogelijk omgeleid naar deze pagina als u een koppeling naar de Dispatcher-documentatie hebt gevolgd die is ingesloten in de documentatie voor een vorige versie van AEM.
 
-Dispatcher is de Adobe Experience Manager-tool voor cache- en taakverdelingsbewerkingen. Door AEM Dispatcher te gebruiken is uw AEM-server ook beter beschermd tegen aanvallen. U kunt de veiligheid van uw AEM-instantie dus verhogen door de Dispatcher samen met een webserver van ondernemingsklasse te gebruiken.
+Dispatcher is een Adobe Experience Manager-programma voor caching en/of taakverdeling dat kan worden gebruikt in combinatie met een webserver op bedrijfsniveau.
 
-Het proces voor het implementeren van een Dispatcher is onafhankelijk van de webserver en het gekozen besturingssysteem-platform:
+Het proces voor de implementatie van de dispatcher is onafhankelijk van de webserver en het gekozen besturingssysteem-platform:
 
 1. Meer informatie over Dispatcher (deze pagina). Zie ook [vaak gestelde vragen over dispatcher](https://helpx.adobe.com/experience-manager/using/dispatcher-faq.html).
 1. Installeer een [ondersteunde webserver](https://helpx.adobe.com/experience-manager/6-3/sites/deploying/using/technical-requirements.html) volgens de documentatie van de webserver.
