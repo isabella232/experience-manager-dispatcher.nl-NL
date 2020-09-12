@@ -4,9 +4,10 @@ product: experience manager
 sub-product: Experience Manager-dispatcher
 archetype: Administrator
 user-guide-title: Help bij Experience Manager Dispatcher
+breadcrumb-title: Dispatcher Guide
 user-guide-description: Learn to use Dispatcher for caching, load balancing, and improving security for your AEM server.
 translation-type: tm+mt
-source-git-commit: 02a082ec66e32f2c4c0b3a6135eacbb4c5e9de7b
+source-git-commit: 5765970c0335df084b5d49efae60997b3a021c47
 workflow-type: tm+mt
 source-wordcount: '70'
 ht-degree: 5%
@@ -19,8 +20,8 @@ ht-degree: 5%
 + [Overzicht](dispatcher.md)
 + Aan de slag {#getting-started}
    + [Dispatcher installeren](dispatcher-install.md)
-   + [De Dispatcher-beveiligingscontrolelijst](security-checklist.md)
-   + [Opmerkingen bij de release van Dispatcher AEM](release-notes.md)
+   + [De beveiligingscontrolelijst voor verzending](security-checklist.md)
+   + [Opmerkingen bij de release AEM Dispatcher](release-notes.md)
 + Configureren {#configuring}
    + [Dispatcher configureren](dispatcher-configuration.md)
    + [In cache geplaatste pagina&#39;s ongeldig maken van AEM](page-invalidate.md)
@@ -30,5 +31,5 @@ ht-degree: 5%
    + [SSL gebruiken met Dispatcher](dispatcher-ssl.md)
    + [Dispatcher configureren om CSRF-aanvallen te voorkomen](configuring-dispatcher-to-prevent-csrf.md)
 + Problemen oplossen {#troubleshooting}
-   + [Problemen met Dispatcher oplossen](dispatcher-troubleshooting.md)
-   + [Veelgestelde vragen over Dispatcher Top Issues](dispatcher-faq.md)
+   + [Problemen met verzending van problemen oplossen](dispatcher-troubleshooting.md)
+   + [Veelgestelde vragen over de meest voorkomende problemen met Verzender](dispatcher-faq.md)
