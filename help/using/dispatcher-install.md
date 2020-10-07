@@ -10,7 +10,10 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: f00ad751-6b95-4365-8500-e1e0108d9536
 translation-type: tm+mt
-source-git-commit: eed7c3f77ec64f2e7c5cfff070ef96108886a059
+source-git-commit: ef0fc34cbf2f07090f39613811d6f015ba2305ab
+workflow-type: tm+mt
+source-wordcount: '0'
+ht-degree: 0%
 
 ---
 
@@ -29,7 +32,7 @@ Comment Type: draft
 >
 >Dispatcher-versies zijn onafhankelijk van AEM. U bent mogelijk omgeleid naar deze pagina als u een koppeling naar de Dispatcher-documentatie hebt gevolgd die is ingesloten in de documentatie voor een vorige versie van AEM.
 
-Gebruik de pagina Opmerkingen bij de release van [Dispatcher](release-notes.md) om het meest recente Dispatcher-installatiebestand voor uw besturingssysteem en webserver te verkrijgen. De releasenummers van de Dispatcher zijn onafhankelijk van de releasenummers van Adobe Experience Manager en zijn compatibel met de Adobe Experience Manager 6.x-, 5.x- en Adobe CQ 5.x-versies.
+Gebruik de pagina Opmerkingen bij de release van [Dispatcher](release-notes.md) om het meest recente Dispatcher-installatiebestand voor uw besturingssysteem en webserver te verkrijgen. De versienummers van de Dispatcher zijn onafhankelijk van de Adobe Experience Manager-releasenummers en zijn compatibel met de Adobe Experience Manager 6.x-, 5.x- en Adobe CQ 5.x-releases.
 
 De volgende naamgevingsconventie voor bestanden wordt gebruikt:
 
@@ -124,7 +127,7 @@ Gebruik de volgende procedure om de Dispatcher-bestanden naar de juiste locatie 
 
    * `disp_iis.dll`
    * `disp_iis.ini`
-   * Een van de volgende bestanden is afhankelijk van het feit of Dispatcher werkt met een instantie van een AEM-auteur of een publicatie-instantie:
+   * Een van de volgende bestanden is afhankelijk van het feit of Dispatcher werkt met een AEM instantie van de auteur of een publicatie-instantie:
       * Instantie van auteur: `author_dispatcher.any`
       * Instantie publiceren: `dispatcher.any`
 
@@ -146,9 +149,9 @@ In de volgende tabel wordt elke eigenschap beschreven.
 |--- |--- |
 | configpath | De locatie van `dispatcher.any` het lokale bestandssysteem (absoluut pad). |
 | logbestand | De locatie van het `dispatcher.log` bestand. Als dit niet wordt geplaatst dan gaan de logboekberichten naar het logboek van de venstersgebeurtenis. |
-| logniveau | Definieert het logniveau dat wordt gebruikt voor het uitvoeren van berichten naar het gebeurtenislogboek. De volgende waarden kunnen worden opgegeven:Logniveau voor het logbestand: <br/>0 - alleen foutberichten. <br/>1 - fouten en waarschuwingen. <br/>2 - fouten, waarschuwingen en informatieberichten <br/>3 - fouten, waarschuwingen, informatie en foutopsporingsberichten. <br/>**Opmerking **: Het wordt aanbevolen het logniveau tijdens de installatie en het testen in te stellen op 3 en op 0 wanneer u in een productieomgeving werkt. |
+| logniveau | Definieert het logniveau dat wordt gebruikt voor het uitvoeren van berichten naar het gebeurtenislogboek. De volgende waarden kunnen worden opgegeven:Logniveau voor het logbestand: <br/>0 - alleen foutberichten. <br/>1 - fouten en waarschuwingen. <br/>2 - fouten, waarschuwingen en informatieberichten <br/>3 - fouten, waarschuwingen, informatie en foutopsporingsberichten. <br/>**Opmerking**: Het wordt aanbevolen het logniveau tijdens de installatie en het testen in te stellen op 3 en op 0 wanneer u in een productieomgeving werkt. |
 | vervangvergunning | Geeft aan hoe machtigingsheaders in de HTTP-aanvraag worden verwerkt. De volgende waarden zijn geldig:<br/>0 - de kopballen van de Vergunning worden niet gewijzigd. <br/>1 - Vervangt een koptekst met de naam &quot;Autorisatie&quot;, anders dan &quot;Basis&quot;, door de `Basic <IIS:LOGON\_USER>` equivalente koptekst.<br/> |
-| servervariabelen | Definieert hoe servervariabelen worden verwerkt.<br/>0 - IIS-servervariabelen worden niet naar de Dispatcher of AEM verzonden. <br/>1 - alle IIS-servervariabelen (zoals `LOGON\_USER, QUERY\_STRING, ...`) worden samen met de aanvraagheaders naar de Dispatcher verzonden (en ook naar de AEM-instantie als deze niet in de cache is geplaatst).  <br/>Servervariabelen zijn onder andere `AUTH\_USER, LOGON\_USER, HTTPS\_KEYSIZE` en vele andere. Zie de documentatie IIS voor de volledige lijst van variabelen, met details. |
+| servervariabelen | Definieert hoe servervariabelen worden verwerkt.<br/>0 - IIS de servervariabelen worden verzonden naar noch de Dispatcher noch AEM. <br/>1 - alle IIS-servervariabelen (zoals `LOGON\_USER, QUERY\_STRING, ...`) worden samen met de aanvraagheaders (en ook naar de AEM-instantie als deze niet in cache is geplaatst) naar de Dispatcher verzonden.  <br/>Servervariabelen zijn onder andere `AUTH\_USER, LOGON\_USER, HTTPS\_KEYSIZE` en vele andere. Zie de documentatie IIS voor de volledige lijst van variabelen, met details. |
 | enable_chunked_transfer | Bepaalt of om (1) of onbruikbaar te maken (0) geknotte overdracht voor de cliëntreactie. De standaardwaarde is 0. |
 
 Een voorbeeldconfiguratie:
@@ -263,7 +266,7 @@ Gebruik de volgende procedure om het logboekberichten van de Ontvanger aan een l
 Voordat u de Dispatcher kunt gaan gebruiken, moet u weten:
 
 * [Dispatcher configureren](dispatcher-configuration.md)
-* [AEM](page-invalidate.md) samenstellen om met Dispatcher te werken.
+* [AEM](page-invalidate.md) werken met Dispatcher.
 
 ## Apache Web Server {#apache-web-server}
 
@@ -306,7 +309,7 @@ Ga als volgt te werk om Dispatcher toe te voegen aan uw Apache Web Server:
 
 1. Plaats het Dispatcher-bestand in de juiste Apache-modulemap:
 
-   * **Windows**: Plaatsen `disp_apache<x.y>.dll``<APACHE_ROOT>/modules`
+   * **Windows**: Plaatsen `disp_apache<x.y>.dll` `<APACHE_ROOT>/modules`
    * **Unix**: Zoek de `<APACHE_ROOT>/libexec` map of de `<APACHE_ROOT>/modules`map volgens de installatie.\
       Kopieer `dispatcher-apache<options>.so` naar deze map.\
       Om het langetermijnonderhoud te vereenvoudigen, kunt u ook een symbolische koppeling maken met de naam `mod_dispatcher.so` Dispatcher:\
@@ -402,12 +405,12 @@ De individuele configuratieparameters:
 | DispatcherConfig | Locatie en naam van het Dispatcher-configuratiebestand. <br/>Wanneer dit bezit in de belangrijkste serverconfiguratie wordt gevestigd, erven alle virtuele gastheren de bezitswaarde. Virtuele hosts kunnen echter een eigenschap DispatcherConfig opnemen om de hoofdserverconfiguratie te overschrijven. |
 | DispatcherLog | Locatie en naam van het logbestand. |
 | DispatcherLogLevel | Logniveau voor het logbestand: <br/>0 - Fouten <br/>1 - Waarschuwingen <br/>2 - Info <br/>3 - Foutopsporingsnotitie <br/>****: Het wordt aanbevolen het logniveau tijdens de installatie en het testen in te stellen op 3 en op 0 wanneer u in een productieomgeving werkt. |
-| DispatcherNoServerHeader | *Deze parameter is vervangen en heeft geen effect meer.*<br/><br/>Hiermee definieert u de serverkoptekst die moet worden gebruikt:<br/><ul><li>ongedefinieerd of 0 - de HTTP-serverheader bevat de AEM-versie. </li><li>1 - de header van de Apache-server wordt gebruikt.</li></ul> |
-| DispatcherDeclineRoot | Bepaalt of verzoeken aan de wortel &quot;/&quot; te weigeren: <br/>**0 **- aanvragen bij /<br/>**1** - aanvragen bij / worden niet door de verzender afgehandeld; gebruik mod_alias voor de correcte afbeelding. |
-| DispatcherUseProcessURL | Hiermee wordt gedefinieerd of vooraf verwerkte URL&#39;s moeten worden gebruikt voor alle verdere verwerking door Dispatcher: <br/>**0 **- gebruik de oorspronkelijke URL die aan de webserver is doorgegeven.<br/>**1** - de verzender gebruikt de URL die al is verwerkt door de handlers die aan de verzender voorafgaan (d.w.z. `mod_rewrite`) in plaats van de oorspronkelijke URL die aan de webserver is doorgegeven.  Het origineel of de verwerkte URL wordt bijvoorbeeld gekoppeld aan de Dispatcher-filters. De URL wordt ook gebruikt als basis voor de structuur van het cachebestand.   Raadpleeg de documentatie bij de Apache-website voor informatie over mod_rewrite. bijvoorbeeld Apache 2.4. Als mod_rewrite wordt gebruikt, is het raadzaam de markering &#39;passthrough&#39; te gebruiken | PT&#39; (ga door aan volgende manager) om de herschrijfmotor te dwingen om het uri gebied van de interne request_rec structuur aan de waarde van het filename gebied te plaatsen. |
-| DispatcherPassError | Definieert hoe foutcodes voor ErrorDocument-afhandeling worden ondersteund: <br/>**0 **- Dispatcher spoolt alle foutreacties op de client.<br/>**1** - De verzender spoolt geen foutenreactie aan de cliënt (waar de statuscode groter of gelijk aan 400 is), maar gaat de statuscode tot Apache over, die bijvoorbeeld een ErrorDocument richtlijn toestaat om zulk een statuscode te verwerken. <br/>**Codebereik **- Geef een bereik foutcodes op waarvoor het antwoord wordt doorgegeven aan Apache. Andere foutcodes worden doorgegeven aan de client. De volgende configuratie geeft bijvoorbeeld reacties voor fout 412 door aan de client en alle andere fouten worden doorgegeven aan Apache: DispatcherPassError 400-411,413-417 |
+| DispatcherNoServerHeader | *Deze parameter is vervangen en heeft geen effect meer.*<br/><br/> Hiermee definieert u de serverkoptekst die moet worden gebruikt: <br/><ul><li>undefined of 0 - de de serverkopbal van HTTP bevat de AEM versie. </li><li>1 - de header van de Apache-server wordt gebruikt.</li></ul> |
+| DispatcherDeclineRoot | Bepaalt of verzoeken aan de wortel &quot;/&quot; te weigeren: <br/>**0** - aanvragen bij / <br/>**1** - aanvragen bij / worden niet door de verzender afgehandeld; gebruik mod_alias voor de correcte afbeelding. |
+| DispatcherUseProcessURL | Hiermee wordt gedefinieerd of vooraf verwerkte URL&#39;s moeten worden gebruikt voor alle verdere verwerking door Dispatcher: <br/>**0** - gebruik de oorspronkelijke URL die aan de webserver is doorgegeven. <br/>**1** - de verzender gebruikt de URL die al is verwerkt door de handlers die aan de verzender voorafgaan (d.w.z. `mod_rewrite`) in plaats van de oorspronkelijke URL die aan de webserver is doorgegeven.  Het origineel of de verwerkte URL wordt bijvoorbeeld gekoppeld aan de Dispatcher-filters. De URL wordt ook gebruikt als basis voor de structuur van het cachebestand.   Raadpleeg de documentatie bij de Apache-website voor informatie over mod_rewrite. bijvoorbeeld Apache 2.4. Als mod_rewrite wordt gebruikt, is het raadzaam de markering &#39;passthrough&#39; te gebruiken | PT&#39; (ga door aan volgende manager) om de herschrijfmotor te dwingen om het uri gebied van de interne request_rec structuur aan de waarde van het filename gebied te plaatsen. |
+| DispatcherPassError | Definieert hoe foutcodes voor ErrorDocument-afhandeling worden ondersteund: <br/>**0** - Dispatcher spoolt alle foutreacties op de client. <br/>**1** - De verzender spoolt geen foutenreactie aan de cliënt (waar de statuscode groter of gelijk aan 400 is), maar gaat de statuscode tot Apache over, die bijvoorbeeld een ErrorDocument richtlijn toestaat om zulk een statuscode te verwerken. <br/>**Codebereik** - Geef een bereik foutcodes op waarvoor het antwoord wordt doorgegeven aan Apache. Andere foutcodes worden doorgegeven aan de client. De volgende configuratie geeft bijvoorbeeld reacties voor fout 412 door aan de client en alle andere fouten worden doorgegeven aan Apache: DispatcherPassError 400-411,413-417 |
 | DispatcherKeepAliveTimeout | Geeft de time-out bij &#39;houden in leven&#39; in seconden aan. Vanaf Dispatcher versie 4.2.0 is de standaardwaarde voor het in leven houden 60. Met de waarde 0 wordt het in leven houden uitgeschakeld. |
-| DispatcherNoCanonURL | Als u deze parameter instelt op Aan, wordt de onbewerkte URL doorgegeven aan de achterkant in plaats van de gecanonicaliseerde URL en worden de instellingen van DispatcherUseProcessURL genegeerd. De standaardwaarde is Uit. <br/>**Opmerking **: De filterregels in de configuratie Dispatcher worden altijd geëvalueerd op basis van de ontsmette URL en niet op basis van de onbewerkte URL. |
+| DispatcherNoCanonURL | Als u deze parameter instelt op Aan, wordt de onbewerkte URL doorgegeven aan de achterkant in plaats van de gecanonicaliseerde URL en worden de instellingen van DispatcherUseProcessURL genegeerd. De standaardwaarde is Uit. <br/>**Opmerking**: De filterregels in de configuratie Dispatcher worden altijd geëvalueerd op basis van de ontsmette URL en niet op basis van de onbewerkte URL. |
 
 
 
@@ -421,7 +424,7 @@ De individuele configuratieparameters:
 >De standaardinstellingen voor de serverkoptekst zijn: `  
 ServerTokens Full` `  
 DispatcherNoServerHeader 0`\
-De AEM-versie (voor statistische doeleinden). Als u het beschikbaar zijn van dergelijke informatie in de kopbal wilt onbruikbaar maken kunt u plaatsen: `  
+Dit is de AEM versie (voor statistische doeleinden). Als u het beschikbaar zijn van dergelijke informatie in de kopbal wilt onbruikbaar maken kunt u plaatsen: `  
 ServerTokens Prod`\
 Zie de Documentatie van [Apache over de Richtlijn van ServerTokens (bijvoorbeeld, voor Apache 2.4)](https://httpd.apache.org/docs/2.4/mod/core.html) voor meer informatie.
 
@@ -543,7 +546,7 @@ Als u een aangepaste versie van Apache gebruikt, moet u ervoor zorgen dat Apache
 Voordat u de Dispatcher kunt gaan gebruiken, moet u nu:
 
 * [Dispatcher configureren](dispatcher-configuration.md)
-* [AEM](page-invalidate.md) samenstellen om met Dispatcher te werken.
+* [AEM](page-invalidate.md) werken met Dispatcher.
 
 ## Sun Java System Web Server / iPlanet {#sun-java-system-web-server-iplanet}
 
@@ -624,10 +627,10 @@ waarbij:
 |--- |--- |
 | config | Locatie en naam van het configuratiebestand `dispatcher.any.` |
 | logbestand | Locatie en naam van het logbestand. |
-| logniveau | Logniveau voor het schrijven van berichten naar het logbestand: <br/>**0 **Fouten<br/>**1** Waarschuwingen <br/>**2 **Info<br/>**3** zuiveren <br/>**Nota:**Het wordt aanbevolen het logniveau tijdens de installatie en het testen in te stellen op 3 en op 0 bij het uitvoeren in een productieomgeving. |
+| logniveau | Logniveau voor het schrijven van berichten naar het logbestand: <br/>**0** Fouten <br/>**1** Waarschuwingen <br/>**2** Info <br/>**3** zuivert <br/>**Nota:** Het wordt aanbevolen het logniveau tijdens de installatie en het testen in te stellen op 3 en op 0 bij het uitvoeren in een productieomgeving. |
 | keepalivetimeout | Geeft de time-out bij &#39;houden in leven&#39; in seconden aan. Vanaf Dispatcher versie 4.2.0 is de standaardwaarde voor het in leven houden 60. Met de waarde 0 wordt het in leven houden uitgeschakeld. |
 
-Afhankelijk van uw vereisten kunt u de Dispatcher definiëren als service voor uw objecten. Om de Dispatcher voor uw volledige website te vormen wijzig het standaardvoorwerp:
+Afhankelijk van uw vereisten kunt u de Dispatcher definiëren als service voor uw objecten. Als u de Dispatcher voor uw gehele website wilt configureren, wijzigt u het standaardobject:
 
 
 **Windows**
@@ -655,4 +658,4 @@ Service fn="dispService" method="(GET|HEAD|POST)" type="\*/\*"
 Voordat u de Dispatcher kunt gaan gebruiken, moet u nu:
 
 * [Dispatcher configureren](dispatcher-configuration.md)
-* [AEM](page-invalidate.md) samenstellen om met Dispatcher te werken.
+* [AEM](page-invalidate.md) werken met Dispatcher.
