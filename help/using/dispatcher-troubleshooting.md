@@ -13,7 +13,7 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: a612e745-f1e6-43de-b25a-9adcaadab5cf
 translation-type: tm+mt
-source-git-commit: 5734e601379fda9a62eda46bded493b8dbd49a4c
+source-git-commit: 9af0dc22d32f1176b84c28a70b1a4701414d434e
 workflow-type: tm+mt
 source-wordcount: '553'
 ht-degree: 0%
@@ -37,10 +37,10 @@ ht-degree: 0%
 
 Zoals altijd zijn de eerste stappen het controleren van de grondbeginselen:
 
-* [Basisbewerking bevestigen](#ConfirmBasicOperation)
-* Controleer alle logbestanden op uw webserver en verzender. Verhoog zo nodig de `loglevel` gebruikte waarde voor de [logboekregistratie](#Logging)van de verzender.
+* [Basisbewerking bevestigen](/help/using/dispatcher-configuration.md#confirming-basic-operation)
+* Controleer alle logbestanden op uw webserver en verzender. Verhoog zo nodig de `loglevel` gebruikte waarde voor de [logboekregistratie](/help/using/dispatcher-configuration.md#logging)van de verzender.
 
-* [Controleer uw configuratie](#ConfiguringtheDispatcher):
+* [Controleer uw configuratie](/help/using/dispatcher-configuration.md):
 
    * Hebt u meerdere verzenders?
 
