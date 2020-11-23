@@ -10,9 +10,9 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: f00ad751-6b95-4365-8500-e1e0108d9536
 translation-type: tm+mt
-source-git-commit: ef0fc34cbf2f07090f39613811d6f015ba2305ab
+source-git-commit: 024348672c2a9a4f8a01429572eba27ea8b8a490
 workflow-type: tm+mt
-source-wordcount: '0'
+source-wordcount: '3684'
 ht-degree: 0%
 
 ---
@@ -28,11 +28,11 @@ Comment Type: draft
 
  -->
 
+Gebruik de pagina Opmerkingen bij de release van [Dispatcher](release-notes.md) om het meest recente Dispatcher-installatiebestand voor uw besturingssysteem en webserver te verkrijgen. De versienummers van de Dispatcher zijn onafhankelijk van de Adobe Experience Manager-releasenummers en zijn compatibel met de Adobe Experience Manager 6.x-, 5.x- en Adobe CQ 5.x-releases.
+
 >[!NOTE]
 >
->Dispatcher-versies zijn onafhankelijk van AEM. U bent mogelijk omgeleid naar deze pagina als u een koppeling naar de Dispatcher-documentatie hebt gevolgd die is ingesloten in de documentatie voor een vorige versie van AEM.
-
-Gebruik de pagina Opmerkingen bij de release van [Dispatcher](release-notes.md) om het meest recente Dispatcher-installatiebestand voor uw besturingssysteem en webserver te verkrijgen. De versienummers van de Dispatcher zijn onafhankelijk van de Adobe Experience Manager-releasenummers en zijn compatibel met de Adobe Experience Manager 6.x-, 5.x- en Adobe CQ 5.x-releases.
+>Voor Adobe Experience Manager 6.5 is Dispatcher versie 4.3.2 of hoger vereist. Dat gezegd hebbende, zijn de versies van de Verzender onafhankelijk van AEM, bijvoorbeeld, is Dispatcher versie 4.3.2 ook compatibel met Adobe Experience Manager 6.4.
 
 De volgende naamgevingsconventie voor bestanden wordt gebruikt:
 
@@ -48,7 +48,7 @@ De volgende tabel bevat de id van de webserver die wordt gebruikt in bestandsnam
 | Microsoft Internet Information Server 7.5, 8, 8.5 | dispatcher-**is**-&lt;other parameters> |
 | Sun Java Web Server iPlanet | dispatcher-**ns**-&lt;other parameters> |
 
->[!NOTE]
+>[!CAUTION]
 >
 >Installeer de nieuwste versie van Dispatcher die beschikbaar is voor uw platform. Op jaarbasis, zou u uw instantie moeten bevorderen Dispatcher om de recentste versie te gebruiken om uit productverbeteringen voordeel te halen.
 
