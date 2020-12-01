@@ -22,7 +22,7 @@ ht-degree: 0%
 ---
 
 
-# De beveiligingscontrolelijst voor verzending{#the-dispatcher-security-checklist}
+# Controlelijst voor beveiliging van verzender{#the-dispatcher-security-checklist}
 
 <!-- 
 
@@ -39,11 +39,11 @@ Adobe raadt u ten zeerste aan de volgende checklist in te vullen voordat u verde
 
 >[!CAUTION]
 >
->U moet ook de lijst Beveiligingscontrole van uw versie van AEM voltooien voordat u live kunt gaan. Raadpleeg de bijbehorende documentatie [van](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html)Adobe Experience Manager.
+>U moet ook de lijst Beveiligingscontrole van uw versie van AEM voltooien voordat u live kunt gaan. Raadpleeg de desbetreffende [Adobe Experience Manager-documentatie](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html).
 
-## De nieuwste versie van Dispatcher gebruiken {#use-the-latest-version-of-dispatcher}
+## De nieuwste versie van Dispatcher {#use-the-latest-version-of-dispatcher} gebruiken
 
-Installeer de nieuwste beschikbare versie die beschikbaar is voor uw platform. U zou uw instantie van Dispatcher moeten bevorderen om de recentste versie te gebruiken om uit product en veiligheidsverhogingen voordeel te halen. Zie [Dispatcher](dispatcher-install.md)installeren.
+Installeer de nieuwste beschikbare versie die beschikbaar is voor uw platform. U zou uw instantie van Dispatcher moeten bevorderen om de recentste versie te gebruiken om uit product en veiligheidsverhogingen voordeel te halen. Zie [Dispatcher installeren](dispatcher-install.md).
 
 >[!NOTE]
 >
@@ -51,11 +51,11 @@ Installeer de nieuwste beschikbare versie die beschikbaar is voor uw platform. U
 >
 >`[Thu Apr 30 17:30:49 2015] [I] [23171(140735307338496)] Dispatcher initialized (build 4.1.9)`
 >
->Om het logboekdossier te vinden, inspecteer de dispatcherconfiguratie in uw `httpd.conf`.
+>Om het logboekdossier te vinden, inspecteer de berichtcherconfiguratie in uw `httpd.conf`.
 
-## Clients beperken die uw cache kunnen leegmaken {#restrict-clients-that-can-flush-your-cache}
+## Clients beperken die uw cache {#restrict-clients-that-can-flush-your-cache} kunnen leegmaken
 
-Adobe raadt u aan de clients die uw cache kunnen leegmaken, te [beperken.](dispatcher-configuration.md#limiting-the-clients-that-can-flush-the-cache)
+Adobe raadt u aan [de clients te beperken die uw cache kunnen leegmaken.](dispatcher-configuration.md#limiting-the-clients-that-can-flush-the-cache)
 
 ## HTTPS inschakelen voor beveiliging van transportlagen {#enable-https-for-transport-layer-security}
 
@@ -80,13 +80,13 @@ Last Modified Date: 2015-06-26T04:41:28.841-0400
 
 ## Toegang beperken {#restrict-access}
 
-Wanneer het vormen van de Dispatcher zou u externe toegang zoveel mogelijk moeten beperken. Zie [Voorbeeld /filter Sectie](dispatcher-configuration.md#main-pars_184_1_title) in de documentatie van de Verzender.
+Wanneer het vormen van de Dispatcher zou u externe toegang zoveel mogelijk moeten beperken. Zie [Voorbeeld/filter Sectie](dispatcher-configuration.md#main-pars_184_1_title) in de documentatie van de Verzender.
 
 ## Zorg ervoor dat toegang tot administratieve URL&#39;s wordt geweigerd {#make-sure-access-to-administrative-urls-is-denied}
 
 Zorg ervoor dat u filters gebruikt om externe toegang tot eventuele beheerURL&#39;s, zoals de webconsole, te blokkeren.
 
-Zie [Beveiliging](dispatcher-configuration.md#testing-dispatcher-security) van Dispatcher testen voor een lijst met URL&#39;s die moeten worden geblokkeerd.
+Zie [Beveiliging van Dispatcher testen](dispatcher-configuration.md#testing-dispatcher-security) voor een lijst met URL&#39;s die moeten worden geblokkeerd.
 
 ## Lijsten van gewenste personen gebruiken in plaats van Lijsten van afgewezen personen {#use-allowlists-instead-of-blocklists}
 
@@ -101,7 +101,7 @@ Bovendien, moeten de gebruikers IIS hun website als volgt vormen:
 1. Selecteer **Verbinding maken als specifieke gebruiker** in de fysieke padinstelling voor uw website.
 1. Stel de gebruiker in.
 
-## Ontkenning van service-aanvallen (DoS) voorkomen {#prevent-denial-of-service-dos-attacks}
+## DoS-aanvallen (Denial of Service) voorkomen {#prevent-denial-of-service-dos-attacks}
 
 Een ontkenning van de dienst (Dos) aanval is een poging om een computermiddel niet beschikbaar te maken aan zijn voorgenomen gebruikers.
 
@@ -109,7 +109,7 @@ Op het niveau van de dispatcher, zijn er twee methodes om aanvallen van Dos te v
 
 * Gebruik de module mod_rewrite (bijvoorbeeld [Apache 2.4](https://httpd.apache.org/docs/2.4/mod/mod_rewrite.html)) om URL-validaties uit te voeren (als de URL-patroonregels niet te complex zijn).
 
-* Voorkom dat de verzender URL&#39;s in cache plaatst met onjuiste extensies door [filters](dispatcher-configuration.md#configuring-access-to-conten-tfilter)te gebruiken.\
+* Voorkom dat de verzender URL&#39;s in cache plaatst met onjuiste extensies met behulp van [filters](dispatcher-configuration.md#configuring-access-to-conten-tfilter).\
    Wijzig bijvoorbeeld de caching-regels om caching te beperken tot de verwachte mime-typen, zoals:
 
    * `.html`
@@ -121,7 +121,7 @@ Op het niveau van de dispatcher, zijn er twee methodes om aanvallen van Dos te v
    * `.pdf`
    * `.ppt`
 
-   Een voorbeeldconfiguratiedossier kan voor het [beperken van externe toegang](#restrict-access)worden gezien, omvat dit beperkingen voor mime types.
+   Een dossier van de voorbeeldconfiguratie kan voor [beperkende externe toegang ](#restrict-access), dit omvat beperkingen voor mime types worden gezien.
 
 Om volledige functionaliteit op de publiceer instanties veilig toe te laten, vorm filters om toegang tot de volgende knopen te verhinderen:
 
@@ -151,20 +151,20 @@ Last Modified Date: 2015-06-26T04:38:17.016-0400
 
  -->
 
-## Dispatcher configureren om CSRF-aanvallen te voorkomen {#configure-dispatcher-to-prevent-csrf-attacks}
+## Dispatcher configureren om CSRF-aanvallen {#configure-dispatcher-to-prevent-csrf-attacks} te voorkomen
 
-AEM biedt een [kader](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#verification-steps) dat bedoeld is om aanvallen met smeden van verschillende sites te voorkomen. Als u dit framework op de juiste manier wilt gebruiken, moet u de ondersteuning voor CSRF-token in de verzender lijsten van gewenste personen. U kunt dit doen door:
+AEM verstrekt een [framework](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#verification-steps) gericht op het verhinderen van de aanvallen van de Vervalsingsindustrie van het Verzoek van de Verkeer van de Depositovergangen. Als u dit framework op de juiste manier wilt gebruiken, moet u de ondersteuning voor CSRF-token in de verzender lijsten van gewenste personen. U kunt dit doen door:
 
-1. Een filter maken om het `/libs/granite/csrf/token.json` pad toe te staan;
-1. Voeg de `CSRF-Token` kopbal aan de `clientheaders` sectie van de configuratie van de Verzender toe.
+1. Een filter maken om het pad `/libs/granite/csrf/token.json` toe te staan;
+1. Voeg de `CSRF-Token` kopbal aan `clientheaders` sectie van de configuratie van de Ontvanger toe.
 
-## Klikaanvallen voorkomen {#prevent-clickjacking}
+## Klikjacking {#prevent-clickjacking} voorkomen
 
-Om klikaanvallen te verhinderen adviseren wij dat u uw webserver vormt om de kopbal te verstrekken van `X-FRAME-OPTIONS` HTTP die aan wordt geplaatst `SAMEORIGIN`.
+Om klikaanvallen te verhinderen adviseren wij dat u uw webserver vormt om `X-FRAME-OPTIONS` kopbal te verstrekken die aan `SAMEORIGIN` wordt geplaatst.
 
-Raadpleeg de OWASP-site voor meer [informatie over het aanklikken op een bestand](https://www.owasp.org/index.php/Clickjacking).
+Voor meer [informatie over klikjacking gelieve te zien de plaats van OWASP](https://www.owasp.org/index.php/Clickjacking).
 
-## Een beveiligingstest uitvoeren {#perform-a-penetration-test}
+## Een penetratietest uitvoeren {#perform-a-penetration-test}
 
 Adobe raadt u ten zeerste aan een penetratietest van uw AEM uit te voeren voordat u verdergaat met de productie.
 
