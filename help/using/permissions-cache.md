@@ -2,7 +2,7 @@
 title: Beveiligde inhoud in cache plaatsen
 seo-title: Beveiligde inhoud in cache plaatsen in AEM Dispatcher
 description: Leer hoe het in cache plaatsen met toestemming werkt in Dispatcher.
-seo-description: Leer hoe machtigingsgevoelige caching werkt in AEM Dispatcher.
+seo-description: Leer hoe het in cache plaatsen met bevoegdheden werkt in AEM Dispatcher.
 uuid: abfed68a-2efe-45f6-bdf7-2284931629d6
 contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
@@ -11,25 +11,28 @@ content-type: reference
 discoiquuid: 4f9b2bc8-a309-47bc-b70d-a1c0da78d464
 translation-type: tm+mt
 source-git-commit: 8dd56f8b90331f0da43852e25893bc6f3e606a97
+workflow-type: tm+mt
+source-wordcount: '762'
+ht-degree: 0%
 
 ---
 
 
-# Beveiligde inhoud in cache plaatsen {#caching-secured-content}
+# Beveiligde inhoud {#caching-secured-content} in cache plaatsen
 
 Met machtigingsgevoelige caching kunt u beveiligde pagina&#39;s in het cachegeheugen plaatsen. Dispatcher controleert de toegangsmachtigingen van de gebruiker voor een pagina voordat de pagina in de cache wordt geleverd.
 
-De afzender omvat de module AuthChecker die toestemming-gevoelig caching uitvoert. Wanneer de module wordt geactiveerd, geeft terug vraag een servlet AEM om gebruikersauthentificatie en vergunning voor de gevraagde inhoud uit te voeren. De servletreactie bepaalt of de inhoud aan Webbrowser wordt geleverd.
+De afzender omvat de module AuthChecker die toestemming-gevoelig caching uitvoert. Wanneer de module wordt geactiveerd, teruggeeft vraag een AEM servlet om gebruikersauthentificatie en vergunning voor de gevraagde inhoud uit te voeren. De servletreactie bepaalt of de inhoud aan Webbrowser wordt geleverd.
 
-Omdat de methodes van authentificatie en vergunning voor de plaatsing AEM specifiek zijn, wordt u vereist om servlet tot stand te brengen.
+Omdat de methodes van authentificatie en vergunning voor de AEM plaatsing specifiek zijn, wordt u vereist om servlet tot stand te brengen.
 
 >[!NOTE]
 >
->Gebruik filters `deny` om algemene beveiligingsbeperkingen in te stellen. Gebruik toestemming-gevoelige caching voor pagina&#39;s die worden gevormd om toegang tot een ondergroep van gebruikers of groepen toe te staan.
+>Gebruik `deny` filters om algemene beveiligingsbeperkingen in te stellen. Gebruik toestemming-gevoelige caching voor pagina&#39;s die worden gevormd om toegang tot een ondergroep van gebruikers of groepen toe te staan.
 
 De volgende diagrammen illustreren de orde van gebeurtenissen die voorkomen wanneer Webbrowser om een pagina vraagt waarvoor toestemming-gevoelig caching wordt gebruikt.
 
-## Pagina is in cache geplaatst en de gebruiker is geautoriseerd {#page-is-cached-and-user-is-authorized}
+## De pagina is in de cache geplaatst en de gebruiker is geautoriseerd {#page-is-cached-and-user-is-authorized}
 
 ![](assets/chlimage_1.png)
 
@@ -38,7 +41,7 @@ De volgende diagrammen illustreren de orde van gebeurtenissen die voorkomen wann
 1. Renderen roept de autorisator aan om de veiligheidscontrole uit te voeren en aan Dispatcher antwoordt. Het antwoordbericht bevat de HTTP-statuscode 200 om aan te geven dat de gebruiker geautoriseerd is.
 1. Dispatcher stuurt een antwoordbericht naar de browser dat bestaat uit de koptekstregels van de renderreactie en de inhoud in de cache.
 
-## De pagina is niet in cache geplaatst en de gebruiker is geautoriseerd {#page-is-not-cached-and-user-is-authorized}
+## De pagina is niet in de cache geplaatst en de gebruiker is geautoriseerd {#page-is-not-cached-and-user-is-authorized}
 
 ![](assets/chlimage_1-1.png)
 
@@ -67,13 +70,13 @@ Om toestemming-gevoelig caching uit te voeren, voer de volgende taken uit:
 >Beveiligde bronnen worden doorgaans in een aparte map opgeslagen dan onbeveiligde bestanden. Bijvoorbeeld: /content/secure/
 
 
-## De verificatieserver maken {#create-the-authorization-servlet}
+## Maak de verificatieserver {#create-the-authorization-servlet}
 
-Maak en implementeer een servlet die de verificatie en autorisatie uitvoert van de gebruiker die de webinhoud aanvraagt. Serlet kan om het even welke authentificatie en vergunningsmethode, zoals de AEM gebruikersrekening en bewaarplaats ACLs, of een opzoekdienst gebruiken LDAP. U stelt servlet aan de instantie op AEM die Dispatcher als teruggeeft gebruikt.
+Maak en implementeer een servlet die de verificatie en autorisatie uitvoert van de gebruiker die de webinhoud aanvraagt. servlet kan om het even welke authentificatie en vergunningsmethode, zoals de AEM gebruikersrekening en bewaarplaats ACLs, of een opzoekdienst gebruiken LDAP. U stelt servlet aan de AEM instantie op die Dispatcher als teruggeeft gebruikt.
 
 De servlet moet toegankelijk zijn voor alle gebruikers. Daarom zou uw servlet de `org.apache.sling.api.servlets.SlingSafeMethodsServlet` klasse moeten uitbreiden, die read-only toegang tot het systeem verleent.
 
-servlet ontvangt slechts verzoeken van het HEAD van teruggeven, zodat moet u slechts de `doHead` methode uitvoeren.
+servlet ontvangt slechts HEAD- verzoeken van teruggeven, zodat moet u slechts de `doHead` methode uitvoeren.
 
 Renderen omvat URI van het gevraagde middel als parameter van het HTTP- verzoek. Een verificatieserver is bijvoorbeeld toegankelijk via `/bin/permissioncheck`. Als u een beveiligingscontrole wilt uitvoeren op de pagina /content/geometrixx-outdoors/en.html, bevat de render de volgende URL in de HTTP-aanvraag:
 
@@ -83,13 +86,13 @@ Het servlet-antwoordbericht moet de volgende HTTP-statuscodes bevatten:
 
 * 200: Verificatie en autorisatie geslaagd.
 
-Het volgende voorbeeldservlet verkrijgt URL van het gevraagde middel van het HTTP- verzoek. De code gebruikt de SCR van Felix aantekening `Property` om de waarde van het `sling.servlet.paths` bezit aan /bin/permissioncheck te plaatsen. In de `doHead` methode, verkrijgt servlet het zittingsvoorwerp en gebruikt de `checkPermission` methode om de aangewezen reactiecode te bepalen.
+Het volgende voorbeeldservlet verkrijgt URL van het gevraagde middel van het HTTP- verzoek. De code gebruikt SCR `Property` aantekening van Felix om de waarde van het `sling.servlet.paths` bezit aan /bin/permissioncheck te plaatsen. In de `doHead` methode, verkrijgt servlet het zittingsvoorwerp en gebruikt `checkPermission` methode om de aangewezen reactiecode te bepalen.
 
 >[!NOTE]
 >
 >De waarde van de eigenschap sling.servlet.paths moet zijn ingeschakeld in de service Sling Servlet Resolver (org.apache.sling.servlets.resolver.SlingServletResolver).
 
-### Voorbeeld-servlet {#example-servlet}
+### Voorbeeld servlet {#example-servlet}
 
 ```java
 package com.adobe.example;
@@ -138,13 +141,13 @@ public class AuthcheckerServlet extends SlingSafeMethodsServlet {
 }
 ```
 
-## Dispatcher configureren voor caching met bevoegdheden {#configure-dispatcher-for-permission-sensitive-caching}
+## Dispatcher configureren voor het in cache plaatsen van bestanden die gevoelig zijn voor machtigingen {#configure-dispatcher-for-permission-sensitive-caching}
 
 De sectie auth_checker van de dispatcher.any file controleert het gedrag van toestemming-gevoelige caching. De sectie auth_checker bevat de volgende subsecties:
 
-* `url`: De waarde van het `sling.servlet.paths` bezit van servlet die de veiligheidscontrole uitvoert.
+* `url`: De waarde van het  `sling.servlet.paths` bezit van servlet die de veiligheidscontrole uitvoert.
 
-* `filter`: Filters die de mappen opgeven waarop machtigingsgevoelige caching wordt toegepast. Doorgaans wordt een `deny` filter toegepast op alle mappen en worden `allow` filters toegepast op beveiligde mappen.
+* `filter`: Filters die de mappen opgeven waarop machtigingsgevoelige caching wordt toegepast. Doorgaans wordt een `deny`-filter toegepast op alle mappen en worden `allow`-filters toegepast op beveiligde mappen.
 
 * `headers`: Geeft de HTTP-headers aan die het verificatieserver in de reactie bevat.
 
