@@ -21,7 +21,7 @@ ht-degree: 0%
 ---
 
 
-# Problemen met verzending van problemen oplossen {#troubleshooting-dispatcher-problems}
+# Problemen met de verzending van problemen {#troubleshooting-dispatcher-problems} oplossen
 
 >[!NOTE]
 >
@@ -31,14 +31,14 @@ ht-degree: 0%
 
 >[!NOTE]
 >
->Raadpleeg ook de [Dispatcher Knowledge Base](https://helpx.adobe.com/cq/kb/index/dispatcher.html), de [Problemen](https://helpx.adobe.com/adobe-cq/kb/troubleshooting-dispatcher-flushing-issues.html) met het leegmaken van de Dispatcher Dispatcher en de veelgestelde vragen over de [belangrijkste problemen](dispatcher-faq.md) bij Verzender voor meer informatie.
+>Raadpleeg ook [Dispatcher Knowledge Base](https://helpx.adobe.com/cq/kb/index/dispatcher.html), [Problemen met het leegmaken van Dispatcher Dispatcher Dispatcher ](https://helpx.adobe.com/adobe-cq/kb/troubleshooting-dispatcher-flushing-issues.html) en [Veelgestelde vragen over de belangrijkste problemen met de verzendingen](dispatcher-faq.md) voor meer informatie.
 
 ## Controleer de basisconfiguratie {#check-the-basic-configuration}
 
 Zoals altijd zijn de eerste stappen het controleren van de grondbeginselen:
 
 * [Basisbewerking bevestigen](/help/using/dispatcher-configuration.md#confirming-basic-operation)
-* Controleer alle logbestanden op uw webserver en verzender. Verhoog zo nodig de `loglevel` gebruikte waarde voor de [logboekregistratie](/help/using/dispatcher-configuration.md#logging)van de verzender.
+* Controleer alle logbestanden op uw webserver en verzender. Indien nodig de `loglevel` verhogen die voor de verzender [logboekregistratie](/help/using/dispatcher-configuration.md#logging) wordt gebruikt.
 
 * [Controleer uw configuratie](/help/using/dispatcher-configuration.md):
 
@@ -59,12 +59,12 @@ IIS verstrekt diverse spoorhulpmiddelen, afhankelijk van de daadwerkelijke versi
 
 Deze kunnen u helpen activiteit controleren.
 
-## IIS en 404 niet gevonden {#iis-and-not-found}
+## IIS en 404 Niet gevonden {#iis-and-not-found}
 
-Wanneer het gebruiken van IIS zou u kunnen ervaren `404 Not Found` die in diverse scenario&#39;s zijn teruggekeerd. Zo ja, zie de volgende artikelen in de Knowledge Base.
+Wanneer het gebruiken IIS zou u `404 Not Found` kunnen ervaren die in diverse scenario&#39;s zijn teruggekeerd. Zo ja, zie de volgende artikelen in de Knowledge Base.
 
 * [IIS 6/7: De methode van de POST keert 404 terug](https://helpx.adobe.com/dispatcher/kb/IIS6IsapiFilters.html)
-* [IIS 6: Aanvragen aan URL&#39;s die het basispad `/bin` retourneren `404 Not Found`](https://helpx.adobe.com/dispatcher/kb/RequestsToBinDirectoryFailInIIS6.html)
+* [IIS 6: Aanvragen aan URL&#39;s die het basispad  `/bin` retourneren  `404 Not Found`](https://helpx.adobe.com/dispatcher/kb/RequestsToBinDirectoryFailInIIS6.html)
 
 U moet ook controleren of de cachroot van de verzender en de hoofdmap van het IIS-document op dezelfde map zijn ingesteld.
 
@@ -79,15 +79,15 @@ Problemen bij het verwijderen van workflowmodellen wanneer een AEM auteur-instan
 1. Meld u aan bij de instantie van de auteur (bevestig dat aanvragen worden gerouteerd via de dispatcher).
 1. Een nieuwe workflow maken; bijvoorbeeld als Titel is ingesteld op workflowToDelete.
 1. Controleer of de workflow is gemaakt.
-1. Selecteer en klik met de rechtermuisknop op de workflow en klik op **Verwijderen**.
+1. Selecteer en klik met de rechtermuisknop op de workflow en klik vervolgens op **Delete**.
 
-1. Klik op **Ja** om te bevestigen.
+1. Klik **Ja** om te bevestigen.
 1. Er wordt een foutbericht weergegeven:\
    &quot; `ERROR 'Could not delete workflow model!!`&quot;.
 
 **Resolutie**
 
-Voeg de volgende kopteksten aan de `/clientheaders` sectie van uw `dispatcher.any` dossier toe:
+Voeg de volgende kopballen aan de `/clientheaders` sectie van uw `dispatcher.any` dossier toe:
 
 * `x-http-method-override`
 * `x-requested-with`
@@ -109,23 +109,23 @@ Hierin wordt beschreven hoe de dispatcher communiceert met `mod_dir` binnen de A
 
 ### Apache 1.3 {#apache}
 
-In Apache 1.3 `mod_dir` wordt elke aanvraag afgehandeld wanneer de URL wordt toegewezen aan een map in het bestandssysteem.
+In Apache 1.3 `mod_dir` wordt elk verzoek afgehandeld waar de URL wordt toegewezen aan een map in het bestandssysteem.
 
 Het zal ofwel:
 
-* de aanvraag omleiden naar een bestaand `index.html` bestand
+* doorsturen van het verzoek naar een bestaand `index.html`-bestand
 * een mappenlijst genereren
 
-Wanneer de verzender wordt toegelaten, verwerkt het dergelijke verzoeken door zich als manager voor het inhoudstype te registreren `httpd/unix-directory`.
+Wanneer de verzender wordt toegelaten, verwerkt het dergelijke verzoeken door zich als manager voor het inhoudstype `httpd/unix-directory` te registreren.
 
 ### Apache 2.x {#apache-x}
 
-In Apache 2.x zijn de dingen anders. Een module kan verschillende stadia van het verzoek, zoals correctie URL behandelen. `mod_dir` handelt dit werkgebied af door een aanvraag (wanneer de URL naar een map wordt toegewezen) om te leiden naar de URL met een `/` toevoeging.
+In Apache 2.x zijn de dingen anders. Een module kan verschillende stadia van het verzoek, zoals correctie URL behandelen. `mod_dir` handelt dit werkgebied af door een aanvraag (wanneer de URL naar een map wordt toegewezen) om te leiden naar de URL met een  `/` toevoeging.
 
-Dispatcher onderschept de `mod_dir` correctie niet, maar verwerkt de aanvraag volledig naar de omgeleide URL (d.w.z. met `/` toevoeging). Dit kan een probleem opleveren als de externe server (bijvoorbeeld AEM) verzoeken `/a_path` anders afhandelt naar verzoeken aan `/a_path/` (wanneer `/a_path` kaarten naar een bestaande map).
+Dispatcher onderschept de `mod_dir` correctie niet, maar behandelt volledig het verzoek aan opnieuw gerichte URL (d.w.z. met `/` toegevoegd). Dit kan een probleem opleveren als de externe server (bijvoorbeeld AEM) aanvragen naar `/a_path` anders afhandelt dan aanvragen naar `/a_path/` (wanneer `/a_path` is toegewezen aan een bestaande map).
 
 Als dit gebeurt, moet u:
 
-* uitschakelen `mod_dir` voor de `Directory` of `Location` substructuur die door de verzender wordt afgehandeld
+* `mod_dir` uitschakelen voor de `Directory`- of `Location`-substructuur die door de verzender wordt afgehandeld
 
-* gebruiken `DirectorySlash Off` om `mod_dir` niet toe te voegen `/`
+* gebruik `DirectorySlash Off` om `mod_dir` te configureren om `/` niet toe te voegen
