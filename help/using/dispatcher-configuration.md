@@ -352,7 +352,7 @@ De volgende configuratiehandvatten *all* verzoeken:
 Wanneer de Ontvanger een HTTP of HTTPS verzoek ontvangt, vindt het de virtuele gastheerwaarde die `host,` `uri`, en `scheme` kopballen van het verzoek het best aanpast. Dispatcher evalueert de waarden in de eigenschappen `virtualhosts` in de volgende volgorde:
 
 * De afzender begint bij het laagste landbouwbedrijf en vordert omhoog in het dispatcher.any dossier.
-* Voor elk landbouwbedrijf, begint de Verzender met de hoogste waarde in het `virtualhosts` bezit en vordert onderaan de lijst van waarden.
+* Voor elk landbouwbedrijf, begint de Ontvanger met de hoogste waarde in het `virtualhosts` bezit en vordert onderaan de lijst van waarden.
 
 Dispatcher vindt de best-passende virtuele gastheerwaarde op de volgende manier:
 
@@ -781,7 +781,7 @@ Last Modified Date: 2015-06-26T04:32:37.986-0400
 
 >[!NOTE]
 >
->Filters `0030` en `0031` betreffende dynamische media zijn van toepassing op AEM 6.0 en hoger.
+>Filters `0030` en `0031` betreffende Dynamic Media zijn van toepassing op AEM 6.0 en hoger.
 
 Overweeg de volgende aanbevelingen als u verkiest om toegang uit te breiden:
 
@@ -1484,7 +1484,7 @@ Wanneer een pagina uit inhoud van verscheidene inhoudsknopen bestaat, omvat het 
 
 ### httpOnly {#httponly}
 
-Wanneer de kleverige verbindingen worden toegelaten, plaatst de verzender module `renderid` koekje. Dit cookie heeft niet de `httponly` vlag, die zou moeten worden toegevoegd om veiligheid te verbeteren. U kunt dit doen door het `httpOnly` bezit in de `/stickyConnections` knoop van een `dispatcher.any` configuratiedossier te plaatsen. De waarde van de eigenschap (ofwel `0` of `1`) definieert of voor het cookie `renderid` het kenmerk `HttpOnly` is toegevoegd. De standaardwaarde is `0`, wat betekent dat het attribuut niet zal worden toegevoegd.
+Wanneer de kleverige verbindingen worden toegelaten, plaatst de verzender module `renderid` koekje. Dit cookie heeft niet de `httponly` vlag, die zou moeten worden toegevoegd om veiligheid te verbeteren. U kunt dit doen door het `httpOnly` bezit in de `/stickyConnections` knoop van een `dispatcher.any` configuratiedossier te plaatsen. De waarde van de eigenschap (ofwel `0` of `1`) definieert of voor het cookie `renderid` het kenmerk `HttpOnly` is toegevoegd. De standaardwaarde is `0`, wat betekent dat het kenmerk niet wordt toegevoegd.
 
 Lees [deze pagina](https://www.owasp.org/index.php/HttpOnly) voor meer informatie over de markering `httponly`.
 
