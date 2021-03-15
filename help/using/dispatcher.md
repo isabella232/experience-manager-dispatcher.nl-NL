@@ -279,7 +279,7 @@ Er zijn een aantal manieren om te controleren hoe lang een CDN een middel zal in
 1. Op API gebaseerde validatie\
    De meeste CDN&#39;s bieden ook een REST- en/of SOAP-API waarmee bronnen uit de cache kunnen worden verwijderd.
 
-In een typisch AEM, configuratie door uitbreiding en/of weg, die door bovenstaande punten 1 en 2 kan worden bereikt, biedt mogelijkheden om redelijke caching periodes voor vaak gebruikte middelen te plaatsen die niet vaak veranderen, zoals ontwerpbeelden en cliëntbibliotheken. Wanneer de nieuwe versies worden opgesteld, typisch wordt een handongeldigverklaring vereist.
+In een typisch AEM, configuratie door uitbreiding en/of weg, die door punten 1 en 2 hierboven kan worden bereikt, biedt mogelijkheden om redelijke caching periodes voor vaak gebruikte middelen te plaatsen die niet vaak veranderen, zoals ontwerpbeelden en cliëntbibliotheken. Wanneer de nieuwe versies worden opgesteld, typisch wordt een handongeldigverklaring vereist.
 
 Als deze benadering wordt gebruikt om beheerde inhoud in het voorgeheugen onder te brengen, impliceert het dat de inhoudsveranderingen slechts aan eind zichtbaar zijn - gebruikers zodra de gevormde caching periode is verlopen en het document opnieuw van Dispatcher wordt opgehaald.
 
