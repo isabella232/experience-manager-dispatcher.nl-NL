@@ -276,7 +276,7 @@ Voordat u de Dispatcher kunt gaan gebruiken, moet u weten:
 
 ### Apache Web Server {#installing-apache-web-server} installeren
 
-Lees de installatiehandleiding - ofwel [online](https://httpd.apache.org/) of in de distributie - voor informatie over het installeren van een Apache Web Server.
+Lees voor informatie over het installeren van een Apache Web Server de installatiehandleiding - ofwel [online](https://httpd.apache.org/) of in de distributie.
 
 >[!CAUTION]
 >
@@ -310,7 +310,7 @@ Ga als volgt te werk om Dispatcher toe te voegen aan uw Apache Web Server:
 1. Plaats het Dispatcher-bestand in de juiste Apache-modulemap:
 
    * **Windows**: Plaatsen  `disp_apache<x.y>.dll` `<APACHE_ROOT>/modules`
-   * **Unix**: Zoek de map  `<APACHE_ROOT>/libexec` of de  `<APACHE_ROOT>/modules`map volgens uw installatie.\
+   * **Unix**: Zoek de map  `<APACHE_ROOT>/libexec` of de  `<APACHE_ROOT>/modules`map volgens de installatie.\
       Kopieer `dispatcher-apache<options>.so` naar deze map.\
       Om het langetermijnonderhoud te vereenvoudigen, kunt u ook een symbolische verbinding tot stand brengen genoemd `mod_dispatcher.so` aan de Dispatcher:\
       `ln -s dispatcher-apache<x>-<os>-<rel-nr>.so mod_dispatcher.so`
