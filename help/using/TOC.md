@@ -6,11 +6,15 @@ archetype: Administrator
 user-guide-title: Help bij Experience Manager Dispatcher
 breadcrumb-title: Handleiding voor verzending
 user-guide-description: Leer Dispatcher te gebruiken voor caching, lading het in evenwicht brengen, en het verbeteren van veiligheid voor uw AEM server.
+feature-set: Experience Manager
+feature: Dispatcher
+topic: Beheer
+role: Beheerder
 translation-type: tm+mt
-source-git-commit: 5765970c0335df084b5d49efae60997b3a021c47
+source-git-commit: d03518767918288f03d289f19253f15803a313c7
 workflow-type: tm+mt
-source-wordcount: '87'
-ht-degree: 4%
+source-wordcount: '0'
+ht-degree: 0%
 
 ---
 
