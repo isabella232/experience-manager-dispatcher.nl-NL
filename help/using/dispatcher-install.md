@@ -9,16 +9,15 @@ converted: true
 topic-tags: dispatcher
 content-type: reference
 discoiquuid: f00ad751-6b95-4365-8500-e1e0108d9536
-translation-type: tm+mt
-source-git-commit: 024348672c2a9a4f8a01429572eba27ea8b8a490
+exl-id: 9375d1c0-8d9e-46cb-9810-fa4162a8c1ba
+source-git-commit: 35739785aa835a0b995fab4710a0e37bd0ff62b4
 workflow-type: tm+mt
 source-wordcount: '3684'
 ht-degree: 0%
 
 ---
 
-
-# Dispatcher {#installing-dispatcher} installeren
+# Dispatcher installeren {#installing-dispatcher}
 
 <!-- 
 
@@ -102,7 +101,7 @@ IIS versies 8.5 en 10 vereisen dat de volgende componenten IIS worden geïnstall
 
 Ook, moet u de rol van de Server van het Web (IIS) toevoegen. Gebruik Serverbeheer om de rol en componenten toe te voegen.
 
-## Microsoft IIS - De Dispatcher-module installeren {#microsoft-iis-installing-the-dispatcher-module}
+## Microsoft IIS - De module Dispatcher installeren {#microsoft-iis-installing-the-dispatcher-module}
 
 Het vereiste archief voor Microsoft Internet Information System is:
 
@@ -131,7 +130,7 @@ Gebruik de volgende procedure om de Dispatcher-bestanden naar de juiste locatie 
       * Instantie van auteur: `author_dispatcher.any`
       * Instantie publiceren: `dispatcher.any`
 
-## Microsoft IIS - Configureer het Dispatcher INI-bestand {#microsoft-iis-configure-the-dispatcher-ini-file}
+## Microsoft IIS - Het INI-bestand Dispatcher configureren {#microsoft-iis-configure-the-dispatcher-ini-file}
 
 Bewerk het `disp_iis.ini`-bestand om de installatie van Dispatcher te configureren. De basisindeling van het `.ini`-bestand is als volgt:
 
@@ -164,7 +163,7 @@ servervariables=1
 replaceauthorization=0
 ```
 
-### Microsoft IIS {#configuring-microsoft-iis} configureren
+### Microsoft IIS configureren {#configuring-microsoft-iis}
 
 Vorm IIS om de Dispatcher ISAPI module te integreren. In IIS gebruikt u toewijzing van jokertekens voor toepassingen.
 
@@ -228,7 +227,7 @@ Gebruik de volgende procedure om het JSON MIME-type te registreren, wanneer u Di
    * Bestandsnaamextensie: `.json`
    * MIME-type: `application/json`
 
-### Het verborgen segment van de Bak verwijderen - IIS 8.5 en 10 {#removing-the-bin-hidden-segment-iis-and}
+### Het verborgen segment van de bin verwijderen - IIS 8.5 en 10 {#removing-the-bin-hidden-segment-iis-and}
 
 Gebruik de volgende procedure om het verborgen segment `bin` te verwijderen. Websites die niet nieuw zijn, kunnen dit verborgen segment bevatten.
 
@@ -268,13 +267,13 @@ Voordat u de Dispatcher kunt gaan gebruiken, moet u weten:
 * [](dispatcher-configuration.md) ConfigureDispatcher
 * [Configureer ](page-invalidate.md) AEM om met Dispatcher te werken.
 
-## Apache-webserver {#apache-web-server}
+## Apache Web Server {#apache-web-server}
 
 >[!CAUTION]
 >
 >Instructies voor installatie onder zowel **Windows** als **Unix** worden hier behandeld. Wees voorzichtig wanneer u de stappen uitvoert.
 
-### Apache Web Server {#installing-apache-web-server} installeren
+### Apache Web Server installeren {#installing-apache-web-server}
 
 Lees voor informatie over het installeren van een Apache Web Server de installatiehandleiding - ofwel [online](https://httpd.apache.org/) of in de distributie.
 
@@ -286,7 +285,7 @@ Lees voor informatie over het installeren van een Apache Web Server de installat
 
 Zie ook de Apache HTTP Server [Beveiligingstips](https://httpd.apache.org/docs/2.4/misc/security_tips.html) en [Beveiligingsrapporten](https://httpd.apache.org/security_report.html).
 
-### Apache Web Server - Voeg de Dispatcher Module {#apache-web-server-add-the-dispatcher-module} toe
+### Apache Web Server - Add the Dispatcher Module {#apache-web-server-add-the-dispatcher-module}
 
 De Dispatcher wordt geleverd als:
 
@@ -310,7 +309,7 @@ Ga als volgt te werk om Dispatcher toe te voegen aan uw Apache Web Server:
 1. Plaats het Dispatcher-bestand in de juiste Apache-modulemap:
 
    * **Windows**: Plaatsen  `disp_apache<x.y>.dll` `<APACHE_ROOT>/modules`
-   * **Unix**: Zoek de map  `<APACHE_ROOT>/libexec` of de  `<APACHE_ROOT>/modules`map volgens de installatie.\
+   * **Unix**: Zoek de map  `<APACHE_ROOT>/libexec` of de  `<APACHE_ROOT>/modules`map volgens uw installatie.\
       Kopieer `dispatcher-apache<options>.so` naar deze map.\
       Om het langetermijnonderhoud te vereenvoudigen, kunt u ook een symbolische verbinding tot stand brengen genoemd `mod_dispatcher.so` aan de Dispatcher:\
       `ln -s dispatcher-apache<x>-<os>-<rel-nr>.so mod_dispatcher.so`
@@ -340,7 +339,7 @@ chcon -R --type httpd_sys_content_t [path to the docroot]
 semanage fcontext -a -t httpd_sys_content_t "[path to the docroot](/.*)?"
 ```
 
-### Apache Web Server - Apache Web Server for Dispatcher {#apache-web-server-configure-apache-web-server-for-dispatcher} configureren
+### Apache Web Server - Apache Web Server voor Dispatcher configureren {#apache-web-server-configure-apache-web-server-for-dispatcher}
 
 De Apache-webserver moet worden geconfigureerd met `httpd.conf`. In de installatiekit Dispatcher vindt u een voorbeeld-configuratiebestand met de naam `httpd.conf.disp<x>`.
 
@@ -421,12 +420,17 @@ De individuele configuratieparameters:
 
 >[!NOTE]
 >
->De standaardinstellingen voor de serverkoptekst zijn: `  
-ServerTokens Full` `  
-DispatcherNoServerHeader 0`\
-Dit is de AEM versie (voor statistische doeleinden). Als u het beschikbaar zijn van dergelijke informatie in de kopbal wilt onbruikbaar maken kunt u plaatsen: `  
-ServerTokens Prod`\
-Zie [Apache Documentatie over ServerTokens Richtlijn (bijvoorbeeld, voor Apache 2.4)](https://httpd.apache.org/docs/2.4/mod/core.html) voor meer informatie.
+>De standaardinstellingen voor de serverkoptekst zijn:
+>
+>`ServerTokens Full`
+>
+>`DispatcherNoServerHeader 0`
+>
+>Dit is de AEM versie (voor statistische doeleinden). Als u het beschikbaar zijn van dergelijke informatie in de kopbal wilt onbruikbaar maken kunt u plaatsen:
+>
+>`ServerTokens Prod`
+>
+>Zie [Apache Documentatie over ServerTokens Richtlijn (bijvoorbeeld, voor Apache 2.4)](https://httpd.apache.org/docs/2.4/mod/core.html) voor meer informatie.
 
 **SetHandler**
 
@@ -484,16 +488,20 @@ AllowOverride None
 ```
 
 >[!NOTE]
-De parameter van de **SetHandler** verklaring moet *precies zoals in de bovengenoemde voorbeelden* worden geschreven, aangezien dit de naam van de manager is die in de module wordt bepaald.
-Zie de dossiers van de voorbeeldconfiguratie en de documentatie van de Server van het Web Apache voor volledige details over dit bevel worden verstrekt die.
+>
+>De parameter van de **SetHandler** verklaring moet *precies zoals in de bovengenoemde voorbeelden* worden geschreven, aangezien dit de naam van de manager is die in de module wordt bepaald.
+>
+>Zie de dossiers van de voorbeeldconfiguratie en de documentatie van de Server van het Web Apache voor volledige details over dit bevel worden verstrekt die.
 
 **ModMimeUsePathInfo**
 
 Na de **SetHandler** verklaring zou u ook de **ModMimeUsePathInfo** definitie moeten toevoegen.
 
 >[!NOTE]
-De `ModMimeUsePathInfo` parameter zou slechts moeten worden gebruikt en worden gevormd als u versie 4.0.9 van de Ontvanger, of hoger gebruikt.
-(Let op: Dispatcher versie 4.0.9 is uitgebracht in 2011. Als u een oudere versie gebruikt, kunt u een upgrade uitvoeren naar een recente versie van Dispatcher.)
+>
+>De `ModMimeUsePathInfo` parameter zou slechts moeten worden gebruikt en worden gevormd als u versie 4.0.9 van de Ontvanger, of hoger gebruikt.
+>
+>(Let op: Dispatcher versie 4.0.9 is uitgebracht in 2011. Als u een oudere versie gebruikt, kunt u een upgrade uitvoeren naar een recente versie van Dispatcher.)
 
 De parameter **ModMimeUsePathInfo** moet `On` voor alle Apache-configuraties worden ingesteld:
 
@@ -539,7 +547,8 @@ Dispatcher gebruikt OpenSSL om veilige communicatie via HTTP te implementeren. V
    ```
 
 >[!NOTE]
-Als u een aangepaste versie van Apache gebruikt, moet u ervoor zorgen dat Apache en Dispatcher zijn gecompileerd met dezelfde versie van [OpenSSL](https://www.openssl.org/source/).
+>
+>Als u een aangepaste versie van Apache gebruikt, moet u ervoor zorgen dat Apache en Dispatcher zijn gecompileerd met dezelfde versie van [OpenSSL](https://www.openssl.org/source/).
 
 ### Volgende stappen {#next-steps-1}
 
@@ -551,8 +560,10 @@ Voordat u de Dispatcher kunt gaan gebruiken, moet u nu:
 ## Sun Java System Web Server / iPlanet {#sun-java-system-web-server-iplanet}
 
 >[!NOTE]
-Hier worden instructies voor zowel Windows- als Unix-omgevingen besproken.
-Wees voorzichtig wanneer u selecteert welke u wilt uitvoeren.
+>
+>Hier worden instructies voor zowel Windows- als Unix-omgevingen besproken.
+>
+>Wees voorzichtig wanneer u selecteert welke u wilt uitvoeren.
 
 ### Sun Java System Web Server / iPlanet - Uw webserver installeren {#sun-java-system-web-server-iplanet-installing-your-web-server}
 
@@ -561,7 +572,7 @@ Raadpleeg de documentatie bij de betreffende webservers voor volledige informati
 * Sun Java System Web Server
 * iPlanet-webserver
 
-### Sun Java System Web Server / iPlanet - Voeg de Dispatcher Module {#sun-java-system-web-server-iplanet-add-the-dispatcher-module} toe
+### Sun Java System Web Server / iPlanet - Voeg de Dispatcher Module toe {#sun-java-system-web-server-iplanet-add-the-dispatcher-module}
 
 De Dispatcher wordt geleverd als:
 
@@ -584,7 +595,7 @@ Ga als volgt te werk om de Dispatcher aan uw webserver toe te voegen:
 
 1. Plaats het Dispatcher-bestand in de map `plugin` van de webserver:
 
-### Sun Java System Web Server / iPlanet - Configureren voor de verzender {#sun-java-system-web-server-iplanet-configure-for-the-dispatcher}
+### Sun Java System Web Server / iPlanet - Configureren voor Dispatcher {#sun-java-system-web-server-iplanet-configure-for-the-dispatcher}
 
 De webserver moet worden geconfigureerd met `obj.conf`. In de installatiekit Dispatcher vindt u een voorbeeld-configuratiebestand met de naam `obj.conf.disp`.
 
@@ -605,7 +616,8 @@ De webserver moet worden geconfigureerd met `obj.conf`. In de installatiekit Dis
 1. Sla de wijzigingen op.
 
 >[!NOTE]
-De volgende configuraties moeten allemaal op één regel staan en `$(SERVER_ROOT)` en `$(PRODUCT_SUBDIR)` moeten door de respectieve waarden worden vervangen.
+>
+>De volgende configuraties moeten allemaal op één regel staan en `$(SERVER_ROOT)` en `$(PRODUCT_SUBDIR)` moeten door de respectieve waarden worden vervangen.
 
 **Init**
 
