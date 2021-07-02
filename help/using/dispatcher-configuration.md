@@ -1,16 +1,15 @@
 ---
 title: Dispatcher configureren
 description: Leer hoe u Dispatcher configureert.
-translation-type: tm+mt
-source-git-commit: 6177dafa64d7c22f72ccb64e343b85f4ee133d73
+exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
+source-git-commit: 35739785aa835a0b995fab4710a0e37bd0ff62b4
 workflow-type: tm+mt
-source-wordcount: '8513'
+source-wordcount: '8512'
 ht-degree: 0%
 
 ---
 
-
-# Dispatcher {#configuring-dispatcher} configureren
+# Dispatcher configureren {#configuring-dispatcher}
 
 >[!NOTE]
 >
@@ -22,7 +21,7 @@ De volgende secties beschrijven hoe te om diverse aspecten van de Verzender te v
 
 Alle elementen van AEM en Dispatcher kunnen in zowel IPv4 als IPv6 netwerken worden geïnstalleerd. Zie [IPV4 en IPV6](https://experienceleague.adobe.com/docs/experience-manager-65/deploying/introduction/technical-requirements.html?lang=en#ipv-and-ipv).
 
-## Verzendingsconfiguratiebestanden {#dispatcher-configuration-files}
+## Configuratiebestanden van Dispatcher {#dispatcher-configuration-files}
 
 Standaard wordt de Dispatcher-configuratie opgeslagen in het tekstbestand `dispatcher.any`, maar u kunt de naam en locatie van dit bestand tijdens de installatie wijzigen.
 
@@ -124,7 +123,7 @@ Bijvoorbeeld, als de dossiers `farm_1.any` tot `farm_5.any` de configuratie van 
   }
 ```
 
-## Omgevingsvariabelen {#using-environment-variables} gebruiken
+## Omgevingsvariabelen gebruiken {#using-environment-variables}
 
 U kunt omgevingsvariabelen gebruiken in tekenreeksgetaxeerde eigenschappen in het bestand dispatcher.any in plaats van de waarden hard te coderen. Als u de waarde van een omgevingsvariabele wilt opnemen, gebruikt u de notatie `${variable_name}`.
 
@@ -145,11 +144,11 @@ Als een ander voorbeeld, als u een omgevingsvariabele genoemd `PUBLISH_IP` creee
 }
 ```
 
-## De naam van de instantie Dispatcher {#naming-the-dispatcher-instance-name} wijzigen
+## De instantie Dispatcher een naam geven {#naming-the-dispatcher-instance-name}
 
 Gebruik het `/name` bezit om een unieke naam te specificeren om uw instantie van de Verzender te identificeren. De eigenschap `/name` is een eigenschap op hoofdniveau in de configuratiestructuur.
 
-## Bedrijven {#defining-farms-farms} definiëren
+## Bedrijven definiëren {#defining-farms-farms}
 
 De eigenschap `/farms` definieert een of meer sets Dispatcher-gedrag, waarbij elke set aan verschillende websites of URL&#39;s is gekoppeld. De `/farms` eigenschap kan één landbouwbedrijf of meerdere landbouwbedrijven omvatten:
 
@@ -256,7 +255,7 @@ Comment Type: draft
 
  -->
 
-## De HTTP-headers opgeven om door {#specifying-the-http-headers-to-pass-through-clientheaders} te gaan
+## De HTTP-headers opgeven die moeten worden doorgegeven {#specifying-the-http-headers-to-pass-through-clientheaders}
 
 De eigenschap `/clientheaders` definieert een lijst met HTTP-headers die door Dispatcher worden doorgegeven van de HTTP-client-aanvraag naar de renderer (AEM-instantie).
 
@@ -315,7 +314,7 @@ De volgende code is een voorbeeldconfiguratie voor `/clientheaders`:
   }
 ```
 
-## Virtuele hosts {#identifying-virtual-hosts-virtualhosts} identificeren
+## Virtuele hosts identificeren {#identifying-virtual-hosts-virtualhosts}
 
 De `/virtualhosts` bezit bepaalt een lijst van alle hostname/URI combinaties die de Ontvanger voor dit landbouwbedrijf goedkeurt. U kunt de asterisk (`*`) karakter als vervanging gebruiken. Waarden voor de eigenschap / `virtualhosts` gebruiken de volgende indeling:
 
@@ -458,7 +457,7 @@ Een voorbeeldconfiguratie ziet er als volgt uit:
   }
 ```
 
-## Paginarenderers {#defining-page-renderers-renders} definiëren
+## Paginarenderers definiëren {#defining-page-renderers-renders}
 
 De eigenschap /renders definieert de URL waarnaar de afzender een verzoek verzendt om een document te renderen. In het volgende voorbeeld wordt in de sectie `/renders` één AEM voor rendering geïdentificeerd:
 
@@ -567,7 +566,7 @@ De `/filter` sectie bestaat uit een reeks regels die of toegang tot inhoud volge
 * Eerst, ontken toegang tot alles.
 * Toegang tot inhoud toestaan als dat nodig is.
 
-### Filter {#defining-a-filter} definiëren
+### Filter definiëren {#defining-a-filter}
 
 Elk punt in `/filter` sectie omvat een type en een patroon dat met een specifiek element van de verzoeklijn of de volledige verzoeklijn wordt aangepast. Elk filter kan de volgende items bevatten:
 
@@ -613,7 +612,7 @@ Wanneer het creëren van uw filterregels, gebruik dubbele aanhalingstekens `"pat
 
 In de versies van de Verzender later dan 4.2.0, kunt u POSIX Uitgebreide Reguliere Uitdrukkingen in uw filterpatronen omvatten.
 
-#### Problemen met filters {#troubleshooting-filters} oplossen
+#### Problemen met filters oplossen {#troubleshooting-filters}
 
 Als uw filters niet in de manier teweegbrengen u zou verwachten, laat [Logging van het Spoor](#trace-logging) op verzender toe zodat kunt u zien welk filter het verzoek onderschept.
 
@@ -635,7 +634,7 @@ Met filters kunt u ook toegang tot verschillende elementen weigeren, zoals ASP-p
 /0002  { /type "deny" /url "*.asp"  }
 ```
 
-#### Voorbeeldfilter: Aanvragen voor POST {#example-filter-enable-post-requests} inschakelen
+#### Voorbeeldfilter: Aanvragen van POSTEN inschakelen {#example-filter-enable-post-requests}
 
 Met het volgende voorbeeldfilter kunt u formuliergegevens verzenden met de methode POST:
 
@@ -807,7 +806,7 @@ Afhankelijk van uw installatie, zouden er extra middelen onder `/libs`, `/apps` 
 >
 >Als u [rapporten in publicatiemilieu](https://experienceleague.adobe.com/docs/experience-manager-65/administering/operations/reporting.html?lang=en#using-reports-in-a-publish-environment) gebruikt zou u Dispatcher moeten vormen om toegang tot `/etc/reports` voor externe bezoekers te ontkennen.
 
-### Het beperken van de Tekenreeksen van de Vraag {#restricting-query-strings}
+### Query-tekenreeksen beperken {#restricting-query-strings}
 
 Sinds Dispatcher versie 4.1.5, gebruik `/filter` sectie om vraagkoorden te beperken. Het wordt hoogst geadviseerd om vraagkoorden uitdrukkelijk toe te staan en generische toelage door `allow` filterelementen uit te sluiten.
 
@@ -902,7 +901,7 @@ Geef het volgende bevel in een terminal of bevelherinnering uit om te proberen o
 
 `curl -H "CQ-Handle: /content" -H "CQ-Path: /content" https://yourhostname/dispatcher/invalidate.cache`
 
-## Toegang tot URL&#39;s met Vanity {#enabling-access-to-vanity-urls-vanity-urls} inschakelen
+## Toegang tot URL&#39;s met Vanity inschakelen {#enabling-access-to-vanity-urls-vanity-urls}
 
 <!-- 
 
@@ -941,7 +940,7 @@ De sectie `/vanity_urls` bevat de volgende eigenschappen:
 
 Gebruik de volgende procedure om toegang tot vanity URLs toe te laten.
 
-1. Als uw renderservice een AEM-instantie is, installeert u het pakket ` com.adobe.granite.dispatcher.vanityurl.content op de publicatie-instantie (zie de opmerking hierboven).
+1. Als uw renderservice een AEM instantie is, installeert u het `com.adobe.granite.dispatcher.vanityurl.content`-pakket op de publicatie-instantie (zie de opmerking hierboven).
 1. Voor elke vanity URL die u voor een AEM of CQ- pagina hebt gevormd, zorg ervoor dat de [`/filter`](#configuring-access-to-content-filter) configuratie URL ontkent. Voeg zo nodig een filter toe dat de URL weigert.
 1. Voeg de `/vanity_urls` sectie onder `/farms` toe.
 1. Start Apache-webserver opnieuw.
@@ -952,7 +951,7 @@ Syndicatieverzoeken zijn gewoonlijk alleen bedoeld voor Dispatcher, zodat ze sta
 
 Indien nodig, plaats het `/propagateSyndPost` bezit aan `"1"` om syndicatieverzoeken aan Dispatcher door te sturen. Indien ingesteld, moet u ervoor zorgen dat de aanvragen voor POSTEN niet worden afgewezen in de filtersectie.
 
-## Het vormen van het Geheime voorgeheugen van de Verzender - /cache {#configuring-the-dispatcher-cache-cache}
+## De Dispatcher Cache - /cache configureren {#configuring-the-dispatcher-cache-cache}
 
 De sectie `/cache` bepaalt hoe de Verzender documenten in cache plaatst. Vorm verscheidene sub-eigenschappen om uw caching strategieën uit te voeren:
 
@@ -997,7 +996,7 @@ Een voorbeeldgeheim voorgeheugensectie zou als volgt kunnen kijken:
 >
 >Voor toestemming-gevoelige caching, lees [Beveiligde Inhoud ](permissions-cache.md) in de cache plaatsen.
 
-### De cachemap {#specifying-the-cache-directory} opgeven
+### De cachemap opgeven {#specifying-the-cache-directory}
 
 De eigenschap `/docroot` identificeert de map waarin bestanden in de cache worden opgeslagen.
 
@@ -1008,7 +1007,7 @@ De eigenschap `/docroot` identificeert de map waarin bestanden in de cache worde
 
 Als u veelvoudige landbouwbedrijven gebruikt, moet elk landbouwbedrijf een verschillende documentwortel gebruiken.
 
-### De naam van het bestand {#naming-the-statfile} wijzigen
+### De naam van het statusbestand wijzigen {#naming-the-statfile}
 
 De eigenschap `/statfile` identificeert het bestand dat als statfile moet worden gebruikt. Dispatcher gebruikt dit bestand om de tijd van de meest recente inhoudsupdate te registreren. Het statusbestand kan elk bestand op de webserver zijn.
 
@@ -1042,7 +1041,7 @@ Als uw vereisten het in cache plaatsen van geverifieerde documenten echter toest
 >
 >Om zittingsbeheer (gebruikend het `/sessionmanagement` bezit) toe te laten, moet `/allowAuthorized` bezit aan `"0"` worden geplaatst.
 
-### Documenten opgeven om {#specifying-the-documents-to-cache} in cache te plaatsen
+### Documenten opgeven om in cache te plaatsen {#specifying-the-documents-to-cache}
 
 Met de eigenschap `/rules` bepaalt u welke documenten in de cache worden geplaatst op basis van het documentpad. Ongeacht de eigenschap `/rules` plaatst Dispatcher een document nooit in de cache in de volgende omstandigheden:
 
@@ -1145,7 +1144,7 @@ Last Modified Date: 2017-11-13T09:23:24.326-0500
 
  -->
 
-### Bestanden op mapniveau {#invalidating-files-by-folder-level} ongeldig maken
+### Bestanden op mapniveau ongeldig maken {#invalidating-files-by-folder-level}
 
 Gebruik de eigenschap `/statfileslevel` om in cache opgeslagen bestanden ongeldig te maken op basis van het pad:
 
@@ -1217,7 +1216,7 @@ De AEM integratie met Adobe Analytics levert configuratiegegevens in een `analyt
 }
 ```
 
-### Aangepaste validatiescripts {#using-custom-invalidation-scripts} gebruiken
+### Aangepaste validatiescripts gebruiken {#using-custom-invalidation-scripts}
 
 Met de eigenschap `/invalidateHandler` kunt u een script definiëren dat wordt aangeroepen voor elk validatieverzoek dat door Dispatcher wordt ontvangen.
 
@@ -1235,7 +1234,7 @@ In het onderstaande voorbeeld wordt elk verzoek om validatie aan een bestand gen
 /invalidateHandler "/opt/dispatcher/scripts/invalidate.sh"
 ```
 
-#### sample invalidation handler script {#sample-invalidation-handler-script}
+#### voorbeeldscript voor validatiehandlers {#sample-invalidation-handler-script}
 
 ```shell
 #!/bin/bash
@@ -1243,7 +1242,7 @@ In het onderstaande voorbeeld wordt elk verzoek om validatie aan een bestand gen
 printf "%-15s: %s %s" $1 $2 $3>> /opt/dispatcher/logs/invalidate.log
 ```
 
-### De clients beperken die de cache {#limiting-the-clients-that-can-flush-the-cache} kunnen leegmaken
+### De clients beperken die de cache kunnen leegmaken {#limiting-the-clients-that-can-flush-the-cache}
 
 De eigenschap `/allowedClients` definieert specifieke clients die de cache mogen leegmaken. De globbende patronen worden aangepast aan IP.
 
@@ -1268,7 +1267,7 @@ Zie [Patronen ontwerpen voor globale eigenschappen](#designing-patterns-for-glob
 >
 >Als dit niet wordt gedaan, kan om het even welke cliënt een vraag uitgeven om het geheime voorgeheugen te ontruimen; als dit herhaaldelijk wordt gedaan kan het de plaatsprestaties ernstig beïnvloeden.
 
-### URL-parameters {#ignoring-url-parameters} negeren
+### URL-parameters worden genegeerd {#ignoring-url-parameters}
 
 In de sectie `ignoreUrlParams` wordt gedefinieerd welke URL-parameters worden genegeerd wanneer wordt bepaald of een pagina in de cache wordt opgeslagen of via de cache wordt geleverd:
 
@@ -1306,7 +1305,7 @@ GET /mypage.html?q=5&p=4
 
 Zie [Patronen ontwerpen voor globale eigenschappen](#designing-patterns-for-glob-properties) voor informatie over globale eigenschappen.
 
-### HTTP-responsheaders {#caching-http-response-headers} in cache plaatsen
+### HTTP-responsheaders in cache plaatsen {#caching-http-response-headers}
 
 >[!NOTE]
 >
@@ -1348,7 +1347,7 @@ Hieronder ziet u een voorbeeld van de standaardconfiguratie:
 >FileETag none
 >```
 
-### Machtigingen {#dispatcher-cache-file-permissions} voor cachebestand voor verzending
+### Machtigingen voor cachebestanden van Dispatcher {#dispatcher-cache-file-permissions}
 
 Met de eigenschap `mode` wordt opgegeven welke bestandsmachtigingen worden toegepast op nieuwe mappen en bestanden in de cache. Dit plaatsen wordt beperkt door `umask` van het roepende proces. Dit is een octaal getal dat wordt samengesteld uit de som van een of meer van de volgende waarden:
 
@@ -1364,7 +1363,7 @@ Met de eigenschap `mode` wordt opgegeven welke bestandsmachtigingen worden toege
 
 De standaardwaarde is `0755` waarmee de eigenaar de groep en anderen kan lezen, schrijven of doorzoeken.
 
-### Bewegend .stat-bestand aanraken {#throttling-stat-file-touching}
+### Startbestand met Throttling .stat aanraken {#throttling-stat-file-touching}
 
 Met het gebrek `/invalidate` bezit, maakt elke activering effectief alle `.html` dossiers ongeldig (wanneer hun weg `/invalidate` sectie aanpast). Op een website met aanzienlijk verkeer zullen meerdere, daaropvolgende activeringen de CPU-belasting op de achtergrond verhogen. In een dergelijk scenario is het wenselijk om `.stat` bestand aanraken te &quot;vertragen&quot; om de website ontvankelijk te houden. U kunt dit doen door het `/gracePeriod` bezit te gebruiken.
 
@@ -1380,7 +1379,7 @@ Als deze is ingesteld, evalueert de eigenschap `/enableTTL` de antwoordheaders v
 >
 >Deze functie is beschikbaar in versie **4.1.11** of later van de Dispatcher.
 
-## Het vormen lading die - /statistics {#configuring-load-balancing-statistics} in evenwicht brengen
+## Load Balancing configureren - /statistics {#configuring-load-balancing-statistics}
 
 In de sectie `/statistics` worden categorieën bestanden gedefinieerd waarvoor de Dispatcher de responsiviteit van elke rendermethode scoort. Dispatcher gebruikt de scores om te bepalen welke renderen om een aanvraag te verzenden.
 
@@ -1460,7 +1459,7 @@ Als er geen `/unavailablePenalty`-eigenschap bestaat, wordt een waarde van `"1"`
 /unavailablePenalty "1"
 ```
 
-## Identificerend een Vaste Omslag van de Verbinding - /stickyConnectionsFor {#identifying-a-sticky-connection-folder-stickyconnectionsfor}
+## Identificeer een Vaste Omslag van de Verbinding - /stickyConnectionsFor {#identifying-a-sticky-connection-folder-stickyconnectionsfor}
 
 Met de eigenschap `/stickyConnectionsFor` wordt één map gedefinieerd die kleverige documenten bevat. Dit wordt geopend via de URL. Dispatcher verzendt alle aanvragen, van één gebruiker, die zich in deze map bevinden naar dezelfde renderinstantie. De stevige verbindingen zorgen ervoor dat de zittingsgegevens voor alle documenten aanwezig en verenigbaar zijn. Dit mechanisme gebruikt het cookie `renderid`.
 
@@ -1492,11 +1491,11 @@ Lees [deze pagina](https://www.owasp.org/index.php/HttpOnly) voor meer informati
 
 Wanneer de kleverige verbindingen worden toegelaten, plaatst de verzender module `renderid` koekje. Dit cookie heeft niet de `secure` vlag, die zou moeten worden toegevoegd om veiligheid te verbeteren. U kunt dit doen door het `secure` bezit in de `/stickyConnections` knoop van een `dispatcher.any` configuratiedossier te plaatsen. De waarde van de eigenschap (ofwel `0` of `1`) definieert of voor het cookie `renderid` het kenmerk `secure` is toegevoegd. De standaardwaarde is `0`, wat betekent het attribuut **if** zal worden toegevoegd het inkomende verzoek veilig is. Als de waarde aan `1` wordt geplaatst, dan zal de veilige vlag worden toegevoegd ongeacht of het inkomende verzoek veilig is of niet.
 
-## Renderfouten {#handling-render-connection-errors} verwerken
+## Renderfouten afhandelen {#handling-render-connection-errors}
 
 Vorm het gedrag van de Verzender wanneer teruggeeft de server een fout 500 terugkeert, of niet beschikbaar is.
 
-### Een pagina {#specifying-a-health-check-page} voor de health check opgeven
+### Een pagina voor een health check opgeven {#specifying-a-health-check-page}
 
 Gebruik de eigenschap `/health_check` om een URL op te geven die wordt gecontroleerd wanneer een 500-statuscode plaatsvindt. Als deze pagina ook een 500 statuscode terugkeert wordt de instantie beschouwd als niet beschikbaar en een configureerbare tijdslijn ( `/unavailablePenalty`) wordt toegepast op teruggeven alvorens opnieuw te proberen.
 
@@ -1518,7 +1517,7 @@ Dispatcher gebruikt een waarde van `"1"` als `/retryDelay` niet uitdrukkelijk wo
 /retryDelay "1"
 ```
 
-### Het vormen van het Aantal Herhalingen {#configuring-the-number-of-retries}
+### Het aantal pogingen configureren {#configuring-the-number-of-retries}
 
 De eigenschap `/numberOfRetries` stelt het maximumaantal ronde verbindingspogingen in dat Dispatcher uitvoert met de renders. Als Dispatcher na dit aantal keren geen verbinding kan maken met een renderbewerking, retourneert Dispatcher een mislukte reactie.
 
@@ -1715,7 +1714,7 @@ Raadpleeg de documentatie bij de Apache-webserver over logrotatie en pijpleiding
 >
 >Nochtans, vereist dit extra middelen, zodat wanneer de Dispatcher regelmatig *volgens uw vereisten* werkt, kunt (zou moeten) u het logboekniveau verminderen.
 
-### Logboekregistratie van sporen {#trace-logging}
+### Trackregistratie {#trace-logging}
 
 Naast andere verbeteringen voor de Dispatcher, introduceert versie 4.2.0 ook Tracks Logging.
 
@@ -1748,7 +1747,7 @@ En een gebeurtenis die wordt geregistreerd wanneer een dossier dat een het blokk
 [Thu Mar 03 14:42:45 2016] [T] [11831] 'GET /content.infinity.json HTTP/1.1' was blocked because of /0082
 ```
 
-## Basisbewerking {#confirming-basic-operation} bevestigen
+## Basisbewerking bevestigen {#confirming-basic-operation}
 
 U kunt de volgende stappen gebruiken om de basisbewerking en interactie van de webserver, de AEM Dispatcher en de instantie te bevestigen:
 
@@ -1771,7 +1770,7 @@ U kunt de volgende stappen gebruiken om de basisbewerking en interactie van de w
 1. Activeer een pagina om te controleren of de cache correct wordt leeggemaakt.
 1. Als alles correct werkt, kunt u `loglevel` tot `0` verminderen.
 
-## Meerdere verzendingen gebruiken {#using-multiple-dispatchers}
+## Meerdere verzenders gebruiken {#using-multiple-dispatchers}
 
 In complexe instellingen kunt u meerdere verzenders gebruiken. U kunt bijvoorbeeld het volgende gebruiken:
 
