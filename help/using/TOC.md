@@ -8,18 +8,17 @@ breadcrumb-title: Handleiding voor verzending
 user-guide-description: Leer Dispatcher te gebruiken voor caching, lading het in evenwicht brengen, en het verbeteren van veiligheid voor uw AEM server.
 feature-set: Experience Manager
 feature: Dispatcher
-topic: Administration
-role: Administrator
-translation-type: tm+mt
-source-git-commit: da6af93fa3dec8e3b2f146e9c8c6183a3185199b
+topic: Beheer
+role: Admin
+source-git-commit: 4439a4f0adfb8e2e0d08636225d2399638d27af3
 workflow-type: tm+mt
-source-wordcount: '90'
+source-wordcount: '89'
 ht-degree: 4%
 
 ---
 
 
-# AEM Help bij Dispatcher {#using}
+# Help bij AEM Dispatcher {#using}
 
 + [Overzicht](dispatcher.md)
 + Aan de slag {#getting-started}
@@ -31,7 +30,7 @@ ht-degree: 4%
    + [In cache geplaatste pagina&#39;s ongeldig maken van AEM](page-invalidate.md)
    + [Een website optimaliseren voor cacheprestaties](https://helpx.adobe.com/experience-manager/6-4/sites/deploying/using/configuring-performance.html)
    + [Beveiligde inhoud in cache plaatsen](permissions-cache.md)
-   + [Dispatcher gebruiken met meerdere domeinen  ](dispatcher-domains.md)
+   + [Dispatcher gebruiken met meerdere domeinen ](dispatcher-domains.md)
    + [SSL gebruiken met Dispatcher](dispatcher-ssl.md)
    + [Dispatcher configureren om CSRF-aanvallen te voorkomen](configuring-dispatcher-to-prevent-csrf.md)
 + Problemen oplossen {#troubleshooting}
