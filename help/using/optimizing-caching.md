@@ -1,8 +1,8 @@
 ---
 title: Een website optimaliseren voor cacheprestaties
-seo-title: Een website optimaliseren voor cacheprestaties
+seo-title: Optimizing a Website for Cache Performance
 description: Leer hoe u uw website ontwerpt om de voordelen van caching te maximaliseren.
-seo-description: Dispatcher biedt een aantal ingebouwde mechanismen die u kunt gebruiken om de prestaties te optimaliseren. Leer hoe u uw website ontwerpt om de voordelen van caching te maximaliseren.
+seo-description: Dispatcher offers a number of built-in mechanisms that you can use to optimize performance. Learn how to design your web site to maximize the benefits of caching.
 uuid: 2d4114d1-f464-4e10-b25c-a1b9a9c715d1
 contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
@@ -13,10 +13,9 @@ redirecttarget: https://helpx.adobe.com/experience-manager/6-4/sites/deploying/u
 index: y
 internal: n
 snippet: y
-translation-type: tm+mt
-source-git-commit: 2ca816ac0776d72be651b76ff4f45e0c3ed1450f
+source-git-commit: 762f575a58f53d25565fb9f67537e372c760674f
 workflow-type: tm+mt
-source-wordcount: '1167'
+source-wordcount: '1134'
 ht-degree: 0%
 
 ---
@@ -48,23 +47,22 @@ Dispatcher biedt een aantal ingebouwde mechanismen die u kunt gebruiken om de pr
 >* kan geen andere dingen opslaan, zoals HTTP-headers, cookies, sessiegegevens en formuliergegevens.
 
 >
->
-In het algemeen, impliceren veel caching strategieën het selecteren van goede URLs en het verlaten van deze extra gegevens.
+>In het algemeen, impliceren veel caching strategieën het selecteren van goede URLs en het verlaten van deze extra gegevens.
 
-## Consistente paginacodering {#using-consistent-page-encoding} gebruiken
+## Consistente paginacodering gebruiken {#using-consistent-page-encoding}
 
 HTTP-aanvraagheaders worden niet in het cachegeheugen opgeslagen en er kunnen zich dus problemen voordoen als u pagina-coderingsgegevens in de header opslaat. Als Dispatcher dan een pagina uit de cache bedient, wordt de standaardcodering van de webserver gebruikt voor de pagina. Dit probleem kan op twee manieren worden voorkomen:
 
 * Als u slechts één codering gebruikt, moet u ervoor zorgen dat de codering die op de webserver wordt gebruikt, gelijk is aan de standaardcodering van de AEM website.
-* Gebruik een `<META>`-tag in de HTML `head`-sectie om de codering in te stellen, zoals in het volgende voorbeeld:
+* Een `<META>` -tag in de HTML `head` -sectie om de codering in te stellen, zoals in het volgende voorbeeld:
 
 ```xml
         <META http-equiv="Content-Type" content="text/html; charset=EUC-JP">
 ```
 
-## Vermijd URL-parameters {#avoid-url-parameters}
+## URL-parameters vermijden {#avoid-url-parameters}
 
-Vermijd indien mogelijk URL-parameters voor pagina&#39;s die u in cache wilt plaatsen. Als u bijvoorbeeld een fotogalerie hebt, wordt de volgende URL nooit in de cache geplaatst (tenzij de Dispatcher [dienovereenkomstig is geconfigureerd](dispatcher-configuration.md#main-pars_title_24)):
+Vermijd indien mogelijk URL-parameters voor pagina&#39;s die u in cache wilt plaatsen. Als u bijvoorbeeld een fotogalerie hebt, wordt de volgende URL nooit in de cache opgeslagen (tenzij Dispatcher wordt verzonden) [dienovereenkomstig geconfigureerd](dispatcher-configuration.md#main-pars_title_24)):
 
 ```xml
 www.myCompany.com/pictures/gallery.html?event=christmas&amp;page=1
@@ -96,13 +94,13 @@ www.myCompany.com/news/main.large.html
 >
 >Voor de meeste indelingsaspecten is het ook mogelijk stijlpagina&#39;s en/of clientscripts te gebruiken. Deze werken meestal heel goed met caching.
 >
->Dit is ook handig voor een afdrukversie, waarin u bijvoorbeeld een URL kunt gebruiken: &quot;
+>Dit is ook handig voor een afdrukversie, waarin u bijvoorbeeld een URL kunt gebruiken:
 >
 >`www.myCompany.com/news/main.print.html`
 >
 >Met behulp van de scriptglobling van de sjabloondefinitie kunt u een afzonderlijk script opgeven dat de afdrukpagina&#39;s rendert.
 
-## Als titels gebruikte afbeeldingsbestanden {#invalidating-image-files-used-as-titles} ongeldig maken
+## Als titels gebruikte afbeeldingsbestanden ongeldig maken {#invalidating-image-files-used-as-titles}
 
 Als u paginatitels of andere tekst als afbeeldingen rendert, is het raadzaam de bestanden op te slaan, zodat deze worden verwijderd bij een update van de inhoud op de pagina:
 
@@ -117,7 +115,7 @@ U kunt bijvoorbeeld de titel van de pagina myPage.html opslaan in het bestand my
 >
 >Het afbeeldingsbestand bestaat niet noodzakelijkerwijs fysiek op de AEM. U kunt een script gebruiken waarmee het afbeeldingsbestand dynamisch wordt gemaakt. Dispatcher slaat het bestand vervolgens op de webserver op.
 
-## Beeldbestanden voor navigatie {#invalidating-image-files-used-for-navigation} ongeldig maken
+## Beeldbestanden die voor navigatie worden gebruikt ongeldig maken {#invalidating-image-files-used-for-navigation}
 
 Als u foto&#39;s gebruikt voor de navigatie-items, is de methode in feite hetzelfde als bij titels, iets complexer. Sla alle navigatieafbeeldingen op de doelpagina&#39;s op. Als u twee afbeeldingen gebruikt voor normaal en actief, kunt u de volgende scripts gebruiken:
 
@@ -148,10 +146,9 @@ Dispatcher kan geen gepersonaliseerde gegevens in het voorgeheugen onderbrengen,
 >
 
 
-
 ## Vaste verbindingen {#sticky-connections}
 
-[Vaste ](dispatcher.md#TheBenefitsofLoadBalancing) verbindingen zorgen ervoor dat de documenten voor één gebruiker allen op de zelfde server samengesteld zijn. Als een gebruiker deze map verlaat en er later weer naar terugkeert, blijft de verbinding behouden. Definieer één map voor alle documenten die voor de website kleverige verbindingen vereisen. Probeer er geen andere documenten in op te nemen. Dit is van invloed op de taakverdeling als u gepersonaliseerde pagina&#39;s en sessiegegevens gebruikt.
+[Vaste verbindingen](dispatcher.md#TheBenefitsofLoadBalancing) Zorg ervoor dat de documenten voor één gebruiker allen op de zelfde server samengesteld zijn. Als een gebruiker deze map verlaat en er later weer naar terugkeert, blijft de verbinding behouden. Definieer één map voor alle documenten die voor de website kleverige verbindingen vereisen. Probeer er geen andere documenten in op te nemen. Dit is van invloed op de taakverdeling als u gepersonaliseerde pagina&#39;s en sessiegegevens gebruikt.
 
 ## MIME-typen {#mime-types}
 
