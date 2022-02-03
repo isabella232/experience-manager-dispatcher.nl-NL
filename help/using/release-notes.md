@@ -9,9 +9,9 @@ content-type: reference
 products: SG_EXPERIENCEMANAGER/6.4
 discoiquuid: ff3d38e0-71c9-4b41-85f9-fa896393aac5
 exl-id: b55c7a34-d57b-4d45-bd83-29890f1524de
-source-git-commit: bd03499fae4096fe5642735eb466276f1a179dec
+source-git-commit: 505c13c5dc563bbe57682b4692547fc238b29e1b
 workflow-type: tm+mt
-source-wordcount: '941'
+source-wordcount: '951'
 ht-degree: 2%
 
 ---
@@ -50,7 +50,7 @@ Zie voor gedetailleerde instructies [Dispatcher installeren](dispatcher-install.
 
 **Verbeteringen**:
 
-* DISP-874 - creeert een berichtcherconfiguratie om implementatie van DISP-818 of of aan of uit door een vlag te draaien `DispatcherRestrictUncacheableContent`. De standaardwaarde is Uit. Wanneer Uit, verwijdert het om het even welke caching kopballen die door mod worden geplaatst verlopen voor uncacheable inhoud. Dit is anders dan het gedrag in versie 4.3.3 (maar hetzelfde als versies ouder dan versie 4.3.3). Houden `DispatcherRestrictUncacheableContent`De standaardinstelling Uit is de aanbevolen aanpak, zodat de browsercache meer flexibiliteit heeft. Als u bij een upgrade van versie 4.3.3 naar 4.3.4 hetzelfde gedrag wilt behouden als in versie 4.3.3, moet u dit expliciet instellen `DispatcherRestrictUncacheableContent` aan Aan.
+* DISP-874 - creeert een berichtcherconfiguratie om implementatie van DISP-818 of of aan of uit door een vlag te draaien `DispatcherRestrictUncacheableContent`. De standaardwaarde is Uit. Wanneer Aan, verwijdert het om het even welke caching kopballen die door mod worden geplaatst verlopen voor uncacheable inhoud. Dit is anders dan het gedrag in versie 4.3.3 (waar de standaardwaarde Aan was), maar hetzelfde als versies ouder dan 4.3.3 (waar de standaardinstelling Uit was). Houden `DispatcherRestrictUncacheableContent`De standaardinstelling Uit is de aanbevolen aanpak, zodat de browsercache meer flexibiliteit heeft. Als u bij een upgrade van versie 4.3.3 naar 4.3.4 hetzelfde gedrag wilt behouden als in versie 4.3.3, moet u dit expliciet instellen `DispatcherRestrictUncacheableContent` aan Aan.
 * DISP-841 - De Verzender respecteert /serverStaleOnError niet voor 504 reactiecode
 * DISP-874 - creeer een berichtcherconfiguratie om implementatie van DISP-818 of weg te draaien
 * DISP-883 - Spoor tonend URL verzoek Decomposition in Dispatcher
