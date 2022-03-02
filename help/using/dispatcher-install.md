@@ -10,7 +10,7 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: f00ad751-6b95-4365-8500-e1e0108d9536
 exl-id: 9375d1c0-8d9e-46cb-9810-fa4162a8c1ba
-source-git-commit: bd03499fae4096fe5642735eb466276f1a179dec
+source-git-commit: d19a27256c44ec00fd440b2f8a2fe408a4a4b7c8
 workflow-type: tm+mt
 source-wordcount: '3693'
 ht-degree: 0%
@@ -49,11 +49,11 @@ De volgende tabel bevat de id van de webserver die wordt gebruikt in bestandsnam
 
 >[!CAUTION]
 >
->You should install the latest version of Dispatcher that is available for your platform. On a yearly basis, you should upgrade your Dispatcher instance to use the latest version to take advantage of product improvements.
+>Installeer de nieuwste versie van Dispatcher die beschikbaar is voor uw platform. Op jaarbasis, zou u uw instantie moeten bevorderen Dispatcher om de recentste versie te gebruiken om uit productverbeteringen voordeel te halen.
 
 >[!NOTE]
 >
->Klanten die specifiek een upgrade uitvoeren van versie 4.3.3 naar versie 4.3.4, merken op dat het in cache plaatsen van koppen anders werkt dan bij niet-cachebare inhoud. To read more about this change please see the [Release Notes](/help/using/release-notes.md#nov) page.
+>Klanten die specifiek een upgrade uitvoeren van versie 4.3.3 naar versie 4.3.4, merken op dat het in cache plaatsen van koppen anders werkt dan bij niet-cachebare inhoud. Voor meer informatie over deze wijziging raadpleegt u de [Opmerkingen bij de release](/help/using/release-notes.md#nov) pagina.
 
 Elk archief bevat de volgende bestanden:
 
@@ -64,7 +64,7 @@ Elk archief bevat de volgende bestanden:
 
 >[!NOTE]
 >
->Please check the README file for any last-minute changes / platform specific notes before starting the installation.
+>Controleer het README-bestand op eventuele laatste wijzigingen/platformspecifieke opmerkingen voordat u de installatie start.
 
 <!-- 
 
@@ -101,13 +101,13 @@ Zie de volgende bronnen voor informatie over het installeren van deze webserver:
 
 IIS versies 8.5 en 10 vereisen dat de volgende componenten IIS worden geïnstalleerd:
 
-* ISAPI Extensions
+* ISAPI-extensies
 
 Ook, moet u de rol van de Server van het Web (IIS) toevoegen. Gebruik Serverbeheer om de rol en componenten toe te voegen.
 
-## Microsoft IIS - Installing the Dispatcher module {#microsoft-iis-installing-the-dispatcher-module}
+## Microsoft IIS - De Dispatcher-module installeren {#microsoft-iis-installing-the-dispatcher-module}
 
-The required archive for Microsoft Internet Information System is:
+Het vereiste archief voor Microsoft Internet Information System is:
 
 * `dispatcher-iis-<operating-system>-<dispatcher-release-number>.zip`
 
@@ -173,12 +173,12 @@ Vorm IIS om de Dispatcher ISAPI module te integreren. In IIS gebruikt u toewijzi
 
 ### Het vormen Anonieme Toegang - IIS 8.5 en 10 {#configuring-anonymous-access-iis-and}
 
-The default Flush replication agent on the Author instance is configured so that it does not send security credentials with flush requests. Daarom moet de website die u een Dispatcher geheime voorgeheugen gebruikt anonieme toegang toestaan.
+De standaard Flush replicatieagent op de instantie van de Auteur wordt gevormd zodat het geen veiligheidsgeloofsbrieven met flush verzoeken verzendt. Daarom moet de website die u een Dispatcher geheime voorgeheugen gebruikt anonieme toegang toestaan.
 
 Als uw website een authentificatiemethode gebruikt, moet de Flush replicatieagent dienovereenkomstig worden gevormd.
 
 1. Open IIS Manager en selecteer de website die u als Disptcher-cache gebruikt.
-1. Using Features View mode, in the IIS section double click Authentication.
+1. Gebruikend de wijze van de Mening van Eigenschappen, in de sectie IIS dubbelklikt Authentificatie.
 1. Als Anonieme verificatie niet is ingeschakeld, selecteert u Anonieme verificatie en klikt u in het gedeelte Handelingen op Inschakelen.
 
 ### Integratie van de Dispatcher ISAPI Module - IIS 8.5 en 10 {#integrating-the-dispatcher-isapi-module-iis-and}
@@ -255,7 +255,7 @@ Gebruik de volgende procedure om het logboekberichten van de Ontvanger aan een l
 
    `IIS AppPool\DefaultAppPool`
 
-1. Click the Check Names button. Klik op OK als Windows het gebruikersaccount oplost.
+1. Klik op de knop Namen controleren. Klik op OK als Windows het gebruikersaccount oplost.
 1. Selecteer in het dialoogvenster Machtigingen voor de verzendermap de account die u zojuist hebt toegevoegd, alle machtigingen voor de account inschakelen **behalve voor volledige controle,** en klik op OK. Klik op OK om het dialoogvenster Eigenschappen van map te sluiten.
 1. Een teksteditor gebruiken om het dialoogvenster `disp_iis.ini` bestand.
 1. Voeg een tekstregel toe die lijkt op het volgende voorbeeld om de locatie van het logbestand te configureren en sla het bestand vervolgens op:
@@ -390,7 +390,7 @@ De Dispatcher-specifieke configuratieingangen worden geplaatst na de ingang Load
 
 ```
 ...
-<fModule disp_apache2.c>
+<IfModule disp_apache2.c>
 DispatcherConfig conf/dispatcher.any
 DispatcherLog logs/dispatcher.log DispatcherLogLevel 3
 DispatcherNoServerHeader 0 DispatcherDeclineRoot 0
@@ -411,9 +411,9 @@ De individuele configuratieparameters:
 | DispatcherNoServerHeader | *Deze parameter is vervangen en heeft geen effect meer.*<br/><br/> Hiermee definieert u de serverkoptekst die moet worden gebruikt: <br/><ul><li>undefined of 0 - de de serverkopbal van HTTP bevat de AEM versie. </li><li>1 - de header van de Apache-server wordt gebruikt.</li></ul> |
 | DispatcherDeclineRoot | Bepaalt of verzoeken aan de wortel &quot;/&quot; te weigeren: <br/>**0** - aanvragen accepteren voor / <br/>**1** - verzoeken aan / worden niet door de verzender afgehandeld; gebruik mod_alias voor de correcte afbeelding. |
 | DispatcherUseProcessURL | Hiermee wordt gedefinieerd of vooraf verwerkte URL&#39;s moeten worden gebruikt voor alle verdere verwerking door Dispatcher: <br/>**0** - gebruik de oorspronkelijke URL die aan de webserver is doorgegeven. <br/>**1** - de verzender de URL gebruikt die al is verwerkt door de handlers die aan de verzender voorafgaan (d.w.z. `mod_rewrite`) in plaats van de oorspronkelijke URL die aan de webserver is doorgegeven.  Het origineel of de verwerkte URL wordt bijvoorbeeld gekoppeld aan de Dispatcher-filters. De URL wordt ook gebruikt als basis voor de structuur van het cachebestand.   Raadpleeg de documentatie bij de Apache-website voor informatie over mod_rewrite. bijvoorbeeld Apache 2.4. Als mod_rewrite wordt gebruikt, is het raadzaam de markering &#39;passthrough&#39; te gebruiken | PT&#39; (ga door aan volgende manager) om de herschrijfmotor te dwingen om het uri gebied van de interne request_rec structuur aan de waarde van het filename gebied te plaatsen. |
-| DispatcherPassError | Definieert hoe foutcodes voor ErrorDocument-afhandeling worden ondersteund: <br/>**0** - Dispatcher spoolt alle foutreacties naar de client. <br/>**1** - Dispatcher genereert geen foutreactie op de client (waar de statuscode groter of gelijk is aan 400), maar geeft de statuscode door aan Apache, die bijvoorbeeld een ErrorDocument-instructie toestaat om een dergelijke statuscode te verwerken. <br/>**Codebereik** - Geef een bereik foutcodes op waarvoor het antwoord wordt doorgegeven aan Apache. Andere foutcodes worden doorgegeven aan de client. For example, the following configuration passes responses for error 412 to the client, and all other errors are passed to Apache: DispatcherPassError 400-411,413-417 |
-| DispatcherKeepAliveTimeout | Specifies the keep-alive timeout, in seconds. Vanaf Dispatcher versie 4.2.0 is de standaardwaarde voor het in leven houden 60. Met de waarde 0 wordt het in leven houden uitgeschakeld. |
-| DispatcherNoCanonURL | Setting this parameter to On will pass the raw URL to the backend instead of the canonicalised one and will override the settings of DispatcherUseProcessedURL. The default value is Off. <br/>**Opmerking**: De filterregels in de configuratie Dispatcher worden altijd geëvalueerd op basis van de ontsmette URL en niet op basis van de onbewerkte URL. |
+| DispatcherPassError | Definieert hoe foutcodes voor ErrorDocument-afhandeling worden ondersteund: <br/>**0** - Dispatcher spoolt alle foutreacties naar de client. <br/>**1** - Dispatcher genereert geen foutreactie op de client (waar de statuscode groter of gelijk is aan 400), maar geeft de statuscode door aan Apache, die bijvoorbeeld een ErrorDocument-instructie toestaat om een dergelijke statuscode te verwerken. <br/>**Codebereik** - Geef een bereik foutcodes op waarvoor het antwoord wordt doorgegeven aan Apache. Andere foutcodes worden doorgegeven aan de client. De volgende configuratie geeft bijvoorbeeld reacties voor fout 412 door aan de client en alle andere fouten worden doorgegeven aan Apache: DispatcherPassError 400-411,413-417 |
+| DispatcherKeepAliveTimeout | Geeft de time-out bij &#39;houden in leven&#39; in seconden aan. Vanaf Dispatcher versie 4.2.0 is de standaardwaarde voor het in leven houden 60. Met de waarde 0 wordt het in leven houden uitgeschakeld. |
+| DispatcherNoCanonURL | Als u deze parameter instelt op Aan, wordt de onbewerkte URL doorgegeven aan de achterkant in plaats van de gecanonicaliseerde URL en worden de instellingen van DispatcherUseProcessURL genegeerd. De standaardwaarde is Uit. <br/>**Opmerking**: De filterregels in de configuratie Dispatcher worden altijd geëvalueerd op basis van de ontsmette URL en niet op basis van de onbewerkte URL. |
 
 
 
@@ -581,7 +581,7 @@ Raadpleeg de documentatie bij de betreffende webservers voor volledige informati
 De Dispatcher wordt geleverd als:
 
 * **Windows**: een Dynamic Link Library (DLL)
-* **Unix**: a Dynamic Shared Object (DSO)
+* **Unix**: een dynamisch gezamenlijk object (DSO)
 
 De archiefbestanden voor de installatie bevatten de volgende bestanden, afhankelijk van of u Windows of Unix hebt geselecteerd:
 
@@ -592,16 +592,16 @@ De archiefbestanden voor de installatie bevatten de volgende bestanden, afhankel
 | `dispatcher.so` | Unix: Een voorbeeldkoppeling. |
 | `obj.conf.disp` | Een voorbeeldconfiguratiebestand voor de iPlanet/Sun Java System-webserver. |
 | `dispatcher.any` | Een voorbeeldconfiguratiebestand voor de Dispatcher. |
-| README | Leesmij-bestand met installatie-instructies en informatie van het laatste moment. Note: Please check this file before starting the installation. |
+| README | Leesmij-bestand met installatie-instructies en informatie van het laatste moment. Opmerking: Controleer dit bestand voordat u de installatie start. |
 | WIJZIGINGEN | Wijzigt het bestand met de problemen die zijn opgelost in de huidige en eerdere versies. |
 
 Ga als volgt te werk om de Dispatcher aan uw webserver toe te voegen:
 
-1. Place the Dispatcher file in the web server&#39;s `plugin` directory:
+1. Plaats het Dispatcher-bestand in de `plugin` map:
 
 ### Sun Java System Web Server / iPlanet - Configureren voor Dispatcher {#sun-java-system-web-server-iplanet-configure-for-the-dispatcher}
 
-The web server needs to be configured, using `obj.conf`. In de installatiekit Dispatcher vindt u een voorbeeld-configuratiebestand met de naam `obj.conf.disp`.
+De webserver moet worden geconfigureerd met `obj.conf`. In de installatiekit Dispatcher vindt u een voorbeeld-configuratiebestand met de naam `obj.conf.disp`.
 
 1. Ga naar `<WEBSERVER_ROOT>/config`.
 1. Openen `obj.conf`voor bewerken.
