@@ -9,9 +9,9 @@ content-type: reference
 products: SG_EXPERIENCEMANAGER/6.4
 discoiquuid: ff3d38e0-71c9-4b41-85f9-fa896393aac5
 exl-id: b55c7a34-d57b-4d45-bd83-29890f1524de
-source-git-commit: 4e17217d32e2d5d9e2435ec4d70e0d05d3905e1c
+source-git-commit: 69aa52221e997e0b68c89bf383d36fdb7093ac4d
 workflow-type: tm+mt
-source-wordcount: '976'
+source-wordcount: '977'
 ht-degree: 2%
 
 ---
@@ -31,9 +31,9 @@ ht-degree: 2%
 
 ## Systeemvereisten en -vereisten {#system-requirements-and-prerequisites}
 
-Zie de [Ondersteunde Platforms](https://helpx.adobe.com/experience-manager/6-4/sites/deploying/using/technical-requirements.html) voor meer informatie over vereisten en voorwaarden.
+Zie de [Ondersteunde Platforms](https://helpx.adobe.com/experience-manager/6-4/sites/deploying/using/technical-requirements.html)voor meer informatie over vereisten en voorwaarden.
 
-Adobe raadt u ten zeerste aan de nieuwste versie van AEM Dispatcher te gebruiken om de nieuwste functionaliteit, de meest recente opgeloste problemen en de best mogelijke prestaties te benutten.
+Adobe raadt u ten zeerste aan de nieuwste versie van AEM Dispatcher te gebruiken om te profiteren van de nieuwste functionaliteit, de meest recente opgeloste problemen en de best mogelijke prestaties.
 
 ## Installatie-instructies {#installation-instructions}
 
