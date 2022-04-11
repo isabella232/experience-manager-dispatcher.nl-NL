@@ -10,9 +10,9 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: 4f9b2bc8-a309-47bc-b70d-a1c0da78d464
 exl-id: 3d8d8204-7e0d-44ad-b41b-6fec2689c6a6
-source-git-commit: 753f9fc35968996ee83d5947585fd52f2b981632
+source-git-commit: 11c3d7d627c96bb6ef647b5a067d3926eca347fc
 workflow-type: tm+mt
-source-wordcount: '827'
+source-wordcount: '829'
 ht-degree: 0%
 
 ---
@@ -46,7 +46,7 @@ De volgende diagrammen illustreren de orde van gebeurtenissen die voorkomen wann
 
 1. Dispatcher bepaalt dat de inhoud niet in het cachegeheugen is opgeslagen of moet worden bijgewerkt.
 1. Verzender stuurt het oorspronkelijke verzoek door naar de rendermethode.
-1. Renderen roept AEM autorisator servlet (dit is geen servlet van AuthChcker van de Dispatcher) om een veiligheidscontrole uit te voeren. Wanneer de gebruiker wordt geautoriseerd, omvat teruggeven de teruggegeven pagina in het lichaam van het antwoordbericht.
+1. Renderen roept AEM autorisator servlet (dit is niet de servlet van AuthChcker van de Dispatcher) om een veiligheidscontrole uit te voeren. Wanneer de gebruiker wordt geautoriseerd, omvat teruggeven de teruggegeven pagina in het lichaam van het antwoordbericht.
 1. De verzender stuurt de reactie door naar de browser. Dispatcher voegt de hoofdtekst van het reactiebericht van de render aan het geheime voorgeheugen toe.
 
 ## Gebruiker is niet geautoriseerd {#user-is-not-authorized}
@@ -57,7 +57,7 @@ De volgende diagrammen illustreren de orde van gebeurtenissen die voorkomen wann
 1. Dispatcher verstuurt een aanvraagbericht naar de render die alle koptekstregels uit de browseraanvraag bevat.
 1. Renderen roept de server van de Controleur van de Auth om een veiligheidscontrole uit te voeren die ontbreekt, en teruggeeft door:sturen het originele verzoek aan Dispatcher.
 1. Verzender stuurt het oorspronkelijke verzoek door naar de rendermethode.
-1. Renderen roept AEM autorisator servlet (dit is geen servlet van AuthChcker van de Dispatcher) om een veiligheidscontrole uit te voeren. Wanneer de gebruiker wordt geautoriseerd, omvat teruggeven de teruggegeven pagina in het lichaam van het antwoordbericht.
+1. Renderen roept AEM autorisator servlet (dit is niet de servlet van AuthChcker van de Dispatcher) om een veiligheidscontrole uit te voeren. Wanneer de gebruiker wordt geautoriseerd, omvat teruggeven de teruggegeven pagina in het lichaam van het antwoordbericht.
 1. De verzender stuurt de reactie door naar de browser. Dispatcher voegt de hoofdtekst van het reactiebericht van de render aan het geheime voorgeheugen toe.
 
 
