@@ -2,7 +2,7 @@
 title: Dispatcher configureren
 description: Leer hoe u Dispatcher configureert.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 9ad35121bde90916a0376b33853e190b382ce5cd
+source-git-commit: deb232be3c4c5e3d11d13cbccb282409d90b93bb
 workflow-type: tm+mt
 source-wordcount: '8528'
 ht-degree: 0%
@@ -840,7 +840,7 @@ Een enkele vermelding kan `glob` of een combinatie van `method`, `url`, `query`,
 
 ### Beveiliging van Dispatcher testen {#testing-dispatcher-security}
 
-Dispatcher-filters blokkeren de toegang tot de volgende pagina&#39;s en scripts bij AEM publicatie-instanties. Gebruik een webbrowser om te proberen de volgende pagina&#39;s te openen zoals een bezoeker van de site zou doen en om te controleren of code 404 wordt geretourneerd. Pas de filters aan als er andere resultaten worden verkregen.
+Dispatcher-filters blokkeren de toegang tot de volgende pagina&#39;s en scripts bij AEM publicatie-instanties. Gebruik een webbrowser om te proberen de volgende pagina&#39;s te openen zoals een bezoeker van de site zou doen en om te controleren of code 403 wordt geretourneerd. Pas de filters aan als er andere resultaten worden verkregen.
 
 Let erop dat u normale rendering van pagina&#39;s moet zien voor `/content/add_valid_page.html?debug=layout`.
 
@@ -1343,7 +1343,6 @@ Hieronder ziet u een voorbeeld van de standaardconfiguratie:
 >
 >* Voeg de koptekstnaam toe in het dialoogvenster `/cache/headers`sectie.
 >* Voeg het volgende toe [Apache-richtlijn](https://httpd.apache.org/docs/2.4/mod/core.html#fileetag) in de sectie Verzendingsprogramma:
-
 >
 >```xml
 >FileETag none
@@ -1824,7 +1823,7 @@ De configuratie van het landbouwbedrijf bevat geen documentwortel (configuratiee
 * **niet in cache geplaatst: pad naar cachebestand te lang**\
    Het doelbestand - de samenvoeging van het hoofdbestand van het document en het URL-bestand - overschrijdt de langst mogelijke bestandsnaam op het systeem.
 * **niet in cache geplaatst: tijdelijk bestandspad te lang**\
-   De sjabloon voor tijdelijke bestandsnamen overschrijdt de langst mogelijke bestandsnaam op het systeem. De verzender maakt eerst een tijdelijk bestand voordat het cachebestand daadwerkelijk wordt gemaakt of overschreven. De tijdelijke bestandsnaam is de naam van het doelbestand met de tekens `_YYYYXXXXXX` toegevoegd, waarbij `Y` en `X` wordt vervangen om een unieke naam te maken.
+   De sjabloon voor tijdelijke bestandsnamen overschrijdt de langst mogelijke bestandsnaam op het systeem. De verzender maakt eerst een tijdelijk bestand voordat het cachebestand daadwerkelijk wordt gemaakt of overschreven. De tijdelijke bestandsnaam is de naam van het doelbestand met de tekens `_YYYYXXXXXX` toegevoegd, waarbij de `Y` en `X` wordt vervangen om een unieke naam te maken.
 * **niet in cache geplaatst: request-URL heeft geen extensie**\
    De aanvraag-URL heeft geen extensie of er is een pad dat volgt op de bestandsextensie, bijvoorbeeld: `/test.html/a/path`.
 * **niet in cache geplaatst: verzoek was geen GET of HEAD**
