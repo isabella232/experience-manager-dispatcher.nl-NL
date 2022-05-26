@@ -9,7 +9,7 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: 1d449ee2-4cdd-4b7a-8b4e-7e6fc0a1d7ee
 exl-id: c9266683-6890-4359-96db-054b7e856dd0
-source-git-commit: 76f7a3fc8d98657c5f46912f452c05fce1b5be61
+source-git-commit: 85a7f38ecb5f5fe620ff51a7cdbe29f546559288
 workflow-type: tm+mt
 source-wordcount: '3190'
 ht-degree: 0%
@@ -27,7 +27,7 @@ Dispatcher is een Adobe Experience Manager-programma voor caching en/of taakverd
 Het proces voor de implementatie van de dispatcher is onafhankelijk van de webserver en het gekozen besturingssysteem-platform:
 
 1. Meer informatie over Dispatcher (deze pagina). Zie ook [vaak gestelde vragen over verzender](https://helpx.adobe.com/experience-manager/using/dispatcher-faq.html).
-1. Een [ondersteunde webserver](https://helpx.adobe.com/experience-manager/6-3/sites/deploying/using/technical-requirements.html) volgens de documentatie van de webserver.
+1. Een [ondersteunde webserver](https://helpx.adobe.com/experience-manager/6-5/sites/deploying/using/technical-requirements.html) volgens de documentatie van de webserver.
 1. [De module Dispatcher installeren](dispatcher-install.md) op uw webserver en configureer de webserver dienovereenkomstig.
 1. [Dispatcher configureren](dispatcher-configuration.md) (het bestand dispatcher.any).
 1. [AEM configureren](page-invalidate.md) zodat de inhoud wordt bijgewerkt, maakt u de cache ongeldig.
