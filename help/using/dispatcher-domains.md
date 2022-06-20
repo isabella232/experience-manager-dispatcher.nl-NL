@@ -11,7 +11,7 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: 40d91d66-c99b-422d-8e61-c0ced23272ef
 exl-id: 1470b636-7e60-48cc-8c31-899f8785dafa
-source-git-commit: 2aed8101766363834c2fb5b27e0dbd004fc5daf9
+source-git-commit: 7d2d1cbbb2fb444769239d48c9fbff4cfd2373a2
 workflow-type: tm+mt
 source-wordcount: '2965'
 ht-degree: 0%
@@ -62,9 +62,11 @@ Wanneer Dispatcher Flush-replicatiemiddelen vragen dat Dispatcher cachebestanden
 
 ![](assets/chlimage_1-9.png)
 
-1. Een pagina wordt geactiveerd op de AEM auteur-instantie en de inhoud wordt gerepliceerd naar de publicatie-instantie.
-1. De Dispatcher Flush Agent roept Dispatcher aan om de cache voor de gerepliceerde inhoud ongeldig te maken.
-1. Dispatcher tikt een of meer .stat-bestanden aan om de cachebestanden ongeldig te maken.
+<ol type="a">
+  <li>Een pagina wordt geactiveerd op de AEM auteur-instantie en de inhoud wordt gerepliceerd naar de publicatie-instantie.</li>
+  <li>De Dispatcher Flush Agent roept Dispatcher aan om de cache voor de gerepliceerde inhoud ongeldig te maken.</li>
+  <li>Dispatcher tikt een of meer .stat-bestanden aan om de cachebestanden ongeldig te maken.</li>
+</ol>
 
 Als u Dispatcher met meerdere domeinen wilt gebruiken, moet u AEM, Dispatcher en uw webserver configureren. De oplossingen die op deze pagina worden beschreven zijn algemeen en zijn op de meeste milieu&#39;s van toepassing. Wegens de ingewikkeldheid van sommige AEM topologieën, kan uw oplossing verdere douaneconfiguraties vereisen om bepaalde kwesties op te lossen. U zult waarschijnlijk de voorbeelden moeten aanpassen om aan uw bestaand de infrastructuur en beheersbeleid van IT te voldoen.
 
