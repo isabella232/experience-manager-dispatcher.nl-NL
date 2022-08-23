@@ -2,9 +2,9 @@
 title: Dispatcher configureren
 description: Leer hoe u Dispatcher configureert. Leer over steun voor IPv4 en IPv6, configuratiedossiers, omgevingsvariabelen, het noemen van de instantie, het bepalen van landbouwbedrijven, het identificeren van virtuele gastheren, en meer.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 385495c76cd770409e9a002c685e8d375b159207
+source-git-commit: d7045fd779bf2c59034247266930e4b79ec2156f
 workflow-type: tm+mt
-source-wordcount: '8573'
+source-wordcount: '8572'
 ht-degree: 0%
 
 ---
@@ -1374,7 +1374,7 @@ Lees voor meer informatie ook de `/invalidate` en `/statfileslevel`bovenstaande 
 
 ### Het vormen tijd-Gebaseerde Invalidatie van het Geheime voorgeheugen - /enableTTL {#configuring-time-based-cache-invalidation-enablettl}
 
-Indien ingesteld op 1 (/enableTTL &quot;1&quot;), `/enableTTL` eigenschap evalueert de antwoordheaders vanaf de achtergrond en als deze een `Cache-Control` de maximumleeftijd of `Expires` datum, wordt een hulpdossier, leeg dossier naast het geheim voorgeheugendossier gecreeerd, met wijzigingstijd gelijk aan de vervaldatum. Wanneer het cachebestand na de wijzigingstijd wordt opgevraagd, wordt het automatisch opnieuw opgevraagd vanaf de achtergrond.
+Indien ingesteld op 1 (`/enableTTL "1"`), de `/enableTTL` eigenschap evalueert de antwoordheaders vanaf de achtergrond en als deze een `Cache-Control` de maximumleeftijd of `Expires` datum, wordt een hulpdossier, leeg dossier naast het geheim voorgeheugendossier gecreeerd, met wijzigingstijd gelijk aan de vervaldatum. Wanneer het cachebestand na de wijzigingstijd wordt opgevraagd, wordt het automatisch opnieuw opgevraagd vanaf de achtergrond.
 
 >[!NOTE]
 >
@@ -1827,7 +1827,7 @@ De configuratie van het landbouwbedrijf bevat geen documentwortel (configuratiee
 * **niet in cache geplaatst: pad naar cachebestand te lang**\
    Het doelbestand - de samenvoeging van het hoofdbestand van het document en het URL-bestand - overschrijdt de langst mogelijke bestandsnaam op het systeem.
 * **niet in cache geplaatst: tijdelijk bestandspad te lang**\
-   De sjabloon voor tijdelijke bestandsnamen overschrijdt de langst mogelijke bestandsnaam op het systeem. De verzender maakt eerst een tijdelijk bestand voordat het cachebestand daadwerkelijk wordt gemaakt of overschreven. De tijdelijke bestandsnaam is de naam van het doelbestand met de tekens `_YYYYXXXXXX` toegevoegd, waarbij `Y` en `X` wordt vervangen om een unieke naam te maken.
+   De sjabloon voor tijdelijke bestandsnamen overschrijdt de langst mogelijke bestandsnaam op het systeem. De verzender maakt eerst een tijdelijk bestand voordat het cachebestand daadwerkelijk wordt gemaakt of overschreven. De tijdelijke bestandsnaam is de naam van het doelbestand met de tekens `_YYYYXXXXXX` toegevoegd, waarbij de `Y` en `X` wordt vervangen om een unieke naam te maken.
 * **niet in cache geplaatst: request-URL heeft geen extensie**\
    De aanvraag-URL heeft geen extensie of er is een pad dat volgt op de bestandsextensie, bijvoorbeeld: `/test.html/a/path`.
 * **niet in cache geplaatst: verzoek was geen GET of HEAD**
