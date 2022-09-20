@@ -13,9 +13,9 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: 79cd94be-a6bc-4d34-bfe9-393b4107925c
 exl-id: 90eb6a78-e867-456d-b1cf-f62f49c91851
-source-git-commit: f447ff9b3785248a4906c1c9abdcbd18576aa36d
+source-git-commit: f255701f23a628ba0d8b6cd91228462e1b552ffa
 workflow-type: tm+mt
-source-wordcount: '1404'
+source-wordcount: '1421'
 ht-degree: 0%
 
 ---
@@ -114,6 +114,7 @@ Het leegmaken van de verzender wordt gecontroleerd door een replicatieagent die 
    **Opmerking:** Voor de agenten van de Vlek van de Verzender, wordt het bezit van URI gebruikt slechts als u op weg-gebaseerde virtuele gastheeringangen gebruikt om tussen landbouwbedrijven te onderscheiden. U gebruikt dit gebied om het landbouwbedrijf te richten om ongeldig te maken. farm #1 heeft bijvoorbeeld een virtuele host van `www.mysite.com/path1/*` en farm #2 heeft een virtuele host van `www.mysite.com/path2/*`. U kunt een URL gebruiken van `/path1/invalidate.cache` om de eerste boerderij te richten en `/path2/invalidate.cache` om de tweede boerderij te richten. Zie voor meer informatie [Dispatcher gebruiken met meerdere domeinen](dispatcher-domains.md).
 
 1. Configureer desgewenst andere parameters.
+1. Log in de publicatieinstantie en valideer de configuratie van de flush agent. Zorg er ook voor dat deze functie is ingeschakeld.
 1. Herhaal deze bewerking voor elke betrokken publicatie-instantie.
 
 Na het vormen, wanneer u een pagina van auteur activeert om te publiceren, stelt deze agent een standaardreplicatie in werking. Het logboek bevat berichten die verzoeken aangeven die afkomstig zijn van uw publicatieserver, vergelijkbaar met het volgende voorbeeld:
