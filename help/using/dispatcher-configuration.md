@@ -2,9 +2,9 @@
 title: Dispatcher configureren
 description: Leer hoe u Dispatcher configureert. Leer over steun voor IPv4 en IPv6, configuratiedossiers, omgevingsvariabelen, het noemen van de instantie, het bepalen van landbouwbedrijven, het identificeren van virtuele gastheren, en meer.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 3455a90308d8661725850e19b67d7ff65f6f662f
+source-git-commit: f379daec71240150706eb90d930dbc756bbf8eb1
 workflow-type: tm+mt
-source-wordcount: '8561'
+source-wordcount: '8636'
 ht-degree: 0%
 
 ---
@@ -1280,31 +1280,38 @@ De `ignoreUrlParams` In deze sectie wordt gedefinieerd welke URL-parameters word
 
 Wanneer een parameter voor een pagina wordt genegeerd, wordt de pagina in de cache geplaatst de eerste keer dat de pagina wordt aangevraagd. Volgende aanvragen voor de pagina worden op de pagina in de cache geplaatst, ongeacht de waarde van de parameter in het verzoek.
 
+>[!NOTE]
+>
+>Men adviseert dat u vormt `ignoreUrlParams` op de wijze van de lijst van gewenste personen instellen. Als dusdanig, worden alle vraagparameters genegeerd en slechts worden bekende of verwachte vraagparameters vrijgesteld (&quot;ontkend&quot;) van wordt genegeerd. Zie voor meer informatie en voorbeelden [deze pagina](https://github.com/adobe/aem-dispatcher-optimizer-tool/blob/main/docs/Rules.md#dot---the-dispatcher-publish-farm-cache-should-have-its-ignoreurlparams-rules-configured-in-an-allow-list-manner).
+
 Om te specificeren welke parameters worden genegeerd, voeg glob regels aan toe `ignoreUrlParams` eigenschap:
 
-* Als u een parameter wilt negeren, maakt u een eigenschap glob die de parameter toestaat.
-* Als u wilt voorkomen dat de pagina in de cache wordt geplaatst, maakt u een glob-eigenschap die de parameter weigert.
+* Als u een pagina in het cachegeheugen wilt plaatsen ondanks het verzoek met een URL-parameter, maakt u een glob-eigenschap waarmee de parameter kan worden genegeerd.
+* Als u wilt voorkomen dat de pagina in de cache wordt opgeslagen, maakt u een glob-eigenschap die de parameter weigert (te negeren).
 
-In het volgende voorbeeld wordt door Dispatcher het dialoogvenster `q` parameter, zodat request-URL&#39;s die de parameter q bevatten in de cache worden opgeslagen:
+In het volgende voorbeeld worden door Dispatcher alle parameters genegeerd, behalve de parameters `nocache` parameter. Vraag daarom URL&#39;s aan die de `nocache` parameter nooit in de cache wordt geplaatst door de verzender:
 
 ```xml
 /ignoreUrlParams
 {
-    /0001 { /glob "*" /type "deny" }
-    /0002 { /glob "q" /type "allow" }
+    # allow-the-url-parameter-nocache-to-bypass-dispatcher-on-every-request
+    /0001 { /glob "nocache" /type "deny" }
+    # all-other-url-parameters-are-ignored-by-dispatcher-and-requests-are-cached
+    /0002 { /glob "*" /type "allow" }
 }
 ```
 
-Het voorbeeld gebruiken `ignoreUrlParams` waarde, zorgt de volgende HTTP-aanvraag ervoor dat de pagina in de cache wordt geplaatst omdat de `q` parameter wordt genegeerd:
+In de context van de `ignoreUrlParams` in het bovenstaande configuratievoorbeeld zorgt de volgende HTTP-aanvraag ervoor dat de pagina in de cache wordt geplaatst omdat de `willbecached` parameter wordt genegeerd:
 
 ```xml
-GET /mypage.html?q=5
+GET /mypage.html?willbecached=true
 ```
 
-Het voorbeeld gebruiken `ignoreUrlParams` waarde, de volgende HTTP-aanvraag zorgt ervoor dat de pagina **niet** worden in cache geplaatst omdat de `p` parameter wordt niet genegeerd:
+In de context van de `ignoreUrlParams` in het configuratievoorbeeld leidt de volgende HTTP-aanvraag ertoe dat de pagina **niet** worden in cache geplaatst omdat de `nocache` parameter wordt niet genegeerd:
 
 ```xml
-GET /mypage.html?q=5&p=4
+GET /mypage.html?nocache=true
+GET /mypage.html?nocache=true&willbecached=true
 ```
 
 Voor informatie over eigenschappen van glob raadpleegt u [Patronen ontwerpen voor globale eigenschappen](#designing-patterns-for-glob-properties).
