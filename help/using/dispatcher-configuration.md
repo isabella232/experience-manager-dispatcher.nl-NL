@@ -2,9 +2,9 @@
 title: Dispatcher configureren
 description: Leer hoe u Dispatcher configureert. Leer over steun voor IPv4 en IPv6, configuratiedossiers, omgevingsvariabelen, het noemen van de instantie, het bepalen van landbouwbedrijven, het identificeren van virtuele gastheren, en meer.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: f379daec71240150706eb90d930dbc756bbf8eb1
+source-git-commit: 112aa011e7a338be2b397d0c9b785fc2d9905b5d
 workflow-type: tm+mt
-source-wordcount: '8636'
+source-wordcount: '8675'
 ht-degree: 0%
 
 ---
@@ -406,7 +406,7 @@ Gebruikend dit voorbeeld, toont de volgende lijst de virtuele gastheren die voor
 
 >[!CAUTION]
 >
->`/allowAuthorized` **moet** worden ingesteld op `"0"` in de `/cache` om deze functie in te schakelen.
+>`/allowAuthorized` **moet** worden ingesteld op `"0"` in de `/cache` om deze functie in te schakelen. Zoals in het [In cache plaatsen wanneer verificatie wordt gebruikt](#caching-when-authentication-is-used) -sectie, wanneer u instelt `/allowAuthorized 0 ` verzoeken die authentificatieinformatie omvatten zijn **niet** in cache geplaatst. Als het toestemming-gevoelige caching wordt vereist, zie [Beveiligde inhoud in cache plaatsen](https://experienceleague.adobe.com/docs/experience-manager-dispatcher/using/configuring/permissions-cache.html) pagina.
 
 Creeer een veilige zitting voor toegang tot teruggeven landbouwbedrijf zodat de gebruikers login moeten om het even welke pagina in het landbouwbedrijf toegang hebben. Na het programma openen, kunnen de gebruikers tot pagina&#39;s in het landbouwbedrijf toegang hebben. Zie [Een gesloten gebruikersgroep maken](https://experienceleague.adobe.com/docs/experience-manager-65/administering/security/cug.html?lang=en#creating-the-user-group-to-be-used) voor informatie over het gebruiken van deze eigenschap met CUGs. Zie ook de Dispatcher [Beveiligingscontrolelijst](/help/using/security-checklist.md) voordat je live gaat.
 
