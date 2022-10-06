@@ -10,7 +10,7 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: f00ad751-6b95-4365-8500-e1e0108d9536
 exl-id: 9375d1c0-8d9e-46cb-9810-fa4162a8c1ba
-source-git-commit: d19a27256c44ec00fd440b2f8a2fe408a4a4b7c8
+source-git-commit: 63dc6184b502b517238c60ef6223b39bd7594306
 workflow-type: tm+mt
 source-wordcount: '3693'
 ht-degree: 0%
@@ -177,7 +177,7 @@ De standaard Flush replicatieagent op de instantie van de Auteur wordt gevormd z
 
 Als uw website een authentificatiemethode gebruikt, moet de Flush replicatieagent dienovereenkomstig worden gevormd.
 
-1. Open IIS Manager en selecteer de website die u als Disptcher-cache gebruikt.
+1. Open IIS Manager en selecteer de website die u als Dispatcher geheim voorgeheugen gebruikt.
 1. Gebruikend de wijze van de Mening van Eigenschappen, in de sectie IIS dubbelklikt Authentificatie.
 1. Als Anonieme verificatie niet is ingeschakeld, selecteert u Anonieme verificatie en klikt u in het gedeelte Handelingen op Inschakelen.
 
@@ -190,7 +190,7 @@ Gebruik de volgende procedure om de Dispatcher ISAPI Module aan IIS toe te voege
 1. Gebruikend de wijze van de Mening van Eigenschappen, in de sectie IIS dubbelklikt Handler Mappings.
 1. Klik in het deelvenster Handelingen van de pagina Handler Mappings op Toevoegen van Jokerscript, voeg de volgende eigenschapswaarden toe en klik op OK:
 
-   * Pad aanvragen: *
+   * Pad aanvragen: &#42;
    * Uitvoerbaar: Het absolute pad van het bestand disp_is.dll, bijvoorbeeld `C:\inetpub\Scripts\disp_iis.dll`.
    * Naam: Een beschrijvende naam voor de handlertoewijzing, bijvoorbeeld `Dispatcher`.
 
