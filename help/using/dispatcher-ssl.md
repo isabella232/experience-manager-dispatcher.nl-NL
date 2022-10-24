@@ -1,8 +1,8 @@
 ---
 title: SSL gebruiken met Dispatcher
-seo-title: SSL gebruiken met Dispatcher
+seo-title: Using SSL with Dispatcher
 description: Leer hoe u Dispatcher configureert voor communicatie met AEM via SSL-verbindingen.
-seo-description: Leer hoe u Dispatcher configureert voor communicatie met AEM via SSL-verbindingen.
+seo-description: Learn how to configure Dispatcher to communicate with AEM using SSL connections.
 uuid: 1a8f448c-d3d8-4798-a5cb-9579171171ed
 contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
@@ -12,14 +12,13 @@ discoiquuid: 771cfd85-6c26-4ff2-a3fe-dff8d8f7920b
 index: y
 internal: n
 snippet: y
-translation-type: tm+mt
-source-git-commit: f9fb0e94dbd1c67bf87463570e8b5eddaca11bf3
+exl-id: ec378409-ddb7-4917-981d-dbf2198aca98
+source-git-commit: 0debee043078b869d0af3258075bd83bf0312c8f
 workflow-type: tm+mt
-source-wordcount: '1375'
+source-wordcount: '1359'
 ht-degree: 0%
 
 ---
-
 
 # SSL gebruiken met Dispatcher {#using-ssl-with-dispatcher}
 
@@ -32,14 +31,14 @@ Gebruik SSL-verbindingen tussen Dispatcher en de rendercomputer:
 >
 >Bewerkingen in verband met de SSL-certificaten zijn gebonden aan producten van derden. Zij vallen niet onder het Adobe Platinum-onderhouds- en -ondersteuningscontract.
 
-## SSL gebruiken wanneer de Ontvanger met AEM {#use-ssl-when-dispatcher-connects-to-aem} verbindt
+## SSL gebruiken wanneer Dispatcher verbinding maakt met AEM {#use-ssl-when-dispatcher-connects-to-aem}
 
 Configureer Dispatcher voor communicatie met de AEM- of CQ-renderinstantie met behulp van SSL-verbindingen.
 
 Voordat u Dispatcher configureert, configureert u AEM of CQ om SSL te gebruiken:
 
-* AEM 6.2: [HTTP inschakelen via SSL](https://helpx.adobe.com/experience-manager/6-2/sites/deploying/using/config-ssl.html)
-* AEM 6.1: [HTTP inschakelen via SSL](https://docs.adobe.com/content/docs/en/aem/6-1/deploy/configuring/config-ssl.html)
+* AEM 6.2: [HTTP via SSL inschakelen](https://helpx.adobe.com/experience-manager/6-2/sites/deploying/using/config-ssl.html)
+* AEM 6.1: [HTTP via SSL inschakelen](https://docs.adobe.com/content/docs/en/aem/6-1/deploy/configuring/config-ssl.html)
 * Oudere AEM: zie [deze pagina](https://helpx.adobe.com/experience-manager/aem-previous-versions.html).
 
 ### SSL-gerelateerde aanvraagheaders {#ssl-related-request-headers}
@@ -51,7 +50,7 @@ Wanneer Dispatcher een HTTPS-aanvraag ontvangt, neemt Dispatcher de volgende kop
 * `X-Forwarded-SSL-Keysize`
 * `X-Forwarded-SSL-Session-ID`
 
-Een verzoek door Apache-2.4 met `mod_ssl` omvat kopballen die aan het volgende voorbeeld gelijkaardig zijn:
+Een verzoek via Apache-2.4 met `mod_ssl` omvat kopballen die aan het volgende voorbeeld gelijkaardig zijn:
 
 ```shell
 X-Forwarded-SSL: on
@@ -61,15 +60,15 @@ X-Forwarded-SSL-Session-ID: 814825E8CD055B4C166C2EF6D75E1D0FE786FFB29DEB6DE1E239
 
 ### Dispatcher configureren voor gebruik van SSL {#configuring-dispatcher-to-use-ssl}
 
-Als u Dispatcher wilt configureren voor verbinding met AEM of CQ via SSL, hebt u de volgende eigenschappen nodig voor het bestand [dispatcher.any](dispatcher-configuration.md):
+Als u Dispatcher wilt configureren voor verbinding met AEM of CQ via SSL, moet u [dispatcher.any](dispatcher-configuration.md) bestand vereist de volgende eigenschappen:
 
 * Een virtuele host die HTTPS-aanvragen afhandelt.
-* De sectie `renders` van de virtuele gastheer omvat een punt dat de gastheernaam en de haven van CQ of AEM instantie identificeert die HTTPS gebruikt.
-* Het `renders` punt omvat een bezit genoemd `secure` van waarde `1`.
+* De `renders` in de virtuele host bevat een item dat de hostnaam en -poort van de CQ- of AEM-instantie identificeert die HTTPS gebruikt.
+* De `renders` item bevat een eigenschap met de naam `secure` van waarde `1`.
 
 Opmerking: Maak indien nodig nog een virtuele host voor de afhandeling van HTTP-aanvragen.
 
-In het volgende voorbeeld dispatcher.any-bestand worden de eigenschapswaarden getoond voor het verbinden met behulp van HTTPS met een CQ-instantie die op de host `localhost` en poort `8443` wordt uitgevoerd:
+Het volgende voorbeeld dispatcher.any-bestand toont de eigenschapswaarden voor het verbinden met behulp van HTTPS met een CQ-instantie die op de host wordt uitgevoerd `localhost` en poort `8443`:
 
 ```
 /farms
@@ -78,7 +77,7 @@ In het volgende voorbeeld dispatcher.any-bestand worden de eigenschapswaarden ge
    { 
       /virtualhosts
       {
-         # select this farm for all incoming HTTPS requestss
+         # select this farm for all incoming HTTPS requests
          "https://*"
       }
       /renders
@@ -101,7 +100,7 @@ In het volgende voorbeeld dispatcher.any-bestand worden de eigenschapswaarden ge
       /virtualhosts
       {
          # select this farm for all incoming HTTP requests
-         "https://*"
+         "http://*"
       }
       /renders
       {
@@ -134,20 +133,20 @@ Voor het configureren van wederzijdse SSL hebt u certificaten nodig die zijn ond
 
 Voer de volgende stappen uit om wederzijdse SSL te vormen:
 
-1. [](dispatcher-install.md) Installeer de nieuwste versie van Dispatcher voor uw platform. Gebruik een binaire Dispatcher die SSL ondersteunt (SSL bevindt zich in de bestandsnaam, zoals dispatcher-apache2.4-linux-x86-64-ssl10-4.1.7.tar).
-1. [Creeer of verkrijg CA-ondertekend ](dispatcher-ssl.md#main-pars-title-3) certificaat voor Dispatcher en de teruggevende instantie.
-1. [Creeer keystore die teruggeven ](dispatcher-ssl.md#main-pars-title-6) certificaat bevatten en vorm de dienst van HTTP van teruggeven om het te gebruiken.
-1. [Configureer de Dispatcher-webservermodule ](dispatcher-ssl.md#main-pars-title-4) voor wederzijdse SSL.
+1. [Installeren](dispatcher-install.md) de nieuwste versie van Dispatcher voor uw platform. Gebruik een binaire Dispatcher die SSL ondersteunt (SSL bevindt zich in de bestandsnaam, zoals dispatcher-apache2.4-linux-x86-64-ssl10-4.1.7.tar).
+1. [Certificaat met CA-handtekening maken of verkrijgen](dispatcher-ssl.md#main-pars-title-3) voor Dispatcher en de render-instantie.
+1. [Een sleutelarchief met een rendercertificaat maken](dispatcher-ssl.md#main-pars-title-6) en vorm de dienst van HTTP van teruggeven om het te gebruiken.
+1. [De webservermodule Dispatcher configureren](dispatcher-ssl.md#main-pars-title-4) voor wederzijdse SSL.
 
-### CA-ondertekende certificaten maken of verkrijgen {#creating-or-obtaining-ca-signed-certificates}
+### Certificaten met CA-handtekening maken of verkrijgen {#creating-or-obtaining-ca-signed-certificates}
 
 Maak of verkrijg de CA-ondertekende certificaten die de publicatie-instantie en de Dispatcher verifiëren.
 
-#### Uw CA {#creating-your-ca} maken
+#### Uw CA maken {#creating-your-ca}
 
-Als u als CA dienst doet, gebruik [OpenSSL](https://www.openssl.org/) om de Instantie van het Certificaat tot stand te brengen die de server en cliëntcertificaten ondertekent. (U moet de OpenSSL-bibliotheken hebben geïnstalleerd.) Als u een derde CA gebruikt, voer deze procedure niet uit.
+Als u als CA dienst doet, gebruik [OpenSSL](https://www.openssl.org/) om de certificeringsinstantie te maken die de server- en clientcertificaten ondertekent. (U moet de OpenSSL-bibliotheken hebben geïnstalleerd.) Als u een derde CA gebruikt, voer deze procedure niet uit.
 
-1. Open een terminal en verander de huidige folder in de folder die het CA.sh- dossier, zoals `/usr/local/ssl/misc` bevat.
+1. Open een terminal en wijzig de huidige map in de map die het bestand CA.sh bevat, zoals `/usr/local/ssl/misc`.
 1. Om CA tot stand te brengen, ga het volgende bevel in en verstrek dan waarden wanneer bepleit:
 
    ```shell
@@ -162,7 +161,7 @@ Als u als CA dienst doet, gebruik [OpenSSL](https://www.openssl.org/) om de Inst
 
 Gebruik OpenSSL om de certificaataanvragen te maken die u naar de derde CA wilt verzenden of die u met uw CA wilt ondertekenen.
 
-Wanneer u een certificaat maakt, gebruikt OpenSSL de eigenschap Common Name om de certificaathouder te identificeren. Voor het certificaat van de renderinstantie, gebruik de de gastheernaam van de instantiecomputer als Gemeenschappelijke Naam als u Verzender vormt om het certificaat goed te keuren slechts als het hostname van de Publish instantie aanpast. (Zie de eigenschap [DispatcherCheckPeerCN](dispatcher-ssl.md#main-pars-title-11).)
+Wanneer u een certificaat maakt, gebruikt OpenSSL de eigenschap Common Name om de certificaathouder te identificeren. Voor het certificaat van de renderinstantie, gebruik de de gastheernaam van de instantiecomputer als Gemeenschappelijke Naam als u Verzender vormt om het certificaat goed te keuren slechts als het hostname van de Publish instantie aanpast. (Zie de [DispatcherCheckPeerCN](dispatcher-ssl.md#main-pars-title-11) eigenschap.)
 
 1. Open een terminal en wijzig de huidige map in de map met het CH.sh-bestand van uw OpenSSL-bibliotheken.
 1. Voer de volgende opdracht in en geef waarden op wanneer u hierom wordt gevraagd. Gebruik indien nodig de hostnaam van de publicatie-instantie als de algemene naam. De gastheernaam is DNS-oplosbare naam voor het IP adres van teruggeven:
@@ -189,7 +188,7 @@ Wanneer u een certificaat maakt, gebruikt OpenSSL de eigenschap Common Name om d
 
 Configureer SSL op de renderinstantie met behulp van de bestanden rendercert.pem en renderkey.pem.
 
-#### Het rendercertificaat omzetten in de JKS-indeling {#converting-the-render-certificate-to-jks-format}
+#### Het rendercertificaat omzetten in JKS-indeling {#converting-the-render-certificate-to-jks-format}
 
 Gebruik de volgende opdracht om het rendercertificaat, een PEM-bestand, te converteren naar een PKCS#12-bestand. Neem ook het certificaat op van de CA die het rendercertificaat heeft ondertekend:
 
@@ -212,7 +211,7 @@ Gebruik de volgende opdracht om het rendercertificaat, een PEM-bestand, te conve
    keytool -changealias -alias 1 -destalias jettyhttp -keystore render.keystore
    ```
 
-#### Het Cert van CA toevoegen aan het Teruggeven Truststore {#adding-the-ca-cert-to-the-render-s-truststore}
+#### Het Cert van CA toevoegen aan de Render Truststore {#adding-the-ca-cert-to-the-render-s-truststore}
 
 Als u als CA dienst doet, voer uw certificaat van CA in keystore in. Configureer vervolgens de JVM die de renderinstantie uitvoert, om het sleutelarchief te vertrouwen.
 
@@ -250,12 +249,12 @@ Last Modified Date: 2014-08-12T13:11:21.401-0400
    CQ_JVM_OPTS='-server -Xmx2048m -XX:MaxPermSize=512M -Djavax.net.ssl.trustStore=/usr/lib/cq6.0/publish/ssl/cacerts.keystore'
    ```
 
-#### Het vormen van de Render Instantie {#configuring-the-render-instance}
+#### De renderinstantie configureren {#configuring-the-render-instance}
 
-Gebruik het rendercertificaat met de instructies in *SSL inschakelen in de sectie Publish Instance* om de HTTP-service van de render-instantie te configureren voor het gebruik van SSL:
+Gebruik het rendercertificaat met de instructies in het dialoogvenster *SSL inschakelen op de instantie Publiceren* sectie om de dienst van HTTP van de render instantie te vormen om SSL te gebruiken:
 
-* AEM 6.2: [HTTP inschakelen via SSL](https://helpx.adobe.com/experience-manager/6-2/sites/deploying/using/config-ssl.html)
-* AEM 6.1: [HTTP inschakelen via SSL](https://docs.adobe.com/content/docs/en/aem/6-1/deploy/configuring/config-ssl.html)
+* AEM 6.2: [HTTP via SSL inschakelen](https://helpx.adobe.com/experience-manager/6-2/sites/deploying/using/config-ssl.html)
+* AEM 6.1: [HTTP via SSL inschakelen](https://docs.adobe.com/content/docs/en/aem/6-1/deploy/configuring/config-ssl.html)
 * Oudere AEM: zie [deze pagina.](https://helpx.adobe.com/experience-manager/aem-previous-versions.html)
 
 ### SSL configureren voor de Dispatcher Module {#configuring-ssl-for-the-dispatcher-module}
@@ -264,7 +263,7 @@ Als u Dispatcher wilt configureren voor gebruik van wederzijdse SSL, bereidt u h
 
 ### Het creëren van een Verenigd Certificaat van de Verzender {#creating-a-unified-dispatcher-certificate}
 
-Combineer het certificaat van de verzender en de niet-gecodeerde persoonlijke sleutel tot één enkel PEM-bestand. Gebruik een teksteditor of de opdracht `cat` om een bestand te maken dat lijkt op het volgende voorbeeld:
+Combineer het certificaat van de verzender en de niet-gecodeerde persoonlijke sleutel tot één enkel PEM-bestand. Een teksteditor of de `cat` gebruiken om een bestand te maken dat lijkt op het volgende voorbeeld:
 
 1. Open een terminal en wijzig de huidige map in de locatie van het bestand dispkey.pem.
 1. Voer de volgende opdracht in om de persoonlijke sleutel te decoderen:
@@ -273,7 +272,7 @@ Combineer het certificaat van de verzender en de niet-gecodeerde persoonlijke sl
    openssl rsa -in dispkey.pem -out dispkey_unencrypted.pem
    ```
 
-1. Gebruik een teksteditor of de opdracht `cat` om de niet-gecodeerde persoonlijke sleutel en het certificaat te combineren in één bestand dat vergelijkbaar is met het volgende voorbeeld:
+1. Een teksteditor of de `cat` gebruiken om de niet-gecodeerde persoonlijke sleutel en het certificaat te combineren in één bestand dat vergelijkbaar is met het volgende voorbeeld:
 
    ```xml
    -----BEGIN RSA PRIVATE KEY-----
@@ -286,13 +285,13 @@ Combineer het certificaat van de verzender en de niet-gecodeerde persoonlijke sl
    -----END CERTIFICATE-----
    ```
 
-### Certificaat opgeven voor Dispatcher {#specifying-the-certificate-to-use-for-dispatcher}
+### Het certificaat opgeven dat voor Dispatcher moet worden gebruikt {#specifying-the-certificate-to-use-for-dispatcher}
 
-Voeg de volgende eigenschappen aan [de moduleconfiguratie van de Verzender](dispatcher-install.md#main-pars-55-35-1022) (in `httpd.conf`) toe:
+Voeg de volgende eigenschappen toe aan de [Configuratie van de module Dispatcher](dispatcher-install.md#main-pars-55-35-1022) (in `httpd.conf`):
 
 * `DispatcherCertificateFile`: Het pad naar het uniforme certificaatbestand van Dispatcher, dat het openbare certificaat en de niet-gecodeerde persoonlijke sleutel bevat. Dit bestand wordt gebruikt wanneer de SSL-server om het Dispatcher-clientcertificaat vraagt.
 * `DispatcherCACertificateFile`: Het pad naar het CA-certificaatbestand dat wordt gebruikt als de SSL-server een CA presenteert die niet wordt vertrouwd door een basisinstantie.
-* `DispatcherCheckPeerCN`: Of de controle van de hostnaam voor externe servercertificaten moet worden ingeschakeld ( `On`) of uitgeschakeld ( `Off`).
+* `DispatcherCheckPeerCN`: Wel/niet inschakelen ( `On`) of uitschakelen ( `Off`) hostnaam controleren op externe servercertificaten.
 
 De volgende code is een voorbeeldconfiguratie:
 
@@ -310,4 +309,3 @@ De volgende code is een voorbeeldconfiguratie:
   DispatcherCheckPeerCN On
 </IfModule>
 ```
-

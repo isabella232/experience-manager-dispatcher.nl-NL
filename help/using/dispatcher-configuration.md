@@ -2,7 +2,7 @@
 title: Dispatcher configureren
 description: Leer hoe u Dispatcher configureert. Leer over steun voor IPv4 en IPv6, configuratiedossiers, omgevingsvariabelen, het noemen van de instantie, het bepalen van landbouwbedrijven, het identificeren van virtuele gastheren, en meer.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 112aa011e7a338be2b397d0c9b785fc2d9905b5d
+source-git-commit: 0debee043078b869d0af3258075bd83bf0312c8f
 workflow-type: tm+mt
 source-wordcount: '8675'
 ht-degree: 0%
@@ -841,7 +841,7 @@ Een enkele vermelding kan `glob` of een combinatie van `method`, `url`, `query`,
 
 ### Beveiliging van Dispatcher testen {#testing-dispatcher-security}
 
-Dispatcher-filters blokkeren de toegang tot de volgende pagina&#39;s en scripts bij AEM publicatie-instanties. Gebruik een webbrowser om te proberen de volgende pagina&#39;s te openen zoals een bezoeker van de site zou doen en om te controleren of code 403 wordt geretourneerd. Pas de filters aan als er andere resultaten worden verkregen.
+Dispatcher-filters blokkeren de toegang tot de volgende pagina&#39;s en scripts bij AEM publicatie-instanties. Gebruik een webbrowser om te proberen de volgende pagina&#39;s te openen zoals een bezoeker van de site zou doen en om te controleren of code 404 wordt geretourneerd. Pas de filters aan als er andere resultaten worden verkregen.
 
 Let erop dat u normale rendering van pagina&#39;s moet zien voor `/content/add_valid_page.html?debug=layout`.
 
@@ -901,7 +901,7 @@ Geef het volgende bevel in een terminal of bevelherinnering uit om te bepalen of
 
 `curl -X POST "https://anonymous:anonymous@hostname:port/content/usergenerated/mytestnode"`
 
-Geef het volgende bevel in een terminal of bevelherinnering uit om te proberen om het geheime voorgeheugen van de Verzender ongeldig te maken, en ervoor te zorgen dat u code 404 reactie ontvangt:
+Geef het volgende bevel in een terminal of bevelherinnering uit om te proberen om het geheime voorgeheugen van de Verzender ongeldig te maken, en ervoor te zorgen dat u code 403 reactie ontvangt:
 
 `curl -H "CQ-Handle: /content" -H "CQ-Path: /content" https://yourhostname/dispatcher/invalidate.cache`
 
