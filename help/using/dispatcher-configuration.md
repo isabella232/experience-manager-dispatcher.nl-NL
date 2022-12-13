@@ -2,7 +2,7 @@
 title: Dispatcher configureren
 description: Leer hoe u Dispatcher configureert. Leer over steun voor IPv4 en IPv6, configuratiedossiers, omgevingsvariabelen, het noemen van de instantie, het bepalen van landbouwbedrijven, het identificeren van virtuele gastheren, en meer.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 0debee043078b869d0af3258075bd83bf0312c8f
+source-git-commit: 9ee19d28b9d18f2ffd4f45129e48b5431beacc77
 workflow-type: tm+mt
 source-wordcount: '8675'
 ht-degree: 0%
@@ -625,7 +625,7 @@ Als de filters niet worden geactiveerd zoals u zou verwachten, schakelt u [Track
 In de volgende voorbeeldfiltersectie worden aanvragen voor alle bestanden door Dispatcher afgewezen. U zou toegang tot alle dossiers moeten ontkennen en dan toegang tot specifieke gebieden toestaan.
 
 ```xml
-  /0001  { /glob "*" /type "deny" }
+/0001  { /type "deny" /url "*"  }
 ```
 
 Verzoeken naar een expliciet geweigerd gebied hebben tot gevolg dat een foutcode van 404 (pagina niet gevonden) wordt geretourneerd.
@@ -692,8 +692,8 @@ Hieronder ziet u een regelvoorbeeld waarin wordt voorkomen dat inhoud wordt opge
 /006 {
         /type "deny"
         /path "/content/*"
-        /selectors '(feed|rss|pages|languages|blueprint|infinity|tidy)'
-        /extension '(json|xml|html)'
+        /selectors '(feed|rss|pages|languages|blueprint|infinity|tidy|sysview|docview|query|jcr:content|_jcr_content|search|childrenlist|ext|assets|assetsearch|[0-9-]+)'
+        /extension '(json|xml|html|feed))'
         }
 ```
 
@@ -729,7 +729,7 @@ Last Modified Date: 2015-06-26T04:32:37.986-0400
   /filter
       {
       # Deny everything first and then allow specific entries
-      /0001 { /type "deny" /glob "*" }
+      /0001  { /type "deny" /url "*"  }
 
       # Open consoles
 #     /0011 { /type "allow" /url "/admin/*"  }  # allow servlet engine admin
