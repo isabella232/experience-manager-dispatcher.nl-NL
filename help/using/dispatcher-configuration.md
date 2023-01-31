@@ -2,9 +2,9 @@
 title: Dispatcher configureren
 description: Leer hoe u Dispatcher configureert. Leer over steun voor IPv4 en IPv6, configuratiedossiers, omgevingsvariabelen, het noemen van de instantie, het bepalen van landbouwbedrijven, het identificeren van virtuele gastheren, en meer.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 51be516f90587ceda19180f13727c8372a794261
+source-git-commit: 0378cfc2585339920894dd354c59929ef2bf49e0
 workflow-type: tm+mt
-source-wordcount: '8675'
+source-wordcount: '8710'
 ht-degree: 0%
 
 ---
@@ -1284,6 +1284,11 @@ Om te specificeren welke parameters worden genegeerd, voeg glob regels aan toe `
 
 * Als u een pagina in het cachegeheugen wilt plaatsen ondanks het verzoek met een URL-parameter, maakt u een glob-eigenschap waarmee de parameter kan worden genegeerd.
 * Als u wilt voorkomen dat de pagina in de cache wordt opgeslagen, maakt u een glob-eigenschap die de parameter weigert (te negeren).
+
+>[!NOTE]
+>
+>Wanneer het vormen van het glob bezit, gelieve te merken op dat het de naam van de vraagparameter zou moeten aanpassen. Als u bijvoorbeeld de parameter &quot;p1&quot; van de volgende URL wilt negeren `http://example.com/path/test.html?p1=test&p2=v2`, dan moet de eigenschap glob:
+> `/0002 { /glob "p1" /type "allow" }`
 
 In het volgende voorbeeld worden door Dispatcher alle parameters genegeerd, behalve de parameters `nocache` parameter. Vraag daarom URL&#39;s aan die de `nocache` parameter nooit in de cache wordt geplaatst door de verzender:
 
