@@ -10,9 +10,9 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: 4f9b2bc8-a309-47bc-b70d-a1c0da78d464
 exl-id: 3d8d8204-7e0d-44ad-b41b-6fec2689c6a6
-source-git-commit: 18fa55f4be3a93b5484c3a0fa408031a43944f27
+source-git-commit: ef395d122b1f248cbcdad5a74ff111872c4d2b00
 workflow-type: tm+mt
-source-wordcount: '829'
+source-wordcount: '856'
 ht-degree: 0%
 
 ---
@@ -144,6 +144,10 @@ public class AuthcheckerServlet extends SlingSafeMethodsServlet {
 ```
 
 ## Dispatcher configureren voor caching met bevoegdheden {#configure-dispatcher-for-permission-sensitive-caching}
+
+>[!NOTE]
+>
+>Als uw vereisten het caching van voor authentiek verklaarde documenten toestaan, plaats het /allowAuthorized bezit onder de /cache sectie aan `/allowAuthorized 1`. Zie [In cache plaatsen wanneer verificatie wordt gebruikt](/help/using/dispatcher-configuration.md) voor meer informatie .
 
 De sectie auth_checker van de dispatcher.any file controleert het gedrag van toestemming-gevoelige caching. De sectie auth_checker bevat de volgende subsecties:
 
