@@ -10,9 +10,9 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: 4f9b2bc8-a309-47bc-b70d-a1c0da78d464
 exl-id: 3d8d8204-7e0d-44ad-b41b-6fec2689c6a6
-source-git-commit: ef395d122b1f248cbcdad5a74ff111872c4d2b00
+source-git-commit: 31eaa42b17838d97cacd5c535e04be01a3eb6807
 workflow-type: tm+mt
-source-wordcount: '856'
+source-wordcount: '918'
 ht-degree: 0%
 
 ---
@@ -60,7 +60,6 @@ De volgende diagrammen illustreren de orde van gebeurtenissen die voorkomen wann
 1. Renderen roept AEM autorisator servlet (dit is niet de servlet van AuthChcker van de Dispatcher) om een veiligheidscontrole uit te voeren. Wanneer de gebruiker wordt geautoriseerd, omvat teruggeven de teruggegeven pagina in het lichaam van het antwoordbericht.
 1. De verzender stuurt de reactie door naar de browser. Dispatcher voegt de hoofdtekst van het reactiebericht van de render aan het geheime voorgeheugen toe.
 
-
 ## Het uitvoeren van toestemming-gevoelige caching {#implementing-permission-sensitive-caching}
 
 Om toestemming-gevoelig caching uit te voeren, voer de volgende taken uit:
@@ -71,6 +70,11 @@ Om toestemming-gevoelig caching uit te voeren, voer de volgende taken uit:
 >[!NOTE]
 >
 >Beveiligde bronnen worden doorgaans in een aparte map opgeslagen dan onbeveiligde bestanden. Bijvoorbeeld: /content/secure/
+
+>[!NOTE]
+>
+>Wanneer er een CDN (of een ander geheime voorgeheugen) vóór de verzender is, dan zou u de caching kopballen dienovereenkomstig moeten plaatsen zodat CDN niet de privé inhoud in het voorgeheugen onderbrengt. Bijvoorbeeld: `Header always set Cache-Control private`.
+>Voor AEM as a Cloud Service raadpleegt u de [Caching](https://experienceleague.adobe.com/docs/experience-manager-cloud-service/content/implementing/content-delivery/caching.html) voor meer informatie over het instellen van headers voor persoonlijke caching.
 
 ## De servlet Auth Checker maken {#create-the-auth-checker-servlet}
 
