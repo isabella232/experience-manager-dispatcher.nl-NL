@@ -2,9 +2,9 @@
 title: Dispatcher configureren
 description: Leer hoe u Dispatcher configureert. Leer over steun voor IPv4 en IPv6, configuratiedossiers, omgevingsvariabelen, het noemen van de instantie, het bepalen van landbouwbedrijven, het identificeren van virtuele gastheren, en meer.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 0378cfc2585339920894dd354c59929ef2bf49e0
+source-git-commit: 0ac7c1cf3fc9330665b7a758cea38410c1958f1c
 workflow-type: tm+mt
-source-wordcount: '8710'
+source-wordcount: '8984'
 ht-degree: 0%
 
 ---
@@ -1383,7 +1383,31 @@ Lees voor meer informatie ook de `/invalidate` en `/statfileslevel`bovenstaande 
 
 ### Het vormen tijd-Gebaseerde Invalidatie van het Geheime voorgeheugen - /enableTTL {#configuring-time-based-cache-invalidation-enablettl}
 
-Indien ingesteld op 1 (`/enableTTL "1"`), de `/enableTTL` eigenschap evalueert de antwoordheaders vanaf de achtergrond en als deze een `Cache-Control` de maximumleeftijd of `Expires` datum, wordt een hulpdossier, leeg dossier naast het geheim voorgeheugendossier gecreeerd, met wijzigingstijd gelijk aan de vervaldatum. Wanneer het cachebestand na de wijzigingstijd wordt opgevraagd, wordt het automatisch opnieuw opgevraagd vanaf de achtergrond.
+Tijdgebaseerde cachevalidatie is afhankelijk van `/enableTTL` en de aanwezigheid van normale verloopheaders van de HTTP-standaard. Als u de eigenschap instelt op 1 (`/enableTTL "1"`), evalueert het de antwoordkopballen van het achtereind, en als de kopballen een bevatten `Cache-Control`, `max-age` of `Expires` datum, wordt een hulpbestand gemaakt dat leeg is naast het bestand in de cache, waarbij de wijzigingstijd gelijk is aan de vervaldatum. Wanneer het cachebestand na de wijzigingstijd wordt opgevraagd, wordt het automatisch opnieuw opgevraagd vanaf de achtergrond.
+
+Vóór verzender versie 4.3.5, was de logica van de TTTL- ongeldigverklaring gebaseerd slechts op de gevormde waarde van TTL. Met dispatcher versie 4.3.5, allebei vastgestelde TTL **en** er wordt rekening gehouden met de regels voor het ongeldig maken van het cachegeheugen van de verzender. Voor een bestand in de cache:
+
+1. Indien `/enableTTL` is ingesteld op 1, wordt gecontroleerd of het bestand vervalt. Als het bestand volgens de set-TTL is verlopen, worden geen andere controles uitgevoerd en wordt het bestand in de cache opnieuw opgevraagd vanaf de back-end.
+2. Als het bestand niet is verlopen of `/enableTTL` wordt niet gevormd dan de standaardregels van de geheim voorgeheugenongeldigverklaring worden toegepast zoals die geplaatst door [/statfileslevel](#invalidating-files-by-folder-level) en [/invalidate](#automatically-invalidating-cached-files). Dit betekent dat de verzender bestanden waarvoor de TTL niet is verlopen, ongeldig kan maken.
+
+Deze nieuwe implementatie steunt gebruiksgevallen waar de dossiers langere TTL (bijvoorbeeld, op CDN) hebben maar nog ongeldig kunnen zijn zelfs als TTL niet is verlopen. Het verkiest inhoudsversheid over cache-hit verhouding op de verzender.
+
+Gelijktijdig, voor het geval u nodig hebt **alleen** de vervallogica die op een dossier wordt toegepast en dan reeks `/enableTTL` naar 1 en sluit dat bestand uit van het standaardmechanisme voor cachevalidatie. U kunt bijvoorbeeld:
+
+* Configureer de [regels voor ongeldigverklaring](#automatically-invalidating-cached-files) in de cachesectie om het bestand te negeren. In het onderstaande fragment worden alle bestanden weergegeven die eindigen in `.example.html` worden genegeerd en zullen slechts verlopen wanneer geplaatst TTL is overgegaan.
+
+```xml
+  /invalidate
+  {
+   /0000  { /glob "*" /type "deny" }
+   /0001  { /glob "*.html" /type "allow" }
+   /0002  { /glob "*.example.html" /type "deny" }
+  }
+```
+
+* De inhoudsstructuur zodanig ontwerpen dat u een hoge waarde kunt instellen [/statfilelevel](#invalidating-files-by-folder-level) het bestand wordt dus niet automatisch ongeldig gemaakt.
+
+Dit zorgt ervoor dat `.stat` de bestandsinvalidatie wordt niet gebruikt en alleen de vervaldatum van TTL is actief voor de opgegeven bestanden.
 
 >[!NOTE]
 >
@@ -1836,7 +1860,7 @@ De configuratie van het landbouwbedrijf bevat geen documentwortel (configuratiee
 * **niet in cache geplaatst: pad naar cachebestand te lang**\
    Het doelbestand - de samenvoeging van het hoofdbestand van het document en het URL-bestand - overschrijdt de langst mogelijke bestandsnaam op het systeem.
 * **niet in cache geplaatst: tijdelijk bestandspad te lang**\
-   De sjabloon voor tijdelijke bestandsnamen overschrijdt de langst mogelijke bestandsnaam op het systeem. De verzender maakt eerst een tijdelijk bestand voordat het cachebestand daadwerkelijk wordt gemaakt of overschreven. De tijdelijke bestandsnaam is de naam van het doelbestand met de tekens `_YYYYXXXXXX` toegevoegd, waarbij `Y` en `X` wordt vervangen om een unieke naam te maken.
+   De sjabloon voor tijdelijke bestandsnamen overschrijdt de langst mogelijke bestandsnaam op het systeem. De verzender maakt eerst een tijdelijk bestand voordat het cachebestand daadwerkelijk wordt gemaakt of overschreven. De tijdelijke bestandsnaam is de naam van het doelbestand met de tekens `_YYYYXXXXXX` toegevoegd, waarbij de `Y` en `X` wordt vervangen om een unieke naam te maken.
 * **niet in cache geplaatst: request-URL heeft geen extensie**\
    De aanvraag-URL heeft geen extensie of er is een pad dat volgt op de bestandsextensie, bijvoorbeeld: `/test.html/a/path`.
 * **niet in cache geplaatst: verzoek was geen GET of HEAD**
