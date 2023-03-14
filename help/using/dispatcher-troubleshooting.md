@@ -1,8 +1,8 @@
 ---
 title: Problemen met verzending van problemen oplossen
-seo-title: Problemen met AEM Dispatcher oplossen
+seo-title: Troubleshooting AEM Dispatcher Problems
 description: Leer problemen met Dispatcher oplossen.
-seo-description: Leer problemen met AEM Dispatcher op te lossen.
+seo-description: Learn to troubleshoot AEM Dispatcher issues.
 uuid: 9c109a48-d921-4b6e-9626-1158cebc41e7
 cmgrlastmodified: 01.11.2007 08 22 29 [aheimoz]
 pageversionid: 1193211344162
@@ -12,16 +12,15 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 discoiquuid: a612e745-f1e6-43de-b25a-9adcaadab5cf
-translation-type: tm+mt
-source-git-commit: 9af0dc22d32f1176b84c28a70b1a4701414d434e
+exl-id: 29f338ab-5d25-48a4-9309-058e0cc94cff
+source-git-commit: 26c8edbb142297830c7c8bd068502263c9f0e7eb
 workflow-type: tm+mt
-source-wordcount: '553'
+source-wordcount: '560'
 ht-degree: 0%
 
 ---
 
-
-# Problemen met de verzending van problemen {#troubleshooting-dispatcher-problems} oplossen
+# Problemen met verzending van problemen oplossen {#troubleshooting-dispatcher-problems}
 
 >[!NOTE]
 >
@@ -31,14 +30,14 @@ ht-degree: 0%
 
 >[!NOTE]
 >
->Raadpleeg ook [Dispatcher Knowledge Base](https://helpx.adobe.com/cq/kb/index/dispatcher.html), [Problemen met het leegmaken van Dispatcher Dispatcher Dispatcher ](https://helpx.adobe.com/adobe-cq/kb/troubleshooting-dispatcher-flushing-issues.html) en [Veelgestelde vragen over de belangrijkste problemen met de verzendingen](dispatcher-faq.md) voor meer informatie.
+>Controleer de [Dispatcher Knowledge Base](https://helpx.adobe.com/experience-manager/kb/index/dispatcher.html), [Problemen met het leegmaken van de Dispatcher oplossen](https://experienceleague.adobe.com/search.html?lang=en#q=troubleshooting%20dispatcher%20flushing%20issues&amp;sort=relevancy&amp;f:el_product=[Experience%20Manager]) en de [Veelgestelde vragen over de meest voorkomende problemen met Verzender](dispatcher-faq.md) voor nadere informatie.
 
 ## Controleer de basisconfiguratie {#check-the-basic-configuration}
 
 Zoals altijd zijn de eerste stappen het controleren van de grondbeginselen:
 
 * [Basisbewerking bevestigen](/help/using/dispatcher-configuration.md#confirming-basic-operation)
-* Controleer alle logbestanden op uw webserver en verzender. Indien nodig de `loglevel` verhogen die voor de verzender [logboekregistratie](/help/using/dispatcher-configuration.md#logging) wordt gebruikt.
+* Controleer alle logbestanden op uw webserver en Dispatcher. Indien nodig, verhoog de dosis `loglevel` gebruikt voor de Dispatcher [logboekregistratie](/help/using/dispatcher-configuration.md#logging).
 
 * [Controleer uw configuratie](/help/using/dispatcher-configuration.md):
 
@@ -47,7 +46,7 @@ Zoals altijd zijn de eerste stappen het controleren van de grondbeginselen:
       * Hebt u bepaald welke Dispatcher de website/pagina verwerkt die u onderzoekt?
    * Hebt u filters geïmplementeerd?
 
-      * Heeft dit gevolgen voor de zaak die u onderzoekt?
+      * Hebben deze filters invloed op de zaak die u onderzoekt?
 
 
 ## IIS Diagnostic Tools {#iis-diagnostic-tools}
@@ -57,16 +56,16 @@ IIS verstrekt diverse spoorhulpmiddelen, afhankelijk van de daadwerkelijke versi
 * IIS 6 - diagnostische hulpmiddelen IIS kunnen worden gedownload en worden gevormd
 * IIS 7 - het vinden is volledig geïntegreerd
 
-Deze kunnen u helpen activiteit controleren.
+Deze hulpmiddelen kunnen u helpen activiteit controleren.
 
-## IIS en 404 Niet gevonden {#iis-and-not-found}
+## IIS en 404 niet gevonden {#iis-and-not-found}
 
-Wanneer het gebruiken IIS zou u `404 Not Found` kunnen ervaren die in diverse scenario&#39;s zijn teruggekeerd. Zo ja, zie de volgende artikelen in de Knowledge Base.
+Wanneer u IIS gebruikt, kunt u `404 Not Found` teruggegeven in verschillende scenario&#39;s. Zo ja, zie de volgende artikelen in de Knowledge Base.
 
-* [IIS 6/7: De methode van de POST keert 404 terug](https://helpx.adobe.com/dispatcher/kb/IIS6IsapiFilters.html)
-* [IIS 6: Aanvragen aan URL&#39;s die het basispad  `/bin` retourneren  `404 Not Found`](https://helpx.adobe.com/dispatcher/kb/RequestsToBinDirectoryFailInIIS6.html)
+* [IIS 6/7: De methode van de POST keert 404 terug](https://helpx.adobe.com/experience-manager/kb/IIS6IsapiFilters.html)
+* [IIS 6: Aanvragen van URL&#39;s die het basispad bevatten `/bin` een `404 Not Found`](https://helpx.adobe.com/experience-manager/kb/RequestsToBinDirectoryFailInIIS6.html)
 
-U moet ook controleren of de cachroot van de verzender en de hoofdmap van het IIS-document op dezelfde map zijn ingesteld.
+Controleer ook of de hoofdmap van de Dispatcher-cache en de hoofdmap van het IIS-document zijn ingesteld op dezelfde map.
 
 ## Problemen bij het verwijderen van workflowmodellen {#problems-deleting-workflow-models}
 
@@ -76,18 +75,18 @@ Problemen bij het verwijderen van workflowmodellen wanneer een AEM auteur-instan
 
 **Stappen om te reproduceren:**
 
-1. Meld u aan bij de instantie van de auteur (bevestig dat aanvragen worden gerouteerd via de dispatcher).
-1. Een nieuwe workflow maken; bijvoorbeeld als Titel is ingesteld op workflowToDelete.
+1. Meld u aan bij de instantie van de auteur (bevestig dat aanvragen worden gerouteerd via de Dispatcher).
+1. Een workflow maken; bijvoorbeeld als Titel is ingesteld op workflowToDelete.
 1. Controleer of de workflow is gemaakt.
-1. Selecteer en klik met de rechtermuisknop op de workflow en klik vervolgens op **Delete**.
+1. Selecteer en klik met de rechtermuisknop op de workflow en klik vervolgens op **Verwijderen**.
 
-1. Klik **Ja** om te bevestigen.
-1. Er wordt een foutbericht weergegeven:\
+1. Klikken **Ja** ter bevestiging.
+1. Er wordt een foutbericht weergegeven met het volgende:\
    &quot; `ERROR 'Could not delete workflow model!!`&quot;.
 
 **Resolutie**
 
-Voeg de volgende kopballen aan de `/clientheaders` sectie van uw `dispatcher.any` dossier toe:
+Voeg de volgende kopteksten aan toe `/clientheaders` deel van uw `dispatcher.any` bestand:
 
 * `x-http-method-override`
 * `x-requested-with`
@@ -105,27 +104,27 @@ Voeg de volgende kopballen aan de `/clientheaders` sectie van uw `dispatcher.any
 
 ## Interferentie met mod_dir (Apache) {#interference-with-mod-dir-apache}
 
-Hierin wordt beschreven hoe de dispatcher communiceert met `mod_dir` binnen de Apache-webserver, aangezien dit tot verschillende, mogelijk onverwachte effecten kan leiden:
+In dit proces wordt beschreven hoe de Dispatcher communiceert met `mod_dir` in de Apache-webserver, omdat dit tot verschillende, mogelijk onverwachte effecten kan leiden:
 
 ### Apache 1.3 {#apache}
 
-In Apache 1.3 `mod_dir` wordt elk verzoek afgehandeld waar de URL wordt toegewezen aan een map in het bestandssysteem.
+In Apache 1.3 `mod_dir` handelt elke aanvraag af waar de URL wordt toegewezen aan een map in het bestandssysteem.
 
 Het zal ofwel:
 
-* doorsturen van het verzoek naar een bestaand `index.html`-bestand
+* doorsturen van het verzoek naar een bestaande `index.html` file
 * een mappenlijst genereren
 
-Wanneer de verzender wordt toegelaten, verwerkt het dergelijke verzoeken door zich als manager voor het inhoudstype `httpd/unix-directory` te registreren.
+Wanneer de Dispatcher wordt toegelaten, verwerkt het dergelijke verzoeken door zich als manager voor het inhoudstype te registreren `httpd/unix-directory`.
 
 ### Apache 2.x {#apache-x}
 
-In Apache 2.x zijn de dingen anders. Een module kan verschillende stadia van het verzoek, zoals correctie URL behandelen. `mod_dir` handelt dit werkgebied af door een aanvraag (wanneer de URL naar een map wordt toegewezen) om te leiden naar de URL met een  `/` toevoeging.
+In Apache 2.x zijn de dingen anders. Een module kan verschillende stadia van het verzoek, zoals correctie URL behandelen. De `mod_dir` handelt dit werkgebied af door een aanvraag (wanneer de URL naar een map is toegewezen) om te leiden naar de URL met een `/` toegevoegd.
 
-Dispatcher onderschept de `mod_dir` correctie niet, maar behandelt volledig het verzoek aan opnieuw gerichte URL (d.w.z. met `/` toegevoegd). Dit kan een probleem opleveren als de externe server (bijvoorbeeld AEM) aanvragen naar `/a_path` anders afhandelt dan aanvragen naar `/a_path/` (wanneer `/a_path` is toegewezen aan een bestaande map).
+Dispatcher onderschept het `mod_dir` correctie, maar behandelt het verzoek volledig aan opnieuw geleide URL (namelijk met `/` toegevoegd). Dit proces zou een probleem kunnen vormen als de verre server (bijvoorbeeld, AEM) verzoeken aan behandelt `/a_path` anders dan voor verzoeken aan `/a_path/` (wanneer `/a_path` verwijst naar een bestaande map).
 
 Als dit gebeurt, moet u:
 
-* `mod_dir` uitschakelen voor de `Directory`- of `Location`-substructuur die door de verzender wordt afgehandeld
+* disable `mod_dir` voor de `Directory` of `Location` substructuur die wordt afgehandeld door de Dispatcher
 
-* gebruik `DirectorySlash Off` om `mod_dir` te configureren om `/` niet toe te voegen
+* gebruiken `DirectorySlash Off` om te vormen `mod_dir` niet toevoegen `/`
