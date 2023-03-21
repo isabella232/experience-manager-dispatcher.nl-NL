@@ -9,9 +9,9 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: 1d449ee2-4cdd-4b7a-8b4e-7e6fc0a1d7ee
 exl-id: c9266683-6890-4359-96db-054b7e856dd0
-source-git-commit: e87af532ee3268f0a45679e20031c3febc02de58
+source-git-commit: 7dd2ba37e149af960ba428421d64a5a24542eeeb
 workflow-type: tm+mt
-source-wordcount: '3165'
+source-wordcount: '3154'
 ht-degree: 0%
 
 ---
@@ -26,7 +26,7 @@ Dispatcher is een Adobe Experience Manager-programma voor caching en taakverdeli
 
 Het implementatieproces voor Dispatcher is onafhankelijk van de webserver en het gekozen besturingssysteem:
 
-1. Meer informatie over Dispatcher (deze pagina). Zie ook [vaak gestelde vragen over Dispatcher](https://experienceleague.adobe.com/docs/experience-manager-dispatcher/using/troubleshooting/dispatcher-faq.html?lang=en).
+1. Meer informatie over Dispatcher (deze pagina). Zie ook [vaak gestelde vragen over Dispatcher](/help/using/dispatcher-faq.md).
 1. Een [ondersteunde webserver](https://experienceleague.adobe.com/docs/experience-manager-65/deploying/introduction/technical-requirements.html?lang=en) volgens de documentatie van de webserver.
 1. [De module Dispatcher installeren](dispatcher-install.md) op uw webserver en configureer de webserver dienovereenkomstig.
 1. [Dispatcher configureren](dispatcher-configuration.md) (het bestand dispatcher.any).
@@ -45,7 +45,7 @@ Gebruik de volgende informatie zoals vereist:
 
 * [De beveiligingscontrolelijst voor verzending](security-checklist.md)
 * [De Dispatcher Knowledge Base](https://helpx.adobe.com/experience-manager/kb/index/dispatcher.html)
-* [Een website optimaliseren voor cacheprestaties](https://experienceleague.adobe.com/docs/experience-manager-64/deploying/configuring/configuring-performance.html?lang=en)
+* [Een website optimaliseren voor cacheprestaties](https://experienceleague.adobe.com/docs/experience-manager-65/deploying/configuring/configuring-performance.html)
 * [Dispatcher gebruiken met meerdere domeinen](dispatcher-domains.md)
 * [SSL gebruiken met Dispatcher](dispatcher-ssl.md)
 * [Het uitvoeren van Toestemming-Gevoelige Caching](permissions-cache.md)

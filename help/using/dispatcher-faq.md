@@ -4,7 +4,7 @@ seo-title: Top issues for AEM Dispatcher
 description: Frequente problemen met AEM Dispatcher
 seo-description: Top issues for Adobe AEM Dispatcher
 exl-id: 4dcc7318-aba5-4b17-8cf4-190ffefbba75
-source-git-commit: 26c8edbb142297830c7c8bd068502263c9f0e7eb
+source-git-commit: f83b02d74a22e055b486305dfe5420e152efb452
 workflow-type: tm+mt
 source-wordcount: '1578'
 ht-degree: 0%
@@ -131,7 +131,7 @@ Lees verder: [https://sling.apache.org/documentation/the-sling-engine/mappings-f
 
 ### Hoe vorm ik de agenten van de Dispatcher op een Publish instantie?
 
-Zie de [Replicatie](https://experienceleague.adobe.com/docs/experience-manager-64/deploying/configuring/replication.html?lang=en#configuring-your-replication-agents) pagina.
+Zie de [Replicatie](https://experienceleague.adobe.com/docs/experience-manager-65/deploying/configuring/replication.html?lang=en#configuring-your-replication-agents) pagina.
 
 ### Hoe los ik problemen op die Dispatcher opblazen?
 
@@ -148,7 +148,7 @@ U schakelt dit als volgt in:
 1. [Voer hier de stappen uit](page-invalidate.md#invalidating-dispatcher-cache-from-a-publishing-instance) spoelmiddelen maken bij publicatie
 1. Ga naar de configuratie van elke agent en op **Triggers** tabblad, controleert u de **Bij ontvangst** doos.
 
-## Overig
+## Diversen
 
 Hoe bepaalt de Dispatcher of een document up-to-date is?
 Om te bepalen of een document bijgewerkt is, voert de Dispatcher de volgende handelingen uit:
