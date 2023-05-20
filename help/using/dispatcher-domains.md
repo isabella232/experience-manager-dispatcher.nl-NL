@@ -1,5 +1,5 @@
 ---
-title: 'Dispatcher gebruiken met meerdere domeinen '
+title: Dispatcher gebruiken met meerdere domeinen
 seo-title: Using Dispatcher with Multiple Domains
 description: Leer hoe u Dispatcher gebruikt om paginaaanvragen in meerdere webdomeinen te verwerken.
 seo-description: Learn how to use Dispatcher to process page requests in multiple web domains.

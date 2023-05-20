@@ -613,7 +613,7 @@ De webserver moet worden geconfigureerd met `obj.conf`. In de installatiekit Dis
 1. Openen `magnus.conf` voor bewerken.
 1. Kopieer de twee regels die beginnen:\
    `Init funcs="dispService, dispInit"`\
-   and\
+   en\
    `Init fn="dispInit"`\
    van `obj.conf.disp` naar de initialisatiesectie van `magnus.conf`.
 

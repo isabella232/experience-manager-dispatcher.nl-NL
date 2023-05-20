@@ -45,7 +45,6 @@ Dispatcher biedt een aantal ingebouwde mechanismen die u kunt gebruiken om de pr
 >
 >* kan alles opslaan dat u als pagina kunt opslaan en aanvragen via een URL
 >* kan geen andere dingen opslaan, zoals HTTP-headers, cookies, sessiegegevens en formuliergegevens.
-
 >
 >In het algemeen, impliceren veel caching strategieën het selecteren van goede URLs en het verlaten van deze extra gegevens.
 
@@ -142,7 +141,6 @@ Dispatcher kan geen gepersonaliseerde gegevens in het voorgeheugen onderbrengen,
 >
 >* Gebruik iFrames om de pagina op te splitsen in één onderdeel dat voor alle gebruikers hetzelfde is en één onderdeel dat voor alle pagina&#39;s van de gebruiker hetzelfde is. Vervolgens kunt u beide onderdelen in cache plaatsen.
 >* gebruik client-side JavaScript om gepersonaliseerde informatie weer te geven. U moet er echter voor zorgen dat de pagina nog steeds correct wordt weergegeven als een gebruiker JavaScript uitschakelt.
-
 >
 
 

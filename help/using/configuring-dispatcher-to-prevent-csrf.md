@@ -1,20 +1,19 @@
 ---
 title: Dispatcher configureren om CSRF-aanvallen te voorkomen
-seo-title: Adobe AEM Dispatcher configureren om CSRF-aanvallen te voorkomen
+seo-title: Configuring Adobe AEM Dispatcher to Prevent CSRF Attacks
 description: Leer hoe te om AEM Dispatcher te vormen om de aanvallen van de Vervalsing van het Verzoek van de Verkeer van de Departement van de Deite te verhinderen.
-seo-description: Leer hoe te om Adobe AEM Dispatcher te vormen om de aanvallen van het Verzoek van de Vervalsing van de Verkeer van de Departement van de Verkeer van de Deite te verhinderen.
+seo-description: Learn how to configure Adobe AEM Dispatcher to prevent Cross-Site Request Forgery attacks.
 uuid: f290bdeb-54e2-4649-b0fc-6257b422af2d
 topic-tags: dispatcher
 content-type: reference
 discoiquuid: d61d021e-b338-4a1d-91ee-55427557e931
-translation-type: tm+mt
-source-git-commit: 69edbe7608b46c93d238515e4223606eadad0ac4
+exl-id: bcd38878-f977-46a6-b01a-03e4d90aef01
+source-git-commit: 3a0e237278079a3885e527d7f86989f8ac91e09d
 workflow-type: tm+mt
-source-wordcount: '246'
+source-wordcount: '225'
 ht-degree: 0%
 
 ---
-
 
 # Dispatcher configureren om CSRF-aanvallen te voorkomen{#configuring-dispatcher-to-prevent-csrf-attacks}
 
@@ -24,11 +23,11 @@ AEM biedt een raamwerk dat bedoeld is om aanvallen met vervalsingen van verzoeke
 >
 >Ben zeker om de regelaantallen in de hieronder voorbeelden bij te werken die op uw bestaande configuratie worden gebaseerd. Herinner dat de verzenders de laatste passende regel zullen gebruiken om toe te staan of te ontkennen, zodat plaats de regels dichtbij de bodem van uw bestaande lijst.
 
-1. In `/clientheaders` sectie van uw auteur-farm.any en publish-farm.any, voeg de volgende ingang aan de bodem van de lijst toe:\
+1. In de `/clientheaders` de sectie van uw auteur-farm.any en publish-farm.any, voegt de volgende ingang aan de bodem van de lijst toe:\
    `CSRF-Token`
-1. Voeg in de sectie /filters van het `author-farm.any`- en `publish-farm.any`- of `publish-filters.any`-bestand de volgende regel toe om aanvragen voor `/libs/granite/csrf/token.json` via de dispatcher toe te staan.\
+1. In de /filters sectie van uw `author-farm.any` en `publish-farm.any` of `publish-filters.any` bestand, voeg de volgende regel toe om aanvragen voor `/libs/granite/csrf/token.json` via de verzender.\
    `/0999 { /type "allow" /glob " * /libs/granite/csrf/token.json*" }`
-1. Voeg onder de sectie `/cache /rules` van uw `publish-farm.any` een regel toe om te voorkomen dat de verzender het `token.json`-bestand in de cache plaatst. Gewoonlijk omzeilen auteurs caching, zodat zou u niet de regel in uw `author-farm.any` moeten toevoegen.\
+1. Onder de `/cache /rules` deel van uw `publish-farm.any`voegt u een regel toe om te voorkomen dat de verzender de `token.json` bestand. Auteurs omzeilen caching doorgaans, dus u hoeft de regel niet toe te voegen aan uw `author-farm.any`.\
    `/0999 { /glob "/libs/granite/csrf/token.json" /type "deny" }`
 
 Om te bevestigen dat de configuratie werkt, bekijk de dispatcher.log in DEBUG wijze om te bevestigen dat het token.json- dossier niet in de cache wordt opgeslagen en niet door filters wordt geblokkeerd. U zou berichten moeten zien gelijkend op:\

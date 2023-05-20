@@ -1860,7 +1860,7 @@ De configuratie van het landbouwbedrijf bevat geen documentwortel (configuratiee
 * **niet in cache geplaatst: pad naar cachebestand te lang**\
    Het doelbestand - de samenvoeging van het hoofdbestand van het document en het URL-bestand - overschrijdt de langst mogelijke bestandsnaam op het systeem.
 * **niet in cache geplaatst: tijdelijk bestandspad te lang**\
-   De sjabloon voor tijdelijke bestandsnamen overschrijdt de langst mogelijke bestandsnaam op het systeem. Dispatcher maakt eerst een tijdelijk bestand voordat het in de cache opgeslagen bestand wordt gemaakt of overschreven. De tijdelijke bestandsnaam is de naam van het doelbestand met de tekens `_YYYYXXXXXX` toegevoegd, waarbij `Y` en `X` worden vervangen om een unieke naam te maken.
+   De sjabloon voor tijdelijke bestandsnamen overschrijdt de langst mogelijke bestandsnaam op het systeem. Dispatcher maakt eerst een tijdelijk bestand voordat het in de cache opgeslagen bestand wordt gemaakt of overschreven. De tijdelijke bestandsnaam is de naam van het doelbestand met de tekens `_YYYYXXXXXX` toegevoegd, waarbij de `Y` en `X` worden vervangen om een unieke naam te maken.
 * **niet in cache geplaatst: request-URL heeft geen extensie**\
    De aanvraag-URL heeft geen extensie of er is een pad dat volgt op de bestandsextensie, bijvoorbeeld: `/test.html/a/path`.
 * **niet in cache geplaatst: verzoek was geen GET of HEAD**
