@@ -10,9 +10,9 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: f00ad751-6b95-4365-8500-e1e0108d9536
 exl-id: 9375d1c0-8d9e-46cb-9810-fa4162a8c1ba
-source-git-commit: 3bb9cb81ac98147bf12e9370d02002dd91ee374e
+source-git-commit: 570eafa7889ff4db820f80eccd529046464d9cfb
 workflow-type: tm+mt
-source-wordcount: '3726'
+source-wordcount: '3797'
 ht-degree: 0%
 
 ---
@@ -349,7 +349,7 @@ De Apache Web Server moet worden geconfigureerd, met `httpd.conf`. In de install
 
 Deze stappen zijn verplicht:
 
-1. Ga naar `<APACHE_ROOT>/conf`.
+1. Navigeren naar `<APACHE_ROOT>/conf`.
 1. Openen `httpd.conf`voor bewerken.
 1. De volgende configuratieingangen moeten, in de vermelde orde worden toegevoegd:
 
@@ -449,7 +449,7 @@ Na deze vermeldingen moet u een **SetHandler** verklaring aan de context van uw 
 ```
 ...  
 <Directory />  
-<IfModule disp\_apache2.c>  
+<IfModule disp_apache2.c>  
 SetHandler dispatcher-handler  
 </IfModule>  
   
@@ -469,7 +469,7 @@ In het volgende voorbeeld wordt de Dispatcher geconfigureerd om aanvragen voor e
 ServerName www.mycompany.com  
 DocumentRoot _\[cache-path\]_\\docs  
 <Directory _\[cache-path\]_\\docs>  
-<IfModule disp\_apache2.c>  
+<IfModule disp_apache2.c>  
 SetHandler dispatcher-handler  
 </IfModule>  
 AllowOverride None  
@@ -486,7 +486,7 @@ AllowOverride None
 ServerName www.mycompany.com  
 DocumentRoot /usr/apachecache/docs  
 <Directory /usr/apachecache/docs>  
-<IfModule disp\_apache2.c>  
+<IfModule disp_apache2.c>  
 SetHandler dispatcher-handler  
 </IfModule>  
 AllowOverride None  
@@ -526,7 +526,7 @@ In het volgende voorbeeld wordt geactiveerd: **ModMimeUsePathInfo**:
 ```
 ...  
 <Directory />  
-<IfModule disp\_apache2.c>  
+<IfModule disp_apache2.c>  
 SetHandler dispatcher-handler  
 ModMimeUsePathInfo On  
 </IfModule>  
@@ -607,7 +607,7 @@ Ga als volgt te werk om de Dispatcher aan uw webserver toe te voegen:
 
 De webserver moet worden geconfigureerd met `obj.conf`. In de installatiekit Dispatcher vindt u een voorbeeld-configuratiebestand met de naam `obj.conf.disp`.
 
-1. Ga naar `<WEBSERVER_ROOT>/config`.
+1. Navigeren naar `<WEBSERVER_ROOT>/config`.
 1. Openen `obj.conf`voor bewerken.
 1. Kopieer de regel die begint:\
    `Service fn="dispService"`\
