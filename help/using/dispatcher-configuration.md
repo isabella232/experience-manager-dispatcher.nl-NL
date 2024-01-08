@@ -2,9 +2,9 @@
 title: Dispatcher configureren
 description: Leer hoe u Dispatcher configureert. Leer over steun voor IPv4 en IPv6, configuratiedossiers, omgevingsvariabelen, noemend de instantie, bepalend landbouwbedrijven, identificerend virtuele gastheren, en meer.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 5fe3bb534b239d5aec892623cab65e84e04c7d10
+source-git-commit: 410346694a134c0f32a24de905623655f15269b4
 workflow-type: tm+mt
-source-wordcount: '8941'
+source-wordcount: '8857'
 ht-degree: 0%
 
 ---
@@ -1296,10 +1296,10 @@ In het volgende voorbeeld worden door Dispatcher alle parameters genegeerd, beha
 ```xml
 /ignoreUrlParams
 {
+    # ignore-all-url-parameters-by-dispatcher-and-requests-are-cached
+    /0001 { /glob "*" /type "allow" }
     # allow-the-url-parameter-nocache-to-bypass-dispatcher-on-every-request
-    /0001 { /glob "nocache" /type "deny" }
-    # all-other-url-parameters-are-ignored-by-dispatcher-and-requests-are-cached
-    /0002 { /glob "*" /type "allow" }
+    /0002 { /glob "nocache" /type "deny" }
 }
 ```
 
@@ -1828,7 +1828,7 @@ Deze functionaliteit is niet standaard ingeschakeld, dus voor de responsheader `
 /info "1"
 ```
 
-Bijvoorbeeld,
+Bijvoorbeeld:
 
 ```xml
 /farm
